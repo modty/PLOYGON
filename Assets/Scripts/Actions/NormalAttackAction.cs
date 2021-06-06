@@ -87,7 +87,7 @@ namespace Actions
             normalAttack_Anim_preTimer = 0.6f;
             normalAttack_aftTimer_max = .4f;
             normalAttack_ratio = normalAttack_Anim_preTimer;
-            UpdateAttackSpeed(0.8f);
+            UpdateAttackSpeed(1f);
 
         }
         protected override void DoUpdate()
@@ -98,14 +98,13 @@ namespace Actions
             timeTemp=currentTime;
             float distance = (_target.Transform.position - _transform.position).magnitude;
             // 如果角色正在移动，且进入攻击距离，停止
-            if (distance <= _player.AttackRange)
+            if (distance < _player.AttackRange)
             {
                 if (_player.IsMoving)
                 {
                     // 确保帧同步，不使用EventCenter
                     _movementAction.StopMove();
                 }
-
                 // 进入攻击动画
                 if (isAttackAnim)
                 {
@@ -113,10 +112,9 @@ namespace Actions
                     if (isAttacked)
                     {
                         // 动画播放结束
-                        if (Math.Abs(timer - normalAttack_Anim_aftTimer)<.01f)
+                        if (timer - normalAttack_Anim_aftTimer>=.005f)
                         {
                             //Debug.Log("3：动画后摇结束，等待静态后摇："+timer);
-                            
                             isAttackAnim = false;
                             timer = 0;
                             // 没有攻击静态攻击后摇，直接退出，不进入下一帧计算，需要补充时间
@@ -129,7 +127,7 @@ namespace Actions
                     // 没有攻击
                     else
                     {
-                        if (Math.Abs(timer - normalAttack_Anim_preTimer)<.01f)
+                        if (timer - normalAttack_Anim_preTimer>=.005f)
                         {
                             //Debug.Log("2：动画前摇结束，进行攻击："+timer);
                             Debug.Log("攻击：间隔："+(Time.time - duration)+"|||||"+normalAttack_preTimer+"："+normalAttack_Anim_preTimer+"："+normalAttack_Anim_aftTimer+"："+normalAttack_Anim_preTimer);
@@ -147,8 +145,9 @@ namespace Actions
                     if (isAttacked)
                     {
                         // 静态攻击后摇过去，可以进行攻击（注：攻击结束不用nextTimer，不然会多一个Time.fixDetalTime的时间）
-                        if (Math.Abs(timer - normalAttack_aftTimer)<.01f)
+                        if (timer - normalAttack_aftTimer>=.005f)
                         {
+                            //Debug.Log("4：动画前摇结束，攻击完毕："+timer);
                             isAttacked = false;
                             isAttackAnim = false;
                             timer = 0;
@@ -159,12 +158,12 @@ namespace Actions
                     else
                     {
                         // 如果没有静态攻击前摇，不进行时间重置
-                        if (normalAttack_preTimer <.01f)
+                        if (normalAttack_preTimer <=.005f)
                         {
                             NormalAttack(1);
                             isAttackAnim = true;
                         }
-                        else if (Math.Abs(timer - normalAttack_preTimer)<.01f)
+                        else if (timer - normalAttack_preTimer>=.005f)
                         {
                             //Debug.Log("1：静态前摇结束，等待动画前摇："+timer);
                             // 调用动画
@@ -176,8 +175,6 @@ namespace Actions
                     }
                     
                 }
-               
-                
             }
             // 没有移动且角色离开攻击范围
             else if(!_player.IsMoving&&distance > _player.AttackRange)

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Unity\PLOYGON" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Materials" t="Include">
+          <e p="SceneUI" t="Include">
+            <e p="Overlay.shader" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Actions" t="Include">
+            <e p="AnimationAction.cs" t="Include" />
+            <e p="BaseAction.cs" t="Include" />
+            <e p="MovementAction.cs" t="Include" />
+            <e p="NormalAttackAction.cs" t="Include" />
+            <e p="SceneUIAction.cs" t="Include" />
+            <e p="SkillAreaAction.cs" t="Include" />
+          </e>
+          <e p="Attribute" t="Include">
+            <e p="AttributeFactory.cs" t="Include" />
+            <e p="FloorAttribute.cs" t="Include" />
+            <e p="PlayerAttribute.cs" t="Include" />
+          </e>
+          <e p="Commons" t="Include">
+            <e p="Constants_Anim.cs" t="Include" />
+            <e p="TypedCharacterState.cs" t="Include" />
+            <e p="TypedGameData.cs" t="Include" />
+            <e p="TypedInputActions.cs" t="Include" />
+            <e p="TypedInteract.cs" t="Include" />
+            <e p="TypedMovement.cs" t="Include" />
+            <e p="TypedWeapon.cs" t="Include" />
+          </e>
+          <e p="Controller" t="Include">
+            <e p="AnimEventController.cs" t="Include" />
+            <e p="ClickArrowController.cs" t="Include" />
+            <e p="DataController.cs" t="Include" />
+            <e p="InputController.cs" t="Include" />
+            <e p="MouseController.cs" t="Include" />
+            <e p="SceneUIController.cs" t="Include" />
+            <e p="SkillAreaController.cs" t="Include" />
+          </e>
+          <e p="Data" t="Include">
+            <e p="GameData.cs" t="Include" />
+          </e>
+          <e p="Managers" t="Include">
+            <e p="PrefabsManager.cs" t="Include" />
+            <e p="SoundManager.cs" t="Include" />
+          </e>
+          <e p="SimpleCameraController.cs" t="Include" />
+          <e p="Tools" t="Include">
+            <e p="NavMeshTool.cs" t="Include" />
+            <e p="PhysicsTool.cs" t="Include" />
+          </e>
+          <e p="Utils" t="Include">
+            <e p="EventPoolUtils" t="Include">
+              <e p="CallBack.cs" t="Include" />
+              <e p="EnterCenter.cs" t="Include" />
+              <e p="EventTypes.cs" t="Include" />
+              <e p="Serialization.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="POLYGON_CustomCharacters.shader" t="Include" />
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="PLOYGON.sln" t="IncludeFlat" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\TY\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\TY\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_PLOYGON.-1728444558.00" t="ExcludeRecursive" />
+  </component>
+</project>

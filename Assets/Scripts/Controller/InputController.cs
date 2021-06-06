@@ -30,7 +30,7 @@ public class InputController : MonoBehaviour
     {
         _attribute = new PlayerAttribute(modelObject);
         _attribute.RotateSpeed = 3600f;
-        _attribute.AttackRange = 4f;
+        _attribute.AttackRange = 1.2f;
         _attribute.MoveAcceleration = 12;
         _attribute.WeaponType = TypedWeapon.Unarmed;
         _attribute.AttackRangeUI = skillRange.transform;
