@@ -22,6 +22,7 @@ namespace Scripts.Commons
         public static readonly int AimVertical_Float = Animator.StringToHash("AimVertical");
         public static readonly int BowPull_Float = Animator.StringToHash("BowPull");
         public static readonly int Charge_Float = Animator.StringToHash("Charge");
+        public static readonly int NormalAttackSpeed_Float = Animator.StringToHash("NormalAttackSpeed");
 
         public static readonly int Weapon_Int = Animator.StringToHash("Weapon");
         public static readonly int WeaponSwitch_Int = Animator.StringToHash("WeaponSwitch");

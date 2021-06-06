@@ -188,6 +188,18 @@ namespace Scripts
             set => _state = value;
         }
 
+
+        #region 动画控制相关
+
+        private float _normalAttackAnimSpeed;
+
+        public float NormalAttackAnimSpeed
+        {
+            get => _normalAttackAnimSpeed;
+            set => _normalAttackAnimSpeed = value;
+        }
+
+        #endregion
         #region Actions
 
         private MovementAction _movementAction;

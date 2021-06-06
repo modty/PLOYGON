@@ -88,6 +88,7 @@ namespace Actions
 
         private void NormalAttack(int weapon,int action)
         {
+            _animator.SetFloat(Constants_Anim.NormalAttackSpeed_Float,_player.NormalAttackAnimSpeed);
             _animator.SetInteger(Constants_Anim.Weapon_Int,weapon);
             _animator.SetInteger(Constants_Anim.Action_Int,action);
             _animator.SetTrigger(Constants_Anim.AttackTrigger);
