@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-06 添加音频播放">
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-06 修复攻击计时Bug">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/AnimationAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actions/AnimationAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/NormalAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Actions/NormalAttackAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/AnimationAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/BaseAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/MovementAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/NormalAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/SceneUIAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Actions/SkillAreaAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants_Anim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants_Anim.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,18 +23,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Controller/InputController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Controller/InputController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Constants_Anim.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Actions/AnimationAction.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Actions/NormalAttackAction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/NewEventCenter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EventPool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -76,6 +87,8 @@
       <updated>1622967135109</updated>
       <workItem from="1622967143809" duration="2446000" />
       <workItem from="1622975800422" duration="6023000" />
+      <workItem from="1622981927121" duration="115000" />
+      <workItem from="1623075533503" duration="1834000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -84,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622977425480</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2021-06-06 修复攻击计时Bug">
+      <created>1622981968962</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622981968962</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,10 +122,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="2021-06-06 添加音频播放" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-06 添加音频播放" />
+    <MESSAGE value="2021-06-06 修复攻击计时Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-06 修复攻击计时Bug" />
   </component>
 </project>

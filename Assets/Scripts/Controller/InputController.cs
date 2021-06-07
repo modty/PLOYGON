@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using ActionPool;
-using Actions;
 using Commons;
 using Data;
 using Scripts;
+using States;
 using UnityEngine;
+using AnimationState = States.AnimationState;
 
 public class InputController : MonoBehaviour
 {
@@ -17,11 +18,11 @@ public class InputController : MonoBehaviour
 
     private PlayerAttribute _attribute;
     public GameObject skillRange;
-    private MovementAction _movementAction;
-    private AnimationAction _animationAction;
-    private SceneUIAction _sceneUIAction;
-    private NormalAttackAction _normalAttackAction;
-    private SkillAreaAction _skillAreaAction;
+    private MovementState _movementState;
+    private AnimationState _animationState;
+    private SceneUIState _sceneUIState;
+    private NormalAttackState _normalAttackState;
+    private SkillAreaState _skillAreaState;
     public float moveSpeed=5f;
 
     private MouseController _mouse;
@@ -35,11 +36,11 @@ public class InputController : MonoBehaviour
         _attribute.MoveAcceleration = 12;
         _attribute.WeaponType = TypedWeapon.Unarmed;
         _attribute.AttackRangeUI = skillRange.transform;
-        _movementAction = new MovementAction(_attribute);
-        _animationAction = new AnimationAction(_attribute);
-        _sceneUIAction = new SceneUIAction();
-        _normalAttackAction = new NormalAttackAction(_attribute);
-        _skillAreaAction = new SkillAreaAction(_attribute);
+        _movementState = new MovementState(_attribute);
+        _animationState = new AnimationState(_attribute);
+        _sceneUIState = new SceneUIState();
+        _normalAttackState = new NormalAttackState(_attribute);
+        _skillAreaState = new SkillAreaState(_attribute);
         _mouse=MouseController.Get();
     }
 
@@ -47,8 +48,8 @@ public class InputController : MonoBehaviour
     void Update()
     {
         _attribute.MoveSpeed = moveSpeed;
-        _animationAction.Update();
-        _skillAreaAction.Update();
+        _animationState.Update();
+        _skillAreaState.Update();
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             GameData gameData = _mouse.GameData;
@@ -104,7 +105,7 @@ public class InputController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _normalAttackAction.Update();
-        _movementAction.Update();
+        _normalAttackState.Update();
+        _movementState.Update();
     }
 }

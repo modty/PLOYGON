@@ -1,11 +1,11 @@
 ﻿using System;
 using ActionPool;
-using Actions;
 using Data;
+using Scripts;
 using Tools;
 using UnityEngine;
 
-namespace Scripts
+namespace States
 {
 
     /// <summary>
@@ -21,7 +21,7 @@ namespace Scripts
     /// <summary>
     /// 管理角色移动，需要接收到移动指令才能移动（点击移动）
     /// </summary>
-    public class MovementAction:BaseAction
+    public class MovementState:BaseState
     {
 
         private Transform _transform;
@@ -45,13 +45,13 @@ namespace Scripts
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
         /// <param name="player"></param>
-        public MovementAction(PlayerAttribute player)
+        public MovementState(PlayerAttribute player)
         {
             _player = player;
             // 获取需要属性
             _transform = player.Transform;
             _collider = player.Collider;
-            player.MovementAction = this;
+            player.MovementState = this;
             RegistInputActions();
             StartAction();
         }

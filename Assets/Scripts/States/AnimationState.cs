@@ -1,24 +1,23 @@
-﻿using System;
-using ActionPool;
+﻿using ActionPool;
 using Scripts;
 using Scripts.Commons;
 using UnityEngine;
 
-namespace Actions
+namespace States
 {
     
     
     /// <summary>
     /// 管理角色动画
     /// </summary>
-    public class AnimationAction:BaseAction
+    public class AnimationState:BaseState
     {
         private PlayerAttribute _player;
 
         private Animator _animator;
         private Rigidbody _rigidbody;
         
-        public AnimationAction()
+        public AnimationState()
         {
         }
 
@@ -26,7 +25,7 @@ namespace Actions
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
         /// <param name="player"></param>
-        public AnimationAction(PlayerAttribute player)
+        public AnimationState(PlayerAttribute player)
         {
             _player = player;
             // 获取需要属性

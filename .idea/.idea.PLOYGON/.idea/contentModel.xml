@@ -11,14 +11,6 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Actions" t="Include">
-            <e p="AnimationAction.cs" t="Include" />
-            <e p="BaseAction.cs" t="Include" />
-            <e p="MovementAction.cs" t="Include" />
-            <e p="NormalAttackAction.cs" t="Include" />
-            <e p="SceneUIAction.cs" t="Include" />
-            <e p="SkillAreaAction.cs" t="Include" />
-          </e>
           <e p="Attribute" t="Include">
             <e p="AttributeFactory.cs" t="Include" />
             <e p="FloorAttribute.cs" t="Include" />
@@ -50,6 +42,14 @@
             <e p="SoundManager.cs" t="Include" />
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
+          <e p="States" t="Include">
+            <e p="AnimationState.cs" t="Include" />
+            <e p="BaseState.cs" t="Include" />
+            <e p="MovementState.cs" t="Include" />
+            <e p="NormalAttackState.cs" t="Include" />
+            <e p="SceneUIState.cs" t="Include" />
+            <e p="SkillAreaState.cs" t="Include" />
+          </e>
           <e p="Tools" t="Include">
             <e p="NavMeshTool.cs" t="Include" />
             <e p="PhysicsTool.cs" t="Include" />

@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-namespace Actions
+namespace States
 {
     /// <summary>
     /// 行为基类，只对行为进行某些记录，其中方法只能通过子对象调用。
     /// 子类继承后，需要重写DoAction方法添加行为
     /// </summary>
-    public abstract class BaseAction
+    public abstract class BaseState
     {
         private float time_start;
         private float time_end;
         private float time_duration;
         private bool enterExit;
         protected bool stop;
-        protected BaseAction()
+        protected BaseState()
         {
             time_start = 0;
             time_end = 0;

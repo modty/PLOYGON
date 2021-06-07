@@ -3,12 +3,15 @@ using Managers;
 using Scripts;
 using UnityEngine;
 
-namespace Actions
+namespace States
 {
-    public class SceneUIAction:BaseAction
+    /// <summary>
+    /// 场景中的UI控制
+    /// </summary>
+    public class SceneUIState:BaseState
     {
         private PrefabsManager _prefabsManager;
-        public SceneUIAction()
+        public SceneUIState()
         {
             _prefabsManager=PrefabsManager.Instance;
             RegistInputActions();

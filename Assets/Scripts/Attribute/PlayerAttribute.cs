@@ -1,6 +1,8 @@
 ﻿using Commons;
 using Data;
+using States;
 using UnityEngine;
+using TypedMovement = Commons.TypedMovement;
 
 namespace Scripts
 {
@@ -202,12 +204,12 @@ namespace Scripts
         #endregion
         #region Actions
 
-        private MovementAction _movementAction;
+        private MovementState _movementState;
 
-        public MovementAction MovementAction
+        public MovementState MovementState
         {
-            get => _movementAction;
-            set => _movementAction = value;
+            get => _movementState;
+            set => _movementState = value;
         }
 
         #endregion

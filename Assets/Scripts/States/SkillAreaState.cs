@@ -2,18 +2,18 @@
 using Scripts;
 using UnityEngine;
 
-namespace Actions
+namespace States
 {
     /// <summary>
     /// 角色的攻击范围
     /// </summary>
-    public class SkillAreaAction:BaseAction
+    public class SkillAreaState:BaseState
     {
         private PlayerAttribute _player;
 
         private Transform _playerAttackRange; 
         private Transform _transform; 
-        public SkillAreaAction(PlayerAttribute playerAttribute)
+        public SkillAreaState(PlayerAttribute playerAttribute)
         {
             _player = playerAttribute;
             _playerAttackRange = _player.AttackRangeUI;

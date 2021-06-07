@@ -4,12 +4,12 @@ using Data;
 using Scripts;
 using UnityEngine;
 
-namespace Actions
+namespace States
 {
     /// <summary>
     /// 普通攻击
     /// </summary>
-    public class NormalAttackAction:BaseAction
+    public class NormalAttackState:BaseState
     {
         // 强制攻击指令
         private bool _forceAttack;
@@ -19,7 +19,7 @@ namespace Actions
         private PlayerAttribute _player;
 
         private Transform _transform;
-        private MovementAction _movementAction;
+        private MovementState _movementState;
 
         private GameData _target;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Actions
         private float normalAttack_aftTimer_max;
         private float timeTemp;
         
-        public NormalAttackAction(PlayerAttribute playerAttribute):base()
+        public NormalAttackState(PlayerAttribute playerAttribute):base()
         {
             _player = playerAttribute;
             _transform = _player.Transform;
-            _movementAction = playerAttribute.MovementAction;
+            _movementState = playerAttribute.MovementState;
             RegistInputActions();
             
             // 设置攻击前摇为0.7f，攻击后摇为0.7f，每次攻击需要1.4f，攻速度0.71，即每秒攻击0.71次，
@@ -100,7 +100,7 @@ namespace Actions
                 if (_player.IsMoving)
                 {
                     // 确保帧同步，不使用EventCenter
-                    _movementAction.StopMove();
+                    _movementState.StopMove();
                 }
                 // 进入攻击动画
                 if (isAttackAnim)
