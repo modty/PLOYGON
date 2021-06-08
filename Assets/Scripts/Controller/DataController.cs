@@ -2,6 +2,7 @@
 using ActionPool;
 using Commons;
 using Data;
+using Tools;
 using UnityEngine;
 
 namespace Scripts
@@ -25,6 +26,7 @@ namespace Scripts
             _gameData = AttributeFactory.CreateAssetMenuAttribute(dataType,gameObject);
             _gameData.TypedInteract = interactType;
             _gameData.Transform = transform;
+            _gameData.Uid = UidTool.Instance.RegistUid();
         }
         
 

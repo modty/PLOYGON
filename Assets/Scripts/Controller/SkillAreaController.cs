@@ -10,6 +10,6 @@ public class SkillAreaController : MonoBehaviour
     void Update()
     {
         var position = parent.position;
-        transform.position = new Vector3(position.x,1f,position.z);
+        transform.position = new Vector3(position.x,.1f,position.z);
     }
 }

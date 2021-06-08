@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-08 UI素材">
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-08 优化攻击伤害显示">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/SceneUI/OverLay.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/SceneUI/OverLay.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/CombatText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/CombatText.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +21,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/1e/32f87506/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/36/bceef55a/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Attribute/PlayerAttribute.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -35,18 +40,27 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/NewEventCenter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EventPool.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/HeadBarController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/FloorAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Components.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/UnityComponents.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Data/GameData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/UidManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/UidTool.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -96,7 +110,9 @@
       <workItem from="1623075533503" duration="1954000" />
       <workItem from="1623111228322" duration="2302000" />
       <workItem from="1623128324232" duration="2597000" />
-      <workItem from="1623132085156" duration="3067000" />
+      <workItem from="1623132085156" duration="5998000" />
+      <workItem from="1623148374025" duration="158000" />
+      <workItem from="1623148555609" duration="2557000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -133,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623113562367</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="2021-06-08 优化攻击伤害显示">
+      <created>1623135264783</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623135264783</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +183,7 @@
     <MESSAGE value="2021-06-07 类属性重命名" />
     <MESSAGE value="2021-06-08 伤害值初实现" />
     <MESSAGE value="2021-06-08 UI素材" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-08 UI素材" />
+    <MESSAGE value="2021-06-08 优化攻击伤害显示" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-08 优化攻击伤害显示" />
   </component>
 </project>

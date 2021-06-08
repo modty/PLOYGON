@@ -116,6 +116,10 @@ namespace States
         /// </summary>
         private void OnClickMouseRightTarget(GameData gameData)
         {
+            
+            // 点击自己直接退出
+            if(_player.Uid.Equals(gameData.Uid)) return;
+            
             _player.TargetMovePosition = gameData.Transform.position;
             if ((_player.TargetMovePosition - _transform.position).magnitude < _player.AttackRange)
             {

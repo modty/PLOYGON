@@ -56,6 +56,7 @@ public class InputController : MonoBehaviour
             GameData gameData = _mouse.GameData;
             if (gameData != null)
             {
+              
                 // 鼠标点击到（可移动位置）
                 if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
                 {
@@ -67,7 +68,11 @@ public class InputController : MonoBehaviour
                     EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);
                 }
 
-                _attribute.Target = gameData;
+                // 地面暂时不加入点击选择
+                if (!(gameData is FloorAttribute))
+                {
+                    _attribute.Target = gameData;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
