@@ -67,6 +67,10 @@ namespace Scripts
 
         private float _moveAcceleration;
 
+        public float Height
+        {
+            get => _collider.height;
+        }
         public float MoveAcceleration
         {
             get => _moveAcceleration;

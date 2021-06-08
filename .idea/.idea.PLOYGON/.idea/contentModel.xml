@@ -16,6 +16,7 @@
             <e p="FloorAttribute.cs" t="Include" />
             <e p="PlayerAttribute.cs" t="Include" />
           </e>
+          <e p="CombatText.cs" t="Include" />
           <e p="Commons" t="Include">
             <e p="Constants_Anim.cs" t="Include" />
             <e p="TypedCharacterState.cs" t="Include" />
@@ -29,6 +30,7 @@
             <e p="AnimEventController.cs" t="Include" />
             <e p="ClickArrowController.cs" t="Include" />
             <e p="DataController.cs" t="Include" />
+            <e p="HeadBarController.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
             <e p="MouseController.cs" t="Include" />
             <e p="SceneUIController.cs" t="Include" />
@@ -38,6 +40,7 @@
             <e p="GameData.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
+            <e p="CombatTextManager.cs" t="Include" />
             <e p="PrefabsManager.cs" t="Include" />
             <e p="SoundManager.cs" t="Include" />
           </e>
