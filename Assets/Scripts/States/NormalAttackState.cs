@@ -76,11 +76,11 @@ namespace States
             // 设置攻击前摇为0.7f，攻击后摇为0.7f，每次攻击需要1.4f，攻速度0.71，即每秒攻击0.71次，
             normalAttack_preTimer = 0f;
             normalAttack_aftTimer = 0f;
-            normalAttack_Anim_aftTimer = 0.7f;
-            normalAttack_Anim_preTimer = 0.3f;
-            normalAttack_aftTimer_max = .4f;
+            normalAttack_Anim_aftTimer = 0.58f;
+            normalAttack_Anim_preTimer = 0.42f;
+            normalAttack_aftTimer_max = .42f;
             normalAttack_ratio = normalAttack_Anim_preTimer;
-            UpdateAttackSpeed(1f);
+            UpdateAttackSpeed(2.5f);
 
         }
         protected override void DoUpdate()
@@ -230,8 +230,14 @@ namespace States
             normalAttack_Anim_aftTimer = frequency-normalAttack_Anim_preTimer;
         }
 
+        private bool right;
         private void NormalAttack(int action)
         {
+            if(right)
+            {
+                action = 5;
+            }
+            right = !right;
             EventCenter.Broadcast(TypedInputActions.AnimNormalAttack.ToString(),(int)_player.WeaponType,action);
         }
         /// <summary>

@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-07 类属性重命名">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-08 UI素材">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/SceneUI/OverLay.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/SceneUI/OverLay.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/CombatText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/CombatText.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,15 +36,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EventPool.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/HeadBarController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -84,7 +94,9 @@
       <workItem from="1622975800422" duration="6023000" />
       <workItem from="1622981927121" duration="115000" />
       <workItem from="1623075533503" duration="1954000" />
-      <workItem from="1623111228322" duration="1975000" />
+      <workItem from="1623111228322" duration="2302000" />
+      <workItem from="1623128324232" duration="2597000" />
+      <workItem from="1623132085156" duration="3067000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -107,7 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623077457725</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2021-06-08 伤害值初实现">
+      <created>1623113540561</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623113540561</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2021-06-08 UI素材">
+      <created>1623113562367</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623113562367</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +158,8 @@
     <MESSAGE value="2021-06-06 添加音频播放" />
     <MESSAGE value="2021-06-06 修复攻击计时Bug" />
     <MESSAGE value="2021-06-07 类属性重命名" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-07 类属性重命名" />
+    <MESSAGE value="2021-06-08 伤害值初实现" />
+    <MESSAGE value="2021-06-08 UI素材" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-08 UI素材" />
   </component>
 </project>

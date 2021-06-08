@@ -35,7 +35,7 @@ namespace States
             {
                 float size = _player.AttackRange * 2;
                 Debug.Log(_playerAttackRange);
-                _playerAttackRange.localScale = new Vector3(size, 1, size);
+                _playerAttackRange.localScale = new Vector3(size, .1f, size);
                 _playerAttackRange.position = _transform.position;
                 StartAction();
                 _playerAttackRange.gameObject.SetActive(true);

@@ -7,41 +7,58 @@ using Random = UnityEngine.Random;
 
 public class CombatText : MonoBehaviour {
 
-    private float speed;
-
-    private float lifeTime;
 
     [SerializeField]
     private Text text;
 
     private void Awake()
     {
-        speed=Random.Range(1f,2f);
-        lifeTime=Random.Range(1f,1f);
+        speed_xz=Random.Range(.5f,.7f);
+        speed_y=Random.Range(2f,2f);
+        speed_y_acc = 4;
     }
 
+
+    // X轴运动速度
+    private float speed_xz;
+    // T轴运动速度
+    private float speed_y;
+    // Y轴加速度
+    private float speed_y_acc;
+
+    private int _direction;
     // Use this for initialization
 	void Start ()
     {
         StartCoroutine(FadeOut());
+        _direction = 1;
     }
-	
+
+    public int Direction
+    {
+        get => _direction;
+        set
+        {
+            _direction = value;
+            speed_xz *= _direction;
+        }
+    }
 	// Update is called once per frame
 	void Update ()
     {
-        Move();
+        Vector3 position = transform.position;
+        position.x += speed_xz * Time.deltaTime;
+        position.y += speed_y * Time.deltaTime;
+        //Vector3 newPosition =position+ new Vector3(0, speed_y, speed_xz).normalized *Time.deltaTime;
+        transform.position = position;
+        speed_y -= speed_y_acc * Time.deltaTime;
+        
 	}
-
-    private void Move()
-    {
-        transform.Translate(new Vector3(0,1,0) * speed * Time.deltaTime,Space.World);
-    }
 
     public IEnumerator FadeOut()
     {
         float startAlpha = text.color.a;
 
-        float rate = 1.0f / lifeTime;
 
         float progress = 0.0f;
 
@@ -49,11 +66,11 @@ public class CombatText : MonoBehaviour {
         {
             Color tmp = text.color;
 
-            tmp.a = Mathf.Lerp(startAlpha, 0, progress);
+            tmp.a = Mathf.Lerp(startAlpha, 0, progress*progress);
 
             text.color = tmp;
 
-            progress += rate * Time.deltaTime;
+            progress +=  Time.deltaTime;
 
             yield return null;
         }

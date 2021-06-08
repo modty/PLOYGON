@@ -26,18 +26,20 @@ namespace Managers
         [SerializeField]
         private GameObject combatTextPrefab;
 
-        public void CreateText(Vector3 position, string text, SCTTYPE type, bool crit)
+        public void CreateText(Vector3 position, string text, SCTTYPE type, bool crit,bool direction)
         {
             //Offset
-            position.z += 0.8f;
-            Text sct = Instantiate(combatTextPrefab, transform).GetComponent<Text>();
+            GameObject gb = Instantiate(combatTextPrefab, transform);
+            CombatText combatText = gb.GetComponent<CombatText>();
+            combatText.Direction = direction ? 1 : -1;
+            Text sct = gb.GetComponent<Text>();
             sct.transform.position = position;
             string before = string.Empty;
             string after = string.Empty;
             switch (type)
             {
                 case SCTTYPE.DAMAGE:
-                    sct.color = Color.red;
+                    sct.color = GetColor("#D0770B");
                     break;
                 case SCTTYPE.HEAL:
                     before = "+";
@@ -61,7 +63,27 @@ namespace Managers
                 sct.GetComponent<Animator>().SetBool("Crit", crit);
             }
         }
-
+        public Color GetColor(string color)
+        {
+            if (color.Length == 0)
+            {
+                return Color.black;//设为黑色
+            }
+            else
+            {
+                //#ff8c3 除掉#
+                color = color.Substring(1);
+                int v = int.Parse(color, System.Globalization.NumberStyles.HexNumber);
+                //转换颜色
+                return new Color(
+                    //int>>移位 去低位
+                    //&按位与 去高位
+                    ((float)(((v >> 16) & 255))) / 255,
+                    ((float)((v >> 8) & 255)) / 255,
+                    ((float)((v >> 0) & 255)) / 255
+                );
+            }
+        }
 
     }
 

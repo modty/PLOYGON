@@ -24,6 +24,7 @@ namespace Scripts
         {
             _gameData = AttributeFactory.CreateAssetMenuAttribute(dataType,gameObject);
             _gameData.TypedInteract = interactType;
+            _gameData.Transform = transform;
         }
         
 

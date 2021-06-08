@@ -24,7 +24,7 @@ public class InputController : MonoBehaviour
     private NormalAttackState _normalAttackState;
     private SkillAreaState _skillAreaState;
     public float moveSpeed=5f;
-
+    public AnimEventController eventController;
     private MouseController _mouse;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,7 @@ public class InputController : MonoBehaviour
         _sceneUIState = new SceneUIState();
         _normalAttackState = new NormalAttackState(_attribute);
         _skillAreaState = new SkillAreaState(_attribute);
+        eventController._player = _attribute;
         _mouse=MouseController.Get();
     }
 
@@ -65,6 +66,8 @@ public class InputController : MonoBehaviour
                 {
                     EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);
                 }
+
+                _attribute.Target = gameData;
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
