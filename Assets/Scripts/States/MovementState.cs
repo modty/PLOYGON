@@ -63,6 +63,7 @@ namespace States
         {
             EventCenter.AddListener<bool,Vector3>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),OnClickMouseRightWalkable);
             EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),OnClickMouseRightTarget);
+            EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),OnClickMouseLeftForceTarget);
             EventCenter.AddListener(TypedInputActions.OnForceAttack.ToString(), () =>
             {
                 _forceAttack = true;
@@ -110,11 +111,18 @@ namespace States
                 StartAction();
             }
         }
-
+        /// <summary>
+        /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
+        /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
+        /// </summary>
+        private void OnClickMouseRightTarget(GameData gameData)
+        {
+            
+        }
         /// <summary>
         /// 鼠标右键选择目标，前往互动或者前往攻击，此处仅进行移动。
         /// </summary>
-        private void OnClickMouseRightTarget(GameData gameData)
+        private void OnClickMouseLeftForceTarget(GameData gameData)
         {
             
             // 点击自己直接退出

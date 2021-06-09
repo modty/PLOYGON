@@ -41859,9 +41859,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4938694965859136}
   - component: {fileID: 95488026184641920}
-  - component: {fileID: 105241737}
   - component: {fileID: 105241738}
   - component: {fileID: 105241736}
+  - component: {fileID: 105241737}
+  - component: {fileID: 4683474759628540564}
+  - component: {fileID: 2679758991847751523}
+  - component: {fileID: 105241742}
   m_Layer: 0
   m_Name: Chr_FantasyHero_Preset_5 1
   m_TagString: Untagged
@@ -41904,22 +41907,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &105241737
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608198229272546}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!136 &105241738
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -41948,6 +41935,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataType: 1
   interactType: 0
+--- !u!54 &105241737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608198229272546}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &4683474759628540564
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608198229272546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &2679758991847751523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608198229272546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e780bcb4b746a29810500edc454ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataType: 1
+  interactType: 0
+--- !u!114 &105241742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608198229272546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50074b4847f4314af68ebb034773cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatText: {fileID: 1302168161256038, guid: e9e28bf872b6eef4196fe05760d24a57, type: 3}
+  combatTextParent: {fileID: 0}
 --- !u!1 &1608226372549986
 GameObject:
   m_ObjectHideFlags: 0
