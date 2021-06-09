@@ -35,6 +35,7 @@
             <e p="MouseController.cs" t="Include" />
             <e p="SceneUIController.cs" t="Include" />
             <e p="SkillAreaController.cs" t="Include" />
+            <e p="UIController.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
             <e p="GameData.cs" t="Include" />
