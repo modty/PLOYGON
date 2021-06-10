@@ -49,6 +49,12 @@
         /// 普通攻击
         /// </summary>
         AnimNormalAttack,
-        NormalAttack
+        NormalAttack,
+        
+        /// <summary>
+        /// 当前操控角色
+        /// </summary>
+        CurrentControlledPlayer
+        
     }
 }

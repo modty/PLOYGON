@@ -124,7 +124,7 @@ namespace States
         /// </summary>
         private void OnClickMouseLeftForceTarget(GameData gameData)
         {
-            
+            if(!_forceAttack) return;
             // 点击自己直接退出
             if(_player.Uid.Equals(gameData.Uid)) return;
             

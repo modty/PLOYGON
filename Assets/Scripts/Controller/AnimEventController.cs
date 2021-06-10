@@ -14,10 +14,9 @@ namespace Scripts
         {
             if(_player.Target==null||_player.Target.Uid==_player.Uid) return;
             SoundManager.Instance.Play();
-
             var position = _player.Target.Transform.position;
             position.y = .4f;
-            CombatTextManager.Instance.CreateText(position,_player.AttackDamage.ToString(),SCTTYPE.DAMAGE,false,position.x>_player.Transform.position.x);
+            CombatTextManager.Instance.CreateText(position,_player.AttackDamage.CurrentValue().ToString(),SCTTYPE.DAMAGE,false,position.x>_player.Transform.position.x);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using ActionPool;
+using Commons;
 using Data;
 using Scripts;
 using UnityEngine;
@@ -130,6 +131,11 @@ namespace States
                         {
                             Debug.Log("2：动画前摇结束，进行攻击："+timer);
                             Debug.Log("攻击：间隔："+(Time.time - duration)+"|||||"+normalAttack_preTimer+"："+normalAttack_Anim_preTimer+"："+normalAttack_Anim_aftTimer+"："+normalAttack_aftTimer);
+                            if (_player.Target != null)
+                            {
+                                PlayerAttribute target=_player.Target as PlayerAttribute;
+                                target?.Health.UpdateCurrentValue(-(int)_player.AttackDamage.CurrentValue());
+                            }
                             duration = currentTime;
                             // 攻击过了
                             isAttacked = true;

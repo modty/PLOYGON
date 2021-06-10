@@ -36,24 +36,8 @@ public class InputController : MonoBehaviour
         _attribute.MoveAcceleration = 12;
         _attribute.WeaponType = TypedWeapon.Unarmed;
         _attribute.AttackRangeUI = skillRange.transform;
-        _attribute.AttackDamage = 102;
-        _attribute.AbilityPower = 124;
-        _attribute.ArmorResistance = 45;
-        _attribute.MagicResistance = 80;
-        _attribute.CriticalStrike = 45;
-        _attribute.AttackSpeed = 1.2f;
-        _attribute.ONHitEffects = 0;
-        _attribute.ArmorPenetration = 12;
-        _attribute.MagicPenetration = 10;
-        _attribute.HealthRegeneration = 50;
-        _attribute.MagicRegeneration = 50;
-        _attribute.AbilityHaste = 50;
-        _attribute.Movement = 450;
-        _attribute.LifeSteal = 30;
-        _attribute.Ominivamp = 30;
-        _attribute.HealthRegon = 7;
-        _attribute.ResourceRegon = 4;
-        _attribute.Tenacity = 30;
+        _attribute.Health = new Health(4335);
+        _attribute.AttackDamage = new AttackDamage(234);
         _movementState = new MovementState(_attribute);
         _animationState = new AnimationState(_attribute);
         _sceneUIState = new SceneUIState();
@@ -61,6 +45,7 @@ public class InputController : MonoBehaviour
         _skillAreaState = new SkillAreaState(_attribute);
         eventController._player = _attribute;
         _mouse=MouseController.Get();
+        EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerMes,_attribute);
     }
 
     // Update is called once per frame
@@ -69,6 +54,17 @@ public class InputController : MonoBehaviour
         _attribute.MoveSpeed = moveSpeed;
         _animationState.Update();
         _skillAreaState.Update();
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            _attribute.Health.UpdateCurrentValue(-1000);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _attribute.Health.UpdateCurrentValue(1000);
+        }
+        
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             GameData gameData = _mouse.GameData;

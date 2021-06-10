@@ -6,6 +6,7 @@
         private static long uid;
         private UidTool()
         {
+            uid = 1;
         }
 
         public long RegistUid()

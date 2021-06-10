@@ -28,26 +28,9 @@ namespace Scripts
             PlayerAttribute _attribute = _gameData as PlayerAttribute;
             if (_attribute != null)
             {
-                _attribute.AttackDamage = 102;
-                _attribute.AbilityPower = 124;
-                _attribute.ArmorResistance = 45;
-                _attribute.MagicResistance = 80;
-                _attribute.CriticalStrike = 45;
-                _attribute.AttackSpeed = 1.2f;
-                _attribute.ONHitEffects = 0;
-                _attribute.ArmorPenetration = 12;
-                _attribute.MagicPenetration = 10;
-                _attribute.HealthRegeneration = 50;
-                _attribute.MagicRegeneration = 50;
-                _attribute.AbilityHaste = 50;
-                _attribute.Movement = 450;
-                _attribute.LifeSteal = 30;
-                _attribute.Ominivamp = 30;
-                _attribute.HealthRegon = 7;
-                _attribute.ResourceRegon = 4;
-                _attribute.Tenacity = 30;
+                _attribute.Health = new Health(4335);
+                _attribute.AttackDamage = new AttackDamage(234);
             }
-           
             _gameData.TypedInteract = interactType;
             _gameData.Transform = transform;
             _gameData.Uid = UidTool.Instance.RegistUid();

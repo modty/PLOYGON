@@ -171,192 +171,207 @@ namespace Scripts
         /// <summary>
         /// 物理攻击
         /// </summary>
-        private int _attackDamage;
-
+        private AttackDamage _attackDamage;
         /// <summary>
         /// 法术攻击
         /// </summary>
-        private int _abilityPower;
+        private AbilityPower _abilityPower;
 
         /// <summary>
         /// 物理抗性（护甲）
         /// </summary>
-        private int _armorResistance;
+        private ArmorResistance _armorResistance;
         /// <summary>
         /// 魔法抗性（法抗）
         /// </summary>
-        private int _magicResistance;
+        private MagicResistance _magicResistance;
 
         /// <summary>
         /// 暴击
         /// </summary>
-        private int _criticalStrike;
+        private CriticalStrike _criticalStrike;
 
         /// <summary>
         /// 攻击速度
         /// </summary>
-        private float _attackSpeed;
+        private AttackSpeed _attackSpeed;
         /// <summary>
         /// 特效
         /// </summary>
-        private int _onHitEffects;
+        private ONHitEffects _onHitEffects;
 
         /// <summary>
         /// 物理穿甲
         /// </summary>
-        private int _armorPenetration;
+        private ArmorPenetration _armorPenetration;
 
         /// <summary>
         /// 魔法穿透
         /// </summary>
-        private int _magicPenetration;
+        private MagicPenetration _magicPenetration;
 
         /// <summary>
         /// 生命恢复（百分比）
         /// </summary>
-        private float _healthRegeneration;
+        private HealthRegeneration _healthRegeneration;
         /// <summary>
         /// 法术恢复（百分比）
         /// </summary>
-        private float _magicRegeneration;
+        private MagicRegeneration _magicRegeneration;
 
         /// <summary>
         /// 技能急速
         /// </summary>
-        private int _abilityHaste;
+        private AbilityHaste _abilityHaste;
 
         /// <summary>
         /// 移动速度
         /// </summary>
-        private int _movement;
+        private Movement _movement;
 
         /// <summary>
         /// 生命偷取
         /// </summary>
-        private int _lifeSteal;
+        private LifeSteal _lifeSteal;
         /// <summary>
         /// 全能吸血
         /// </summary>
-        private int _ominivamp;
+        private Ominivamp _ominivamp;
 
         /// <summary>
         /// 每5秒生命值恢复
         /// </summary>
-        private float _healthRegon;
+        private HealthRegon _healthRegon;
 
         /// <summary>
         /// 每5秒法力恢复
         /// </summary>
-        private float _resourceRegon;
+        private ResourceRegon _resourceRegon;
 
         /// <summary>
         /// 韧性
         /// </summary>
-        private int _tenacity;
+        private Tenacity _tenacity;
 
-        public int AttackDamage
+        private Health _health;
+
+        public Health Health
         {
-            get => _attackDamage;
-            set => _attackDamage = value;
+            get => _health;
+            set
+            {
+                _health = value;
+                _health.GameData = this;
+            }
         }
 
-        public int AbilityPower
+        public AttackDamage AttackDamage
+        {
+            get => _attackDamage;
+            set
+            {
+                _attackDamage = value;
+                _attackDamage.GameData = this;
+            }
+        }
+
+        public AbilityPower AbilityPower
         {
             get => _abilityPower;
             set => _abilityPower = value;
         }
 
-        public int ArmorResistance
+        public ArmorResistance ArmorResistance
         {
             get => _armorResistance;
             set => _armorResistance = value;
         }
 
-        public int MagicResistance
+        public MagicResistance MagicResistance
         {
             get => _magicResistance;
             set => _magicResistance = value;
         }
 
-        public int CriticalStrike
+        public CriticalStrike CriticalStrike
         {
             get => _criticalStrike;
             set => _criticalStrike = value;
         }
 
-        public float AttackSpeed
+        public AttackSpeed AttackSpeed
         {
             get => _attackSpeed;
             set => _attackSpeed = value;
         }
 
-        public int ONHitEffects
+        public ONHitEffects ONHitEffects
         {
             get => _onHitEffects;
             set => _onHitEffects = value;
         }
 
-        public int ArmorPenetration
+        public ArmorPenetration ArmorPenetration
         {
             get => _armorPenetration;
             set => _armorPenetration = value;
         }
 
-        public int MagicPenetration
+        public MagicPenetration MagicPenetration
         {
             get => _magicPenetration;
             set => _magicPenetration = value;
         }
 
-        public float HealthRegeneration
+        public HealthRegeneration HealthRegeneration
         {
             get => _healthRegeneration;
             set => _healthRegeneration = value;
         }
 
-        public float MagicRegeneration
+        public MagicRegeneration MagicRegeneration
         {
             get => _magicRegeneration;
             set => _magicRegeneration = value;
         }
 
-        public int AbilityHaste
+        public AbilityHaste AbilityHaste
         {
             get => _abilityHaste;
             set => _abilityHaste = value;
         }
 
-        public int Movement
+        public Movement Movement
         {
             get => _movement;
             set => _movement = value;
         }
 
-        public int LifeSteal
+        public LifeSteal LifeSteal
         {
             get => _lifeSteal;
             set => _lifeSteal = value;
         }
 
-        public int Ominivamp
+        public Ominivamp Ominivamp
         {
             get => _ominivamp;
             set => _ominivamp = value;
         }
 
-        public float HealthRegon
+        public HealthRegon HealthRegon
         {
             get => _healthRegon;
             set => _healthRegon = value;
         }
 
-        public float ResourceRegon
+        public ResourceRegon ResourceRegon
         {
             get => _resourceRegon;
             set => _resourceRegon = value;
         }
-
-        public int Tenacity
+        
+        public Tenacity Tenacity
         {
             get => _tenacity;
             set => _tenacity = value;

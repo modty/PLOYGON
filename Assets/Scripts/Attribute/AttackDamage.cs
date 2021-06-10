@@ -1,4 +1,6 @@
-﻿namespace Scripts
+﻿using Data;
+
+namespace Scripts
 {
     /// <summary>
     /// 攻击力。计算等操作仅在内部进行，外部不进行计算。
@@ -17,25 +19,29 @@
         /// </summary>
         private int _currentValue;
 
+
+        private GameData _gameData;
+
+        public GameData GameData
+        {
+            get => _gameData;
+            set => _gameData = value;
+        }
+
+        public float MaxValue()
+        {
+            return _baseValue;
+        }
+
+        public float CurrentValue()
+        {
+            return _currentValue;
+        }
+
         public AttackDamage(int baseValue)
         {
             _baseValue = baseValue;
-        }
-
-        public AttackDamage(int baseValue, int currentValue)
-        {
-            _baseValue = baseValue;
-            _currentValue = currentValue;
-        }
-
-        public string BaseValue()
-        {
-            return _baseValue.ToString();
-        }
-
-        public string CurrentValue()
-        {
-            return _currentValue.ToString();
+            _currentValue = baseValue;
         }
     }
 }

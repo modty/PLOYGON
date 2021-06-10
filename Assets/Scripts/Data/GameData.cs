@@ -1,4 +1,5 @@
-﻿using Commons;
+﻿using ActionPool;
+using Commons;
 using UnityEngine;
 
 namespace Data
@@ -48,7 +49,14 @@ namespace Data
         public GameData Target
         {
             get => _target;
-            set => _target = value;
+            set
+            {
+                if (_target==null||!_target.Uid.Equals(Uid))
+                {
+                    _target = value;
+                    EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerTarget,_target);
+                }
+            }
         }
     }
 }

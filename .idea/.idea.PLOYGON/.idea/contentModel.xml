@@ -19,6 +19,7 @@
             <e p="AttackDamage.cs" t="Include" />
             <e p="AttackSpeed.cs" t="Include" />
             <e p="CriticalStrike.cs" t="Include" />
+            <e p="Health.cs" t="Include" />
             <e p="HealthRegeneration.cs" t="Include" />
             <e p="HealthRegon.cs" t="Include" />
             <e p="IAttribute.cs" t="Include" />
@@ -32,14 +33,18 @@
             <e p="ResourceRegon.cs" t="Include" />
             <e p="Tenacity.cs" t="Include" />
           </e>
+          <e p="BarController.cs" t="Include" />
           <e p="CombatText.cs" t="Include" />
           <e p="Commons" t="Include">
             <e p="Constants_Anim.cs" t="Include" />
+            <e p="Constants_Event.cs" t="Include" />
+            <e p="TypedAttribute.cs" t="Include" />
             <e p="TypedCharacterState.cs" t="Include" />
             <e p="TypedGameData.cs" t="Include" />
             <e p="TypedInputActions.cs" t="Include" />
             <e p="TypedInteract.cs" t="Include" />
             <e p="TypedMovement.cs" t="Include" />
+            <e p="TypedUIElements.cs" t="Include" />
             <e p="TypedWeapon.cs" t="Include" />
           </e>
           <e p="Controller" t="Include">
@@ -74,6 +79,7 @@
             <e p="SceneUIState.cs" t="Include" />
             <e p="SkillAreaState.cs" t="Include" />
           </e>
+          <e p="StatScript.cs" t="Include" />
           <e p="Tools" t="Include">
             <e p="NavMeshTool.cs" t="Include" />
             <e p="PhysicsTool.cs" t="Include" />
