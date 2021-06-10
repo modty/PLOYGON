@@ -67,6 +67,7 @@
           </e>
           <e p="Managers" t="Include">
             <e p="CombatTextManager.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
             <e p="PrefabsManager.cs" t="Include" />
             <e p="SoundManager.cs" t="Include" />
           </e>

@@ -26,6 +26,9 @@ public class InputController : MonoBehaviour
     public float moveSpeed=5f;
     public AnimEventController eventController;
     private MouseController _mouse;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class InputController : MonoBehaviour
         _attribute.AttackRangeUI = skillRange.transform;
         _attribute.Health = new Health(4335);
         _attribute.AttackDamage = new AttackDamage(234);
+        _attribute.AttackSpeed = new AttackSpeed(5);
         _movementState = new MovementState(_attribute);
         _animationState = new AnimationState(_attribute);
         _sceneUIState = new SceneUIState();
@@ -45,7 +49,7 @@ public class InputController : MonoBehaviour
         _skillAreaState = new SkillAreaState(_attribute);
         eventController._player = _attribute;
         _mouse=MouseController.Get();
-        EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerMes,_attribute);
+        EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerMes,(GameData)_attribute);
     }
 
     // Update is called once per frame

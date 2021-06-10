@@ -302,7 +302,11 @@ namespace Scripts
         public AttackSpeed AttackSpeed
         {
             get => _attackSpeed;
-            set => _attackSpeed = value;
+            set
+            {
+                _attackSpeed = value;
+                _attackSpeed.GameData = this;
+            }
         }
 
         public ONHitEffects ONHitEffects

@@ -3,6 +3,8 @@
     public enum TypedAttribute
     {
         Health,
-        Mana
+        Mana,
+        AttackSpeed,
+        AttackDamage
     }
 }

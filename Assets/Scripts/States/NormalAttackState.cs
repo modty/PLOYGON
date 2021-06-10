@@ -81,8 +81,7 @@ namespace States
             normalAttack_Anim_preTimer = 0.42f;
             normalAttack_aftTimer_max = .42f;
             normalAttack_ratio = normalAttack_Anim_preTimer;
-            UpdateAttackSpeed(2.5f);
-
+            _player.AttackSpeed.UpdateCurrentValue(1.5f);
         }
         protected override void DoUpdate()
         {
@@ -112,13 +111,13 @@ namespace States
                         // 动画播放结束
                         if (normalAttack_Anim_aftTimer-timer <.005f)
                         {
-                            Debug.Log("3：动画后摇结束，等待静态后摇："+timer);
+                            //Debug.Log("3：动画后摇结束，等待静态后摇："+timer);
                             isAttackAnim = false;
                             timer = 0;
                             // 没有攻击静态攻击后摇，直接退出，不进入下一帧计算，需要补充时间
                             if (normalAttack_aftTimer < .005f)
                             {
-                                Debug.Log("4：没有静态后摇，直接等待静态前摇："+timer);
+                                //Debug.Log("4：没有静态后摇，直接等待静态前摇："+timer);
                                 isAttacked = false;
                                 DoUpdate();
                             }
@@ -129,8 +128,8 @@ namespace States
                     {
                         if (normalAttack_Anim_preTimer-timer <.005f)
                         {
-                            Debug.Log("2：动画前摇结束，进行攻击："+timer);
-                            Debug.Log("攻击：间隔："+(Time.time - duration)+"|||||"+normalAttack_preTimer+"："+normalAttack_Anim_preTimer+"："+normalAttack_Anim_aftTimer+"："+normalAttack_aftTimer);
+                            //Debug.Log("2：动画前摇结束，进行攻击："+timer);
+                            //Debug.Log("攻击：间隔："+(Time.time - duration)+"|||||"+normalAttack_preTimer+"："+normalAttack_Anim_preTimer+"："+normalAttack_Anim_aftTimer+"："+normalAttack_aftTimer);
                             if (_player.Target != null)
                             {
                                 PlayerAttribute target=_player.Target as PlayerAttribute;
@@ -152,7 +151,7 @@ namespace States
                         // 静态攻击后摇过去，可以进行攻击（注：攻击结束不用nextTimer，不然会多一个Time.fixDetalTime的时间）
                         if (normalAttack_aftTimer-timer <.005f)
                         {
-                            Debug.Log("4：动画前摇结束，攻击完毕："+timer);
+                            //Debug.Log("4：动画前摇结束，攻击完毕："+timer);
                             isAttacked = false;
                             isAttackAnim = false;
                             timer = 0;
@@ -165,14 +164,14 @@ namespace States
                         // 如果没有静态攻击前摇，不进行时间重置
                         if (normalAttack_preTimer <=.005f)
                         {
-                            Debug.Log("1:没有静态前摇，直接等待动画前摇："+timer);
+                            //Debug.Log("1:没有静态前摇，直接等待动画前摇："+timer);
                             NormalAttack(1);
                             isAttackAnim = true;
                             DoUpdate();
                         }
                         else if (normalAttack_preTimer-timer <.005f)
                         {
-                            Debug.Log("1：静态前摇结束，等待动画前摇："+timer);
+                            //Debug.Log("1：静态前摇结束，等待动画前摇："+timer);
                             // 调用动画
                             NormalAttack(1);
                             // 标记进入动画
@@ -197,6 +196,7 @@ namespace States
         /// <param name="at">每秒攻击次数</param>
         public void UpdateAttackSpeed(float at)
         {
+            Debug.Log("攻速："+at);
             float frequency=1/at;
             // 需要加速，静态前后摇均设置为0
             if (at > 1)
@@ -305,6 +305,8 @@ namespace States
                 isAttackAnim = false;
                 StopAction();
             });
+            
+            EventCenter.AddListener<float>(Constants_Event.AttributeChange+":"+_player.Uid+":"+TypedAttribute.AttackSpeed,UpdateAttackSpeed);
         }
 
 
