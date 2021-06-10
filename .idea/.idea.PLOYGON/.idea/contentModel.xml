@@ -12,9 +12,25 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Attribute" t="Include">
-            <e p="AttributeFactory.cs" t="Include" />
-            <e p="FloorAttribute.cs" t="Include" />
-            <e p="PlayerAttribute.cs" t="Include" />
+            <e p="AbilityHaste.cs" t="Include" />
+            <e p="AbilityPower.cs" t="Include" />
+            <e p="ArmorPenetration.cs" t="Include" />
+            <e p="ArmorResistance.cs" t="Include" />
+            <e p="AttackDamage.cs" t="Include" />
+            <e p="AttackSpeed.cs" t="Include" />
+            <e p="CriticalStrike.cs" t="Include" />
+            <e p="HealthRegeneration.cs" t="Include" />
+            <e p="HealthRegon.cs" t="Include" />
+            <e p="IAttribute.cs" t="Include" />
+            <e p="LifeSteal.cs" t="Include" />
+            <e p="MagicPenetration.cs" t="Include" />
+            <e p="MagicRegeneration.cs" t="Include" />
+            <e p="MagicResistance.cs" t="Include" />
+            <e p="Movement.cs" t="Include" />
+            <e p="Ominivamp.cs" t="Include" />
+            <e p="ONHitEffects.cs" t="Include" />
+            <e p="ResourceRegon.cs" t="Include" />
+            <e p="Tenacity.cs" t="Include" />
           </e>
           <e p="CombatText.cs" t="Include" />
           <e p="Commons" t="Include">
@@ -39,7 +55,10 @@
             <e p="UIScript.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
+            <e p="DataFactory.cs" t="Include" />
+            <e p="FloorData.cs" t="Include" />
             <e p="GameData.cs" t="Include" />
+            <e p="PlayerData.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="CombatTextManager.cs" t="Include" />
