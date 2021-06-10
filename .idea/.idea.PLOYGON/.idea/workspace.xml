@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-09 添加UI">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-09 走A攻击绑定鼠标左键">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Chr_FantasyHero_Preset_5 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Chr_FantasyHero_Preset_5 1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,21 +42,21 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/FloorAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Components.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/UnityComponents.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Data/GameData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/UidManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/UidTool.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/UIController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/UIScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -109,7 +110,8 @@
       <workItem from="1623148374025" duration="158000" />
       <workItem from="1623148555609" duration="2827000" />
       <workItem from="1623199822465" duration="407000" />
-      <workItem from="1623245283643" duration="1861000" />
+      <workItem from="1623245283643" duration="2119000" />
+      <workItem from="1623286840878" duration="3198000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -167,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623200201856</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2021-06-09 走A攻击绑定鼠标左键">
+      <created>1623247357013</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1623247357013</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +207,7 @@
     <MESSAGE value="2021-06-08 初步添加UID书属性，角色不再攻击自己" />
     <MESSAGE value="2021-06-08 初步添加UID属性，角色不再攻击自己" />
     <MESSAGE value="2021-06-09 添加UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-09 添加UI" />
+    <MESSAGE value="2021-06-09 走A攻击绑定鼠标左键" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-09 走A攻击绑定鼠标左键" />
   </component>
 </project>

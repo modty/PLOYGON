@@ -247,8 +247,9 @@ namespace States
         {
             EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),(gameData)=>
             {
+                Debug.Log("目标:"+_player+"--"+gameData);
                 // 点击自己直接退出
-                if(!_forceAttack||_player.Uid.Equals(gameData.Uid)) return;
+                if(!_forceAttack||_player.Uid.Equals(gameData.Uid)||(_target!=null&&_target.Uid.Equals(gameData.Uid))) return;
                 timeTemp =Time.time;
                 // 设置为负数，表示第一次选中角色，等待进行移动，移动完毕（攻击距离够）时设置为0
                 timer = -10;

@@ -17,7 +17,7 @@ namespace Scripts
 
             var position = _player.Target.Transform.position;
             position.y = .4f;
-            CombatTextManager.Instance.CreateText(position,"100",SCTTYPE.DAMAGE,false,position.x>_player.Transform.position.x);
+            CombatTextManager.Instance.CreateText(position,_player.AttackDamage.ToString(),SCTTYPE.DAMAGE,false,position.x>_player.Transform.position.x);
         }
     }
 }

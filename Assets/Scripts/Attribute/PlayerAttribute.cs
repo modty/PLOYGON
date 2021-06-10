@@ -169,6 +169,200 @@ namespace Scripts
         #region 攻击属性
 
         /// <summary>
+        /// 物理攻击
+        /// </summary>
+        private int _attackDamage;
+
+        /// <summary>
+        /// 法术攻击
+        /// </summary>
+        private int _abilityPower;
+
+        /// <summary>
+        /// 物理抗性（护甲）
+        /// </summary>
+        private int _armorResistance;
+        /// <summary>
+        /// 魔法抗性（法抗）
+        /// </summary>
+        private int _magicResistance;
+
+        /// <summary>
+        /// 暴击
+        /// </summary>
+        private int _criticalStrike;
+
+        /// <summary>
+        /// 攻击速度
+        /// </summary>
+        private float _attackSpeed;
+        /// <summary>
+        /// 特效
+        /// </summary>
+        private int _onHitEffects;
+
+        /// <summary>
+        /// 物理穿甲
+        /// </summary>
+        private int _armorPenetration;
+
+        /// <summary>
+        /// 魔法穿透
+        /// </summary>
+        private int _magicPenetration;
+
+        /// <summary>
+        /// 生命恢复（百分比）
+        /// </summary>
+        private float _healthRegeneration;
+        /// <summary>
+        /// 法术恢复（百分比）
+        /// </summary>
+        private float _magicRegeneration;
+
+        /// <summary>
+        /// 技能急速
+        /// </summary>
+        private int _abilityHaste;
+
+        /// <summary>
+        /// 移动速度
+        /// </summary>
+        private int _movement;
+
+        /// <summary>
+        /// 生命偷取
+        /// </summary>
+        private int _lifeSteal;
+        /// <summary>
+        /// 全能吸血
+        /// </summary>
+        private int _ominivamp;
+
+        /// <summary>
+        /// 每5秒生命值恢复
+        /// </summary>
+        private float _healthRegon;
+
+        /// <summary>
+        /// 每5秒法力恢复
+        /// </summary>
+        private float _resourceRegon;
+
+        /// <summary>
+        /// 韧性
+        /// </summary>
+        private int _tenacity;
+
+        public int AttackDamage
+        {
+            get => _attackDamage;
+            set => _attackDamage = value;
+        }
+
+        public int AbilityPower
+        {
+            get => _abilityPower;
+            set => _abilityPower = value;
+        }
+
+        public int ArmorResistance
+        {
+            get => _armorResistance;
+            set => _armorResistance = value;
+        }
+
+        public int MagicResistance
+        {
+            get => _magicResistance;
+            set => _magicResistance = value;
+        }
+
+        public int CriticalStrike
+        {
+            get => _criticalStrike;
+            set => _criticalStrike = value;
+        }
+
+        public float AttackSpeed
+        {
+            get => _attackSpeed;
+            set => _attackSpeed = value;
+        }
+
+        public int ONHitEffects
+        {
+            get => _onHitEffects;
+            set => _onHitEffects = value;
+        }
+
+        public int ArmorPenetration
+        {
+            get => _armorPenetration;
+            set => _armorPenetration = value;
+        }
+
+        public int MagicPenetration
+        {
+            get => _magicPenetration;
+            set => _magicPenetration = value;
+        }
+
+        public float HealthRegeneration
+        {
+            get => _healthRegeneration;
+            set => _healthRegeneration = value;
+        }
+
+        public float MagicRegeneration
+        {
+            get => _magicRegeneration;
+            set => _magicRegeneration = value;
+        }
+
+        public int AbilityHaste
+        {
+            get => _abilityHaste;
+            set => _abilityHaste = value;
+        }
+
+        public int Movement
+        {
+            get => _movement;
+            set => _movement = value;
+        }
+
+        public int LifeSteal
+        {
+            get => _lifeSteal;
+            set => _lifeSteal = value;
+        }
+
+        public int Ominivamp
+        {
+            get => _ominivamp;
+            set => _ominivamp = value;
+        }
+
+        public float HealthRegon
+        {
+            get => _healthRegon;
+            set => _healthRegon = value;
+        }
+
+        public float ResourceRegon
+        {
+            get => _resourceRegon;
+            set => _resourceRegon = value;
+        }
+
+        public int Tenacity
+        {
+            get => _tenacity;
+            set => _tenacity = value;
+        }
+
+        /// <summary>
         /// 攻击距离
         /// </summary>
         private float _attackRange;
@@ -217,7 +411,7 @@ namespace Scripts
         }
 
         #endregion
-        public PlayerAttribute(GameObject gameObject)
+        public PlayerAttribute(GameObject gameObject):base()
         {
             _rigidbody = gameObject.GetComponent<Rigidbody>();
             Transform = gameObject.GetComponent<Transform>();
@@ -225,10 +419,6 @@ namespace Scripts
             _collider = gameObject.GetComponent<CapsuleCollider>();
             CanMoved = false;
         }
-        
-        
-        public PlayerAttribute()
-        {
-        }
+
     }
 }
