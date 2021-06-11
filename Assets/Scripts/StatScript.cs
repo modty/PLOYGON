@@ -28,9 +28,9 @@ public class StatScript : MonoBehaviour
     [SerializeField] private Text criticalStrike;
     [SerializeField] private Text movement;
 
-
     private void Awake()
     {
+        if(_player==null) return;
         EventCenter.AddListener(Constants_Event.AttributeChange+":"+_player.Uid+":"+TypedAttribute.AttackDamage,
             () =>
             {

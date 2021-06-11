@@ -16,8 +16,7 @@ public class InputController : MonoBehaviour
     /// </summary>
     public GameObject modelObject;
 
-    private PlayerAttribute _attribute;
-    public GameObject skillRange;
+    public PlayerAttribute _attribute;
     private MovementState _movementState;
     private AnimationState _animationState;
     private SceneUIState _sceneUIState;
@@ -32,22 +31,12 @@ public class InputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _attribute = new PlayerAttribute(modelObject);
-        _attribute.RotateSpeed = 3600f;
-        _attribute.AttackRange = 1.2f;
-        _attribute.NormalAttackAnimSpeed = 1;
-        _attribute.MoveAcceleration = 12;
-        _attribute.WeaponType = TypedWeapon.Unarmed;
-        _attribute.AttackRangeUI = skillRange.transform;
-        _attribute.Health = new Health(4335);
-        _attribute.AttackDamage = new AttackDamage(234);
-        _attribute.AttackSpeed = new AttackSpeed(5);
+        Debug.Log(_attribute.Uid);
         _movementState = new MovementState(_attribute);
         _animationState = new AnimationState(_attribute);
         _sceneUIState = new SceneUIState();
         _normalAttackState = new NormalAttackState(_attribute);
         _skillAreaState = new SkillAreaState(_attribute);
-        eventController._player = _attribute;
         _mouse=MouseController.Get();
         EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerMes,(GameData)_attribute);
     }

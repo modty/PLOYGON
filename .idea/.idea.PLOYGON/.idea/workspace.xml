@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-10 角色血条能够进行扣减">
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-10 完成部分属性设计">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/AttackSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/AttackSpeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Chr_FantasyHero_Preset_5 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Chr_FantasyHero_Preset_5 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/SkillArea.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SceneUI/SkillArea.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StatScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StatScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +30,10 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/CombatTextManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CombatText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerComponent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/FloorAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Components.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/UnityComponents.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/UidManager.cs" />
@@ -76,9 +74,13 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/BarController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/StatScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameObjectManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PrefabsManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/StatScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/TheCharacter.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -135,7 +137,8 @@
       <workItem from="1623245283643" duration="2119000" />
       <workItem from="1623286840878" duration="5674000" />
       <workItem from="1623304016485" duration="5971000" />
-      <workItem from="1623329075906" duration="2479000" />
+      <workItem from="1623329075906" duration="2805000" />
+      <workItem from="1623377166937" duration="3047000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -221,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623310578421</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="2021-06-10 完成部分属性设计">
+      <created>1623331585183</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1623331585183</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +266,7 @@
     <MESSAGE value="2021-06-10 增加角色相关属性" />
     <MESSAGE value="2021-06-10 增加角色属性类" />
     <MESSAGE value="2021-06-10 角色血条能够进行扣减" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-10 角色血条能够进行扣减" />
+    <MESSAGE value="2021-06-10 完成部分属性设计" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-10 完成部分属性设计" />
   </component>
 </project>

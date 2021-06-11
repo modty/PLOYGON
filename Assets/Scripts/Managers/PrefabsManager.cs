@@ -23,8 +23,13 @@ namespace Managers
         [SerializeField] private GameObject _equipmentModel;
         [SerializeField] private GameObject _headBar;
         [SerializeField] private Transform _effectParent;
+        [SerializeField] private GameObject _skillArea;
+        
         public GameObject HeadBar {
             get => Instantiate(_headBar);
+        }
+        public GameObject SkillArea {
+            get => Instantiate(_skillArea);
         }
         public GameObject EquipmentModel{
             get => Instantiate(_equipmentModel);
