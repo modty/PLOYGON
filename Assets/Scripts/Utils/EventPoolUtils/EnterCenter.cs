@@ -10,7 +10,7 @@ namespace ActionPool
 
         private static void OnListenerAdding(string eventType, Delegate callBack)
         {
-            Debug.Log("注册事件："+eventType+"--"+callBack);
+            //Debug.Log("注册事件："+eventType+"--"+callBack);
             if (!m_EventTable.ContainsKey(eventType))
             {
                 m_EventTable.Add(eventType, null);
@@ -23,7 +23,7 @@ namespace ActionPool
         }
         private static void OnListenerRemoving(string eventType, Delegate callBack)
         {
-            Debug.Log("移除事件："+eventType+"--"+callBack);
+            //Debug.Log("移除事件："+eventType+"--"+callBack);
             if (m_EventTable.ContainsKey(eventType))
             {
                 Delegate d = m_EventTable[eventType];
@@ -133,7 +133,7 @@ namespace ActionPool
         //no parameters
         public static void Broadcast(string eventType)
         {
-            Debug.Log("唤醒事件："+eventType);
+            //Debug.Log("唤醒事件："+eventType);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {
@@ -151,7 +151,7 @@ namespace ActionPool
         //single parameters
         public static void Broadcast<T>(string eventType, T arg)
         {
-            Debug.Log("唤醒事件："+eventType+"--"+arg);
+            //Debug.Log("唤醒事件："+eventType+"--"+arg);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {
@@ -169,7 +169,7 @@ namespace ActionPool
         //two parameters
         public static void Broadcast<T, X>(string eventType, T arg1, X arg2)
         {
-            Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2);
+            //Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {
@@ -187,7 +187,7 @@ namespace ActionPool
         //three parameters
         public static void Broadcast<T, X, Y>(string eventType, T arg1, X arg2, Y arg3)
         {
-            Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3);
+            //Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {
@@ -205,7 +205,7 @@ namespace ActionPool
         //four parameters
         public static void Broadcast<T, X, Y, Z>(string eventType, T arg1, X arg2, Y arg3, Z arg4)
         {
-            Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3+'-'+arg4);
+            //Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3+'-'+arg4);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {
@@ -223,7 +223,7 @@ namespace ActionPool
         //five parameters
         public static void Broadcast<T, X, Y, Z, W>(string eventType, T arg1, X arg2, Y arg3, Z arg4, W arg5)
         {
-            Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3+'-'+arg4+'-'+arg5);
+            //Debug.Log("唤醒事件："+eventType+"--"+arg1+"-"+arg2+'-'+arg3+'-'+arg4+'-'+arg5);
             Delegate d;
             if (m_EventTable.TryGetValue(eventType, out d))
             {

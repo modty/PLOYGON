@@ -659,8 +659,6 @@
             <e p="ClickArrowController.cs" t="Include" />
             <e p="DataController.cs" t="Include" />
             <e p="HeadBarController.cs" t="Include" />
-            <e p="InputController.cs" t="Include" />
-            <e p="MouseController.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="SceneUIController.cs" t="Include" />
             <e p="SkillAreaController.cs" t="Include" />
@@ -675,8 +673,10 @@
           </e>
           <e p="Domain" t="Include">
             <e p="MessageEntities" t="Include">
-              <e p="MouseClickLeft.cs" t="Include" />
-              <e p="MouseClickRight.cs" t="Include" />
+              <e p="AnimNormalAttack.cs" t="Include" />
+              <e p="InputMessage.cs" t="Include" />
+              <e p="MouseTargetMessage.cs" t="Include" />
+              <e p="MovementMessage.cs" t="Include" />
             </e>
           </e>
           <e p="Managers" t="Include">
@@ -715,7 +715,8 @@
           <e p="Views" t="Include">
             <e p="UI" t="Include">
               <e p="GameUI" t="Include">
-                <e p="MouseView.cs" t="Include" />
+                <e p="InputController.cs" t="Include" />
+                <e p="MouseController.cs" t="Include" />
               </e>
             </e>
           </e>

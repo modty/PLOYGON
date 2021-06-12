@@ -25,6 +25,7 @@
 using System;
 using System.Collections.Concurrent;
 using Loxodon.Log;
+using UnityEngine;
 
 namespace Loxodon.Framework.Messaging
 {
@@ -144,7 +145,6 @@ namespace Loxodon.Framework.Messaging
             }
             return (notifier as Subject<T>).Subscribe(action);
         }
-
         /// <summary>
         /// Publish a message to subscribed recipients. 
         /// </summary>
@@ -212,14 +212,15 @@ namespace Loxodon.Framework.Messaging
             ConcurrentDictionary<Type, SubjectBase> dict = null;
             if (!channelNotifiers.TryGetValue(channel, out dict) || dict.Count <= 0)
                 return;
-
             Type messageType = message.GetType();
             foreach (var kv in dict)
             {
                 try
                 {
                     if (kv.Key.IsAssignableFrom(messageType))
+                    {
                         kv.Value.Publish(message);
+                    }
                 }
                 catch (Exception e)
                 {

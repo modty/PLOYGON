@@ -636,5 +636,7 @@ namespace Loxodon.Framework.Localizations
             public IDataProvider Provider { get; private set; }
             public List<string> Keys { get; private set; }
         }
+
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using ActionPool;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Scripts;
 using Scripts.Commons;
 using UnityEngine;
@@ -34,10 +36,6 @@ namespace States
             RegistInputActions();
             StartAction();
         }
-        
-        
-        
-        
         
         protected override void DoUpdate()
         {
@@ -76,13 +74,22 @@ namespace States
             }
             
         }
+
+        #region 订阅引用
+
+        private ISubscription<AnimNormalAttack> _subscriptionAnimNormalAttack;
         
+
+        #endregion
         /// <summary>
         /// 注册事件
         /// </summary>
         private void RegistInputActions()
         {
-            EventCenter.AddListener<int,int>(TypedInputActions.AnimNormalAttack.ToString(),NormalAttack);
+            _subscriptionAnimNormalAttack=_messenger.Subscribe<AnimNormalAttack>(TypedInputActions.AnimNormalAttack.ToString(), (message) =>
+            {
+                NormalAttack(message.WeaponType,message.Action);
+            });
         }
 
         private void NormalAttack(int weapon,int action)

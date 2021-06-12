@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Loxodon.Framework.Messaging;
+using UnityEngine;
+using Object = System.Object;
 
 namespace States
 {
@@ -13,12 +17,15 @@ namespace States
         private float time_duration;
         private bool enterExit;
         protected bool stop;
+        protected Messenger _messenger;
+
         protected BaseState()
         {
             time_start = 0;
             time_end = 0;
             enterExit = true;
             stop = true;
+            _messenger=Messenger.Default;
         }
         protected void BeforeUpdate()
         {

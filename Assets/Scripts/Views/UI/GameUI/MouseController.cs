@@ -1,5 +1,11 @@
-﻿using ActionPool;
+﻿using System.Globalization;
+using ActionPool;
 using Commons;
+using Domain.MessageEntities;
+using Loxodon.Framework.Binding;
+using Loxodon.Framework.Contexts;
+using Loxodon.Framework.Localizations;
+using Loxodon.Framework.Messaging;
 using UnityEngine;
 using GameData = Data.GameData;
 
@@ -25,6 +31,7 @@ namespace Scripts
     public class MouseController: MonoBehaviour
     {
         private CursorType _currentType;
+        private Messenger _messenger;
         [SerializeField]private Texture2D normal;
         [SerializeField]private Texture2D interactAlly;
         [SerializeField]private Texture2D interactEnemy;
@@ -54,6 +61,7 @@ namespace Scripts
         private void Awake()
         {
             _instance = this;
+            _messenger=Messenger.Default;
         }
 
         private void Start()
@@ -132,23 +140,29 @@ namespace Scripts
                     break;
             }
         }
-        
+        #region 订阅引用
+
+        private ISubscription<MouseTargetMessage> onMouse1Walkable;
+        private ISubscription<MouseTargetMessage> onMouse1Target;
+        private ISubscription<MouseTargetMessage> onMouse0Target;
+        private ISubscription<MouseTargetMessage> onMouse0Walkable;
+        private ISubscription<InputMessage> onForceAttack;
+        private ISubscription<InputMessage> onNormalAttack;
+        private ISubscription<InputMessage> onStopAttack;
+        private ISubscription<MovementMessage> onStopMove;
+        private ISubscription<MovementMessage> onMoveTo;
+
+        #endregion
         /// <summary>
         /// 注册事件
         /// </summary>
         private void RegistInputActions()
         {
-            EventCenter.AddListener(TypedInputActions.OnForceAttack.ToString(),OnForceAttack);
-            EventCenter.AddListener(TypedInputActions.OffForceAttack.ToString(),OffForceAttack);
-        }
 
-        private void OnForceAttack()
-        {
-            _forceAttack = true;
-        }
-        private void OffForceAttack()
-        {
-            _forceAttack = false;
+            onForceAttack = _messenger.Subscribe<InputMessage>(TypedInputActions.ForceAttack.ToString(), (message) =>
+            {
+                _forceAttack = message.ForceAttack;
+            });
         }
     }
 }

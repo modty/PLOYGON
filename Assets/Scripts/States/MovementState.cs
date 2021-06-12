@@ -1,6 +1,8 @@
 ﻿using System;
 using ActionPool;
 using Data;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Scripts;
 using Tools;
 using UnityEngine;
@@ -41,6 +43,14 @@ namespace States
         private CapsuleCollider _collider;
 
         private bool _forceAttack;
+
+        private ISubscription<MouseTargetMessage> onMouse1Walkable;
+        private ISubscription<MouseTargetMessage> onMouse1Target;
+        private ISubscription<MouseTargetMessage> onMouse0Target;
+        private ISubscription<MouseTargetMessage> onMouse0Walkable;
+        private ISubscription<InputMessage> forceAttack;
+        private ISubscription<MovementMessage> stopMove;
+        private ISubscription<MovementMessage> moveTo;
         /// <summary>
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
@@ -61,23 +71,36 @@ namespace States
         /// </summary>
         private void RegistInputActions()
         {
-            EventCenter.AddListener<bool,Vector3>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),OnClickMouseRightWalkable);
-            EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),OnClickMouseRightTarget);
-            EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),OnClickMouseLeftForceTarget);
-            EventCenter.AddListener(TypedInputActions.OnForceAttack.ToString(), () =>
-            {
-                _forceAttack = true;
-            });
-            EventCenter.AddListener(TypedInputActions.OffForceAttack.ToString(), () =>
-            {
-                _forceAttack = false;
-            });
+            // 此处必须获取引用，不然会自动被回收
+            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
+                OnClickMouseRightWalkable
+                );
+            onMouse1Target = _messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), 
+                OnClickMouseRightTarget
+                );
+            onMouse0Target = _messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),
+                OnClickMouseLeftForceTarget
+                );
+            forceAttack = _messenger.Subscribe<InputMessage>(
+                TypedInputActions.ForceAttack.ToString(),
+                (message) =>
+                {
+                    _forceAttack = message.ForceAttack;
+                });
+           
+            stopMove = _messenger.Subscribe<MovementMessage>( 
+                TypedInputActions.StopMove.ToString(), 
+                StopMove);
             
-            EventCenter.AddListener(TypedInputActions.StopMove.ToString(), StopMove);
-            EventCenter.AddListener<Vector3>(TypedInputActions.MoveTo.ToString(), MoveTo);
+            moveTo=_messenger.Subscribe<MovementMessage>( 
+                TypedInputActions.MoveTo.ToString(), 
+                MoveTo);
         }
 
-        public void StopMove()
+        public void StopMove(MovementMessage movementMessage)
         {
             StopAction();
             if (_player.TargetMovePosition != _transform.position)
@@ -85,6 +108,10 @@ namespace States
                 _transform.rotation = Quaternion.LookRotation(_player.TargetMovePosition-_transform.position);
             }
             _player.IsMoving = false;
+        }
+        private void MoveTo(MovementMessage movementMessage)
+        {
+           MoveTo(movementMessage.TargetPosition);
         }
         private void MoveTo(Vector3 position)
         {
@@ -96,10 +123,18 @@ namespace States
         /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
         /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
         /// </summary>
+        private void OnClickMouseRightWalkable(MouseTargetMessage mouseClickRight)
+        {
+            OnClickMouseRightWalkable(true, mouseClickRight.MousePosition);
+        }
+        /// <summary>
+        /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
+        /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
+        /// </summary>
         private void OnClickMouseRightWalkable(bool isNewTarget,Vector3 position)
         {
             // 鼠标右键点击地面进行移动会打断攻击动作
-            EventCenter.Broadcast(TypedInputActions.StopAttack.ToString());
+            _messenger.Publish<InputMessage>(TypedInputActions.StopAttack.ToString(),null);
             var position1 = _transform.position;
             float inputHorizontal = position.x>position1.x?1:-1;
             float inputVertical = ((position.z - position1.z) / (position.x - position1.x)) * inputHorizontal;
@@ -115,9 +150,28 @@ namespace States
         /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
         /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
         /// </summary>
-        private void OnClickMouseRightTarget(GameData gameData)
+        private void OnClickMouseRightTarget(MouseTargetMessage clickRight)
         {
             
+        }
+        /// <summary>
+        /// 鼠标右键选择目标，前往互动或者前往攻击，此处仅进行移动。
+        /// </summary>
+        private void OnClickMouseLeftForceTarget(MouseTargetMessage clickLeft)
+        {
+            GameData gameData = clickLeft.GameData;
+            if(!_forceAttack) return;
+            // 点击自己直接退出
+            if(_player.Uid.Equals(gameData.Uid)) return;
+            _player.TargetMovePosition = gameData.Transform.position;
+            if ((_player.TargetMovePosition - _transform.position).magnitude < _player.AttackRange)
+            {
+                _transform.rotation = Quaternion.LookRotation(_player.TargetMovePosition-_transform.position);
+                return;
+            }
+            // 首先计算路径
+            CalculateNavmesh();
+            StartAction();
         }
         /// <summary>
         /// 鼠标右键选择目标，前往互动或者前往攻击，此处仅进行移动。
@@ -142,6 +196,7 @@ namespace States
         {
             if (!calculating_path)
             {
+                Debug.Log(_player.TargetMovePosition);
                 calculating_path = true;
                 path_found = false;
                 path_index = 0;
@@ -332,7 +387,6 @@ namespace States
                 facing = new Vector3(tmove.x, 0f, tmove.z).normalized;
                 RotateTowardsMovementDir();
             }
-
         }
 
         private void DetectGrounded()

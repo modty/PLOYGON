@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-11 Loxodon框架重构" />
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-11 Loxodon框架重构">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Framework/Localizations/Localization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Localizations/Localization.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Framework/Messaging/Subject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Messaging/Subject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickLeft.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickRight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EnterCenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EnterCenter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,35 +33,19 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/1e/32f87506/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/bf/b4beb2e0/Type.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/ec/dce32523/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StatScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/84/4a5551e5/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/36/bceef55a/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Unity/PLOYGON/Assets/Prefabs/Characters/Chr_FantasyHero_Preset_5 1.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UIScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/SkillAreaController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/PlayerAttribute.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AbilityPower.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/ArmorResistance.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/MagicResistance.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/CriticalStrike.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/ONHitEffects.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/ArmorPenetration.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/MagicPenetration.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/HealthRegeneration.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/MagicRegeneration.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AbilityHaste.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Movement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/LifeSteal.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Ominivamp.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/HealthRegon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/ResourceRegon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Tenacity.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AttributeManage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/IAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AttackDamage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
@@ -48,13 +53,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedUIElements.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Health.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Data/GameData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/UidTool.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AttackSpeed.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedAttribute.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/BarController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameObjectManager.cs" />
@@ -64,14 +67,34 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Managers/TheCharacter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Messages/MouseClickRight.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Messages/MouseClickLeft.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickRight.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickLeft.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/Input.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/MouseController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerInput.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SimpleCameraController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Framework/Localizations/Localization.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/GameUILauncher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ViewModel/UI/GameUI/MouseViewModel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EnterCenter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickRight.cs" />
+      <option value="$PROJECT_DIR$/Assets/Framework/Messaging/Subject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseTarget.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MovementMessage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseTargetMessage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/AnimNormalAttack.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/InputMessage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -81,13 +104,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -129,7 +154,9 @@
       <workItem from="1623286840878" duration="5674000" />
       <workItem from="1623304016485" duration="5971000" />
       <workItem from="1623329075906" duration="2805000" />
-      <workItem from="1623377166937" duration="8781000" />
+      <workItem from="1623377166937" duration="9542000" />
+      <workItem from="1623420418975" duration="6787000" />
+      <workItem from="1623455410066" duration="6915000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -243,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623403403906</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="2021-06-11 Loxodon框架重构">
+      <created>1623403536085</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1623403536085</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,5 +316,29 @@
     <MESSAGE value="2021-06-11 角色通过代码生成" />
     <MESSAGE value="2021-06-11 Loxodon框架重构" />
     <option name="LAST_COMMIT_MESSAGE" value="2021-06-11 Loxodon框架重构" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs</url>
+          <line>221</line>
+          <properties documentPath="C:\Unity\PLOYGON\Assets\Framework\Messaging\Messenger.cs" initialLine="222" containingFunctionPresentation="method 'Publish'">
+            <startOffsets>
+              <option value="10342" />
+            </startOffsets>
+            <endOffsets>
+              <option value="10368" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="subscriptions" language="C#" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

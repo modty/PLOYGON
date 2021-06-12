@@ -25,6 +25,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
+using UnityEngine;
 
 namespace Loxodon.Framework.Messaging
 {

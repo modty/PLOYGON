@@ -1,4 +1,6 @@
 ﻿using ActionPool;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Managers;
 using Scripts;
 using UnityEngine;
@@ -16,12 +18,30 @@ namespace States
             _prefabsManager=PrefabsManager.Instance;
             RegistInputActions();
         }
+        
+        #region 订阅引用
+
+        private ISubscription<MouseTargetMessage> onMouse1Walkable;
+        private ISubscription<MouseTargetMessage> onMouse1Target;
+        private ISubscription<MouseTargetMessage> onMouse0Target;
+        private ISubscription<MouseTargetMessage> onMouse0Walkable;
+        private ISubscription<InputMessage> onForceAttack;
+        private ISubscription<InputMessage> onNormalAttack;
+        private ISubscription<InputMessage> onStopAttack;
+        private ISubscription<MovementMessage> onStopMove;
+        private ISubscription<MovementMessage> onMoveTo;
+
+        #endregion
         /// <summary>
         /// 注册事件
         /// </summary>
         private void RegistInputActions()
         {
-            EventCenter.AddListener<bool,Vector3>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),OnClickMouseRightWalkable);
+            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
+                (message) =>
+                {
+                    OnClickMouseRightWalkable(true, message.MousePosition);
+                });
         }
         
         /// <summary>

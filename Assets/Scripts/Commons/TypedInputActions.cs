@@ -31,7 +31,7 @@
         /// <summary>
         /// 强制攻击命令取消（alt+攻击目标）
         /// </summary>
-        OffForceAttack,
+        ForceAttack,
         StopAttack,
         
         

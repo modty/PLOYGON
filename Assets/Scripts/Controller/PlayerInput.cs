@@ -112,7 +112,7 @@ namespace Controller
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                EventCenter.Broadcast(TypedInputActions.OffForceAttack.ToString());
+                EventCenter.Broadcast(TypedInputActions.ForceAttack.ToString());
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -2,6 +2,8 @@
 using ActionPool;
 using Commons;
 using Data;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Scripts;
 using UnityEngine;
 
@@ -82,6 +84,25 @@ namespace States
             normalAttack_aftTimer_max = .42f;
             normalAttack_ratio = normalAttack_Anim_preTimer;
             _player.AttackSpeed.UpdateCurrentValue(1.5f);
+            InitMessageObjs();
+
+        }
+
+
+        #region 消息通信
+
+        private InputMessage _inputMessage;
+        private MouseTargetMessage _mouseTargetMessage;
+        private MovementMessage _movementMessage;
+        private AnimNormalAttack _animNormalAttack;
+        #endregion
+
+        private void InitMessageObjs()
+        {
+            _inputMessage = new InputMessage(this);
+            _mouseTargetMessage = new MouseTargetMessage(this);
+            _movementMessage = new MovementMessage(this);
+            _animNormalAttack = new AnimNormalAttack(this);
         }
         protected override void DoUpdate()
         {
@@ -97,11 +118,7 @@ namespace States
                 {
                     timer = 0;
                 }
-                if (_player.IsMoving)
-                {
-                    // 确保帧同步，不使用EventCenter
-                    _movementState.StopMove();
-                }
+                _messenger.Publish(TypedInputActions.StopMove.ToString(),_movementMessage);
                 // 进入攻击动画
                 if (isAttackAnim)
                 {
@@ -185,7 +202,8 @@ namespace States
             // 没有移动且角色离开攻击范围
             else if(!_player.IsMoving&&distance > _player.AttackRange)
             {
-                EventCenter.Broadcast(TypedInputActions.MoveTo.ToString(),_target.Transform.position);
+                _movementMessage.TargetPosition = _target.Transform.position;
+                _messenger.Publish(TypedInputActions.MoveTo.ToString(),_movementMessage);
             }
 
         }
@@ -196,7 +214,6 @@ namespace States
         /// <param name="at">每秒攻击次数</param>
         public void UpdateAttackSpeed(float at)
         {
-            Debug.Log("攻速："+at);
             float frequency=1/at;
             // 需要加速，静态前后摇均设置为0
             if (at > 1)
@@ -244,67 +261,97 @@ namespace States
                 action = 5;
             }
             right = !right;
-            EventCenter.Broadcast(TypedInputActions.AnimNormalAttack.ToString(),(int)_player.WeaponType,action);
+            _animNormalAttack.WeaponType = (int)_player.WeaponType;
+            _animNormalAttack.Action = action;
+            _messenger.Publish(TypedInputActions.AnimNormalAttack.ToString(),_animNormalAttack);
         }
+
+        #region 订阅引用
+
+        private ISubscription<MouseTargetMessage> onMouse1Walkable;
+        private ISubscription<MouseTargetMessage> onMouse1Target;
+        private ISubscription<MouseTargetMessage> onMouse0Target;
+        private ISubscription<MouseTargetMessage> onMouse0Walkable;
+        private ISubscription<InputMessage> onForceAttack;
+        private ISubscription<InputMessage> onNormalAttack;
+        private ISubscription<InputMessage> onStopAttack;
+        private ISubscription<MovementMessage> onStopMove;
+        private ISubscription<MovementMessage> onMoveTo;
+
+        #endregion
         /// <summary>
         /// 注册事件
         /// </summary>
         private void RegistInputActions()
         {
-            EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),(gameData)=>
-            {
-                Debug.Log("目标:"+_player+"--"+gameData);
-                // 点击自己直接退出
-                if(!_forceAttack||_player.Uid.Equals(gameData.Uid)||(_target!=null&&_target.Uid.Equals(gameData.Uid))) return;
-                timeTemp =Time.time;
-                // 设置为负数，表示第一次选中角色，等待进行移动，移动完毕（攻击距离够）时设置为0
-                timer = -10;
-                duration = Time.time;
-                _inputAttack = true;
-                isAttacked = false;
-                isAttackAnim = false;
-                CheckActionState();
-                _target = gameData;
-            });
+            onMouse0Target=_messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),
+                (message) =>
+                {
+                    GameData gameData = message.GameData;
+                    // 点击自己直接退出
+                    if(!_forceAttack||_player.Uid.Equals(gameData.Uid)||(_target!=null&&_target.Uid.Equals(gameData.Uid))) return;
+                    timeTemp =Time.time;
+                    // 设置为负数，表示第一次选中角色，等待进行移动，移动完毕（攻击距离够）时设置为0
+                    timer = -10;
+                    duration = Time.time;
+                    _inputAttack = true;
+                    isAttacked = false;
+                    isAttackAnim = false;
+                    CheckActionState();
+                    _target = gameData;
+                });
+            onMouse1Target=_messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),
+                (message) =>
+                {
+                    GameData gameData = message.GameData;
+                    // 点击自己直接退出
+                    // 点击自己直接退出
+                    if(_player.Uid.Equals(gameData.Uid)) return;
+                    timer = 0;
+                    isAttacked = false;
+                    isAttackAnim = false;
+                    StopAction();
+                });
 
-            EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),(gameData)=>
-            {
-                // 点击自己直接退出
-                if(_player.Uid.Equals(gameData.Uid)) return;
-                timer = 0;
-                isAttacked = false;
-                isAttackAnim = false;
-                StopAction();
-            });
-            
-            
-            EventCenter.AddListener(TypedInputActions.OnForceAttack.ToString(),()=>
-            {
-                _forceAttack = true;
-                CheckActionState();
-            });
-            EventCenter.AddListener(TypedInputActions.OffForceAttack.ToString(),()=>
-            {
-                _forceAttack = false;
-            });
-            EventCenter.AddListener(TypedInputActions.StopAttack.ToString(), () =>
-            {
-                _target = null;
-                timer = 0;
-                isAttacked = false;
-                isAttackAnim = false;
-                StopAction();
-            });
-            EventCenter.AddListener<int>(TypedInputActions.NormalAttack.ToString(),NormalAttack);
+            onForceAttack=_messenger.Subscribe<InputMessage>(
+                TypedInputActions.ForceAttack.ToString(),
+                (message) =>
+                {
+                    _forceAttack = message.ForceAttack;
+                    if (_forceAttack)
+                    {
+                        CheckActionState();
+                    }
+                });
+            onStopAttack=_messenger.Subscribe<InputMessage>(
+                TypedInputActions.StopAttack.ToString(),
+                (message) =>
+                {
+                    _target = null;
+                    timer = 0;
+                    isAttacked = false;
+                    isAttackAnim = false;
+                    StopAction();
+                });
+            onNormalAttack=_messenger.Subscribe<InputMessage>(
+                TypedInputActions.NormalAttack.ToString(),
+                (message) =>
+                {
+                    NormalAttack(message.MormalAttack);
+                });
             
             // 点击地面，停止当前动作
-            EventCenter.AddListener<bool,Vector3>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),(isNew,position)=>
-            {
-                timer = 0;
-                isAttacked = false;
-                isAttackAnim = false;
-                StopAction();
-            });
+            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(
+                TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
+                (message) =>
+                {
+                    timer = 0;
+                    isAttacked = false;
+                    isAttackAnim = false;
+                    StopAction();
+                });
             
             EventCenter.AddListener<float>(Constants_Event.AttributeChange+":"+_player.Uid+":"+TypedAttribute.AttackSpeed,UpdateAttackSpeed);
         }
@@ -313,7 +360,6 @@ namespace States
 
         private void CheckActionState()
         {
-            Debug.Log(_inputAttack+"--"+_forceAttack+"--"+stop);
             if (_inputAttack && _forceAttack&&stop)
             {
                 // 准备攻击

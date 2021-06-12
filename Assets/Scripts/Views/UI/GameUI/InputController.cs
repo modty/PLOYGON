@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
 using ActionPool;
 using Commons;
 using Data;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Scripts;
 using States;
 using UnityEngine;
@@ -22,13 +26,17 @@ public class InputController : MonoBehaviour
     public float moveSpeed=5f;
     public AnimEventController eventController;
     private MouseController _mouse;
-
-
+    private IDisposable subscription;
+    private IDisposable chatroomSubscription;
+    private Messenger messenger;
+    private void Awake()
+    {
+        messenger = Messenger.Default;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(_attribute.Uid);
         _movementState = new MovementState(_attribute);
         _animationState = new AnimationState(_attribute);
         _sceneUIState = new SceneUIState();
@@ -36,8 +44,23 @@ public class InputController : MonoBehaviour
         _skillAreaState = new SkillAreaState(_attribute);
         _mouse=MouseController.Get();
         EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerMes,(GameData)_attribute);
+        InitMessageObjs();
+
     }
 
+    #region 消息通信
+
+    private InputMessage _inputMessage;
+    private MouseTargetMessage _mouseTargetMessage;
+    private MovementMessage _movementMessage;
+    #endregion
+    
+    private void InitMessageObjs()
+    {
+        _inputMessage = new InputMessage(this);
+        _mouseTargetMessage = new MouseTargetMessage(this);
+        _movementMessage = new MovementMessage(this);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -60,21 +83,28 @@ public class InputController : MonoBehaviour
             GameData gameData = _mouse.GameData;
             if (gameData != null)
             {
-                // 鼠标点击到（可移动位置）
-                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
-                {
-                    EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
-                        true,_mouse.MousePosition);
-                }
-                else
-                {
-                    EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);
-                }
+                _mouseTargetMessage.MousePosition = _mouse.MousePosition;
+                _mouseTargetMessage.GameData = gameData;
 
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
                 {
                     _attribute.Target = gameData;
+                }
+                // 鼠标点击到（可移动位置）
+                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
+                {
+
+                    /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
+                        true,_mouse.MousePosition);*/
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(), _mouseTargetMessage);
+                }
+                else
+                {
+
+                    /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);*/
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), _mouseTargetMessage);
+
                 }
             }
         }
@@ -84,30 +114,34 @@ public class InputController : MonoBehaviour
             GameData gameData = _mouse.GameData;
             if (gameData != null)
             {
-                // 鼠标点击到（可移动位置）
-                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
-                {
-                    EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), gameData);
-                }
-                else
-                {
-                    EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), gameData);
-                }
-
+                _mouseTargetMessage.MousePosition = _mouse.MousePosition;
+                _mouseTargetMessage.GameData = gameData;
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
                 {
                     _attribute.Target = gameData;
                 }
+                // 鼠标点击到（可移动位置）
+                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
+                {
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), _mouseTargetMessage);
+                }
+                else
+                {
+                    /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);*/
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mouseTargetMessage);
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            EventCenter.Broadcast(TypedInputActions.OnForceAttack.ToString());
+            _inputMessage.ForceAttack = true;
+            messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            EventCenter.Broadcast(TypedInputActions.OffForceAttack.ToString());
+            _inputMessage.ForceAttack = false;
+            messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
