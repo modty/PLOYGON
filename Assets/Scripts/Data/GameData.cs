@@ -1,5 +1,7 @@
 ﻿using ActionPool;
 using Commons;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using UnityEngine;
 
 namespace Data
@@ -7,6 +9,11 @@ namespace Data
     public class GameData
     {
         private long _uid;
+
+        public GameData()
+        {
+            _mGameData = new MGameData(this,null);
+        }
 
         public long Uid
         {
@@ -44,6 +51,12 @@ namespace Data
             get => _transform;
             set => _transform = value;
         }
+        protected Messenger _messenger=Messenger.Default;
+        #region 监听
+
+        private MGameData _mGameData;
+
+        #endregion
         private GameData _target;
 
         public GameData Target
@@ -53,8 +66,10 @@ namespace Data
             {
                 if (_target==null||!_target.Uid.Equals(Uid))
                 {
+                    _mGameData.GameData = value;
                     _target = value;
-                    EventCenter.Broadcast("UIElement:"+TypedUIElements.PlayerTarget,_target);
+                    Debug.Log("目标："+value.Uid);
+                    _messenger.Publish(TypedUIElements.PlayerTarget.ToString(),_mGameData);
                 }
             }
         }

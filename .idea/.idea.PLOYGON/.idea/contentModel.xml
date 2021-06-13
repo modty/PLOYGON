@@ -640,8 +640,6 @@
             <e p="ResourceRegon.cs" t="Include" />
             <e p="Tenacity.cs" t="Include" />
           </e>
-          <e p="BarController.cs" t="Include" />
-          <e p="CombatText.cs" t="Include" />
           <e p="Commons" t="Include">
             <e p="Constants_Anim.cs" t="Include" />
             <e p="Constants_Event.cs" t="Include" />
@@ -673,21 +671,33 @@
           </e>
           <e p="Domain" t="Include">
             <e p="MessageEntities" t="Include">
-              <e p="AnimNormalAttack.cs" t="Include" />
-              <e p="InputMessage.cs" t="Include" />
-              <e p="MouseTargetMessage.cs" t="Include" />
-              <e p="MovementMessage.cs" t="Include" />
+              <e p="MAnimNormalAttack.cs" t="Include" />
+              <e p="MCombatTextCreate.cs" t="Include" />
+              <e p="MGameData.cs" t="Include" />
+              <e p="MInput.cs" t="Include" />
+              <e p="MMouseTarget.cs" t="Include" />
+              <e p="MMovement.cs" t="Include" />
             </e>
           </e>
-          <e p="Managers" t="Include">
-            <e p="CombatTextManager.cs" t="Include" />
-            <e p="GameObjectManager.cs" t="Include" />
-            <e p="PrefabsManager.cs" t="Include" />
-            <e p="SoundManager.cs" t="Include" />
-            <e p="TheCharacter.cs" t="Include" />
-          </e>
-          <e p="Service" t="Include">
-            <e p="GameManager.cs" t="Include" />
+          <e p="Infrastructure" t="Include">
+            <e p="Core" t="Include">
+              <e p="TheCharacter.cs" t="Include" />
+            </e>
+            <e p="Managers" t="Include">
+              <e p="CombatTextManager.cs" t="Include" />
+              <e p="GameManager.cs" t="Include" />
+              <e p="GameObjectManager.cs" t="Include" />
+              <e p="PrefabsManager.cs" t="Include" />
+              <e p="SoundManager.cs" t="Include" />
+            </e>
+            <e p="Utils" t="Include">
+              <e p="EventPoolUtils" t="Include">
+                <e p="CallBack.cs" t="Include" />
+                <e p="EnterCenter.cs" t="Include" />
+                <e p="EventTypes.cs" t="Include" />
+                <e p="Serialization.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="States" t="Include">
@@ -704,19 +714,17 @@
             <e p="PhysicsTool.cs" t="Include" />
             <e p="UidTool.cs" t="Include" />
           </e>
-          <e p="Utils" t="Include">
-            <e p="EventPoolUtils" t="Include">
-              <e p="CallBack.cs" t="Include" />
-              <e p="EnterCenter.cs" t="Include" />
-              <e p="EventTypes.cs" t="Include" />
-              <e p="Serialization.cs" t="Include" />
-            </e>
-          </e>
           <e p="Views" t="Include">
+            <e p="Character" t="Include">
+              <e p="InputController.cs" t="Include" />
+            </e>
             <e p="UI" t="Include">
               <e p="GameUI" t="Include">
-                <e p="InputController.cs" t="Include" />
+                <e p="BarController.cs" t="Include" />
                 <e p="MouseController.cs" t="Include" />
+              </e>
+              <e p="SceneUI" t="Include">
+                <e p="CombatTextController.cs" t="Include" />
               </e>
             </e>
           </e>

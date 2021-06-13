@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using ActionPool;
+using Commons;
 using Data;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
 using Scripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +21,7 @@ public class UIScript : MonoBehaviour
     [SerializeField]private GameObject selectPlane;
     [SerializeField]private Camera mainCam;
     [SerializeField] private GameObject mesPlane;
+    private Messenger _messenger;
     
     public GameObject MesPlane
     {
@@ -69,13 +73,37 @@ public class UIScript : MonoBehaviour
 
     private void Awake()
     {
-        EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), (gamedata) =>
+        _messenger=Messenger.Default;
+        RegistSubscribes();
+        targetFrame.SetActive(true); 
+    }
+
+    private void Start()
+    {
+        targetFrame.SetActive(false); 
+    }
+
+    #region 监听引用
+
+    private ISubscription<MMouseTarget> OnKeyDown_Mouse0_Target;
+    private ISubscription<MMouseTarget> OnKeyDown_Mouse0_Walkable;
+
+    #endregion
+    /// <summary>
+    /// 注册监听
+    /// </summary>
+    private void RegistSubscribes()
+    {
+        OnKeyDown_Mouse0_Target=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),(gamedata) =>
         {
+            Debug.Log("显示");
             targetFrame.SetActive(true); 
         });
-        EventCenter.AddListener<GameData>(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), (gamedata) =>
+        
+        OnKeyDown_Mouse0_Walkable=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), (gamedata) =>
         {
             targetFrame.SetActive(false); 
         });
+
     }
 }

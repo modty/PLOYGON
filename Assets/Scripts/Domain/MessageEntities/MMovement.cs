@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Domain.MessageEntities
 {
-    public class MovementMessage:MessageBase
+    public class MMovement:MessageBase
     {
         private Vector3 _targetPosition;
 
@@ -14,7 +14,7 @@ namespace Domain.MessageEntities
         }
 
 
-        public MovementMessage(object sender) : base(sender)
+        public MMovement(object sender) : base(sender)
         {
         }
     }

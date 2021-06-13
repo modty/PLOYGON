@@ -8,19 +8,15 @@ namespace Scripts.Controller
 {
     public class UIController:MonoBehaviour
     {
-        private static UIController _instance;
-        public static UIController Instance => _instance;
-
-        private CombatTextManager combatTextManager;
         private Dictionary<long, HeadBarController> _headBars;
         [SerializeField] private GameObject _headBarParent;
         private void Awake()
         {
-            _instance = this;
             _headBars = new Dictionary<long, HeadBarController>();
-            combatTextManager=CombatTextManager.Instance;
         }
-
+        /// <summary>
+        /// 目标UI
+        /// </summary>
         public GameObject TargetUI;
         
         public void AddHeadBar(PlayerAttribute characterAttribute)

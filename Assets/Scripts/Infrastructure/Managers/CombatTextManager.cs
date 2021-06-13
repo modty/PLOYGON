@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using Commons;
+using Domain.MessageEntities;
+using Loxodon.Framework.Messaging;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Managers
@@ -6,32 +10,46 @@ namespace Managers
 
     public enum SCTTYPE {DAMAGE,HEAL,XP,MANA}
 
+    /// <summary>
+    /// 管理场景UI：战斗文本，如伤害数值等
+    /// </summary>
     public class CombatTextManager : MonoBehaviour
     {
-
-        private static CombatTextManager instance;
-
-        public static CombatTextManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = FindObjectOfType<CombatTextManager>();
-                }
-                return instance;
-            }
-        }
-
         [SerializeField]
         private GameObject combatTextPrefab;
+        
+        private Messenger messenger;
+
+        private void Awake()
+        {
+            messenger=Messenger.Default;
+            RegistSubscribes();
+        }
+
+
+        #region 监听引用
+
+        private ISubscription<MCombatTextCreate> onCombatTextCreate;
+        
+
+        #endregion
+        /// <summary>
+        /// 注册监听
+        /// </summary>
+        private void RegistSubscribes()
+        {
+            onCombatTextCreate = messenger.Subscribe<MCombatTextCreate>(Constants_Event.CombatTextCreate, (message) =>
+            {
+                CreateText(message.Position,message.Text,message.Type,message.Crit,message.Direction);
+            });
+        }
 
         public void CreateText(Vector3 position, string text, SCTTYPE type, bool crit,bool direction)
         {
             //Offset
             GameObject gb = Instantiate(combatTextPrefab, transform);
-            CombatText combatText = gb.GetComponent<CombatText>();
-            combatText.Direction = direction ? 1 : -1;
+            CombatTextController combatTextController = gb.GetComponent<CombatTextController>();
+            combatTextController.Direction = direction ? 1 : -1;
             Text sct = gb.GetComponent<Text>();
             sct.transform.position = position;
             string before = string.Empty;

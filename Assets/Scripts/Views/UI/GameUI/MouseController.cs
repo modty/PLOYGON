@@ -142,15 +142,15 @@ namespace Scripts
         }
         #region 订阅引用
 
-        private ISubscription<MouseTargetMessage> onMouse1Walkable;
-        private ISubscription<MouseTargetMessage> onMouse1Target;
-        private ISubscription<MouseTargetMessage> onMouse0Target;
-        private ISubscription<MouseTargetMessage> onMouse0Walkable;
-        private ISubscription<InputMessage> onForceAttack;
-        private ISubscription<InputMessage> onNormalAttack;
-        private ISubscription<InputMessage> onStopAttack;
-        private ISubscription<MovementMessage> onStopMove;
-        private ISubscription<MovementMessage> onMoveTo;
+        private ISubscription<MMouseTarget> onMouse1Walkable;
+        private ISubscription<MMouseTarget> onMouse1Target;
+        private ISubscription<MMouseTarget> onMouse0Target;
+        private ISubscription<MMouseTarget> onMouse0Walkable;
+        private ISubscription<MInput> onForceAttack;
+        private ISubscription<MInput> onNormalAttack;
+        private ISubscription<MInput> onStopAttack;
+        private ISubscription<MMovement> onStopMove;
+        private ISubscription<MMovement> onMoveTo;
 
         #endregion
         /// <summary>
@@ -159,7 +159,7 @@ namespace Scripts
         private void RegistInputActions()
         {
 
-            onForceAttack = _messenger.Subscribe<InputMessage>(TypedInputActions.ForceAttack.ToString(), (message) =>
+            onForceAttack = _messenger.Subscribe<MInput>(TypedInputActions.ForceAttack.ToString(), (message) =>
             {
                 _forceAttack = message.ForceAttack;
             });

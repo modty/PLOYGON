@@ -2,11 +2,11 @@
 
 namespace Domain.MessageEntities
 {
-    public class AnimNormalAttack:MessageBase
+    public class MAnimNormalAttack:MessageBase
     {
         private int _weaponType;
         private int _action;
-        public AnimNormalAttack(object sender) : base(sender)
+        public MAnimNormalAttack(object sender) : base(sender)
         {
         }
 

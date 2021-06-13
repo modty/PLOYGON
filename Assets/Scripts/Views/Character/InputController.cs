@@ -50,16 +50,16 @@ public class InputController : MonoBehaviour
 
     #region 消息通信
 
-    private InputMessage _inputMessage;
-    private MouseTargetMessage _mouseTargetMessage;
-    private MovementMessage _movementMessage;
+    private MInput _mInput;
+    private MMouseTarget _mMouseTarget;
+    private MMovement _mMovement;
     #endregion
     
     private void InitMessageObjs()
     {
-        _inputMessage = new InputMessage(this);
-        _mouseTargetMessage = new MouseTargetMessage(this);
-        _movementMessage = new MovementMessage(this);
+        _mInput = new MInput(this);
+        _mMouseTarget = new MMouseTarget(this);
+        _mMovement = new MMovement(this);
     }
     // Update is called once per frame
     void Update()
@@ -83,8 +83,8 @@ public class InputController : MonoBehaviour
             GameData gameData = _mouse.GameData;
             if (gameData != null)
             {
-                _mouseTargetMessage.MousePosition = _mouse.MousePosition;
-                _mouseTargetMessage.GameData = gameData;
+                _mMouseTarget.MousePosition = _mouse.MousePosition;
+                _mMouseTarget.GameData = gameData;
 
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
@@ -97,13 +97,13 @@ public class InputController : MonoBehaviour
 
                     /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
                         true,_mouse.MousePosition);*/
-                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(), _mouseTargetMessage);
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(), _mMouseTarget);
                 }
                 else
                 {
 
                     /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);*/
-                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), _mouseTargetMessage);
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), _mMouseTarget);
 
                 }
             }
@@ -112,11 +112,11 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameData gameData = _mouse.GameData;
-            _inputMessage.ForceAttack = false;
+            _mInput.ForceAttack = false;
             if (gameData != null)
             {
-                _mouseTargetMessage.MousePosition = _mouse.MousePosition;
-                _mouseTargetMessage.GameData = gameData;
+                _mMouseTarget.MousePosition = _mouse.MousePosition;
+                _mMouseTarget.GameData = gameData;
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
                 {
@@ -125,20 +125,19 @@ public class InputController : MonoBehaviour
                 // 鼠标点击到（可移动位置）
                 if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
                 {
-                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), _mouseTargetMessage);
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), _mMouseTarget);
                 }
                 else
                 {
-                    /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);*/
-                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mouseTargetMessage);
+                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mMouseTarget);
                 }
-                messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
+                messenger.Publish(TypedInputActions.ForceAttack.ToString(), _mInput);
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _inputMessage.ForceAttack = true;
-            messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
+            _mInput.ForceAttack = true;
+            messenger.Publish(TypedInputActions.ForceAttack.ToString(), _mInput);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

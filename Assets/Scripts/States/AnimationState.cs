@@ -77,7 +77,7 @@ namespace States
 
         #region 订阅引用
 
-        private ISubscription<AnimNormalAttack> _subscriptionAnimNormalAttack;
+        private ISubscription<MAnimNormalAttack> _subscriptionAnimNormalAttack;
         
 
         #endregion
@@ -86,7 +86,7 @@ namespace States
         /// </summary>
         private void RegistInputActions()
         {
-            _subscriptionAnimNormalAttack=_messenger.Subscribe<AnimNormalAttack>(TypedInputActions.AnimNormalAttack.ToString(), (message) =>
+            _subscriptionAnimNormalAttack=_messenger.Subscribe<MAnimNormalAttack>(TypedInputActions.AnimNormalAttack.ToString(), (message) =>
             {
                 NormalAttack(message.WeaponType,message.Action);
             });

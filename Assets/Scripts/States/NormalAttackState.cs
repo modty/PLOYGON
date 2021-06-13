@@ -98,18 +98,18 @@ namespace States
 
         #region 消息通信
 
-        private InputMessage _inputMessage;
-        private MouseTargetMessage _mouseTargetMessage;
-        private MovementMessage _movementMessage;
-        private AnimNormalAttack _animNormalAttack;
+        private MInput _mInput;
+        private MMouseTarget _mMouseTarget;
+        private MMovement _mMovement;
+        private MAnimNormalAttack _mAnimNormalAttack;
         #endregion
 
         private void InitMessageObjs()
         {
-            _inputMessage = new InputMessage(this);
-            _mouseTargetMessage = new MouseTargetMessage(this);
-            _movementMessage = new MovementMessage(this);
-            _animNormalAttack = new AnimNormalAttack(this);
+            _mInput = new MInput(this);
+            _mMouseTarget = new MMouseTarget(this);
+            _mMovement = new MMovement(this);
+            _mAnimNormalAttack = new MAnimNormalAttack(this);
         }
 
         protected override void DoUpdate()
@@ -123,7 +123,7 @@ namespace States
                 if (_player.IsMoving)
                 {
                     // 确保帧同步
-                    _messenger.Publish(TypedInputActions.StopMove.ToString(),_movementMessage);
+                    _messenger.Publish(TypedInputActions.StopMove.ToString(),_mMovement);
                 }
                 switch (attackState)
                 {
@@ -170,8 +170,8 @@ namespace States
             // 没有移动且角色离开攻击范围
             else if(!_player.IsMoving&&distance > _player.AttackRange)
             {
-                _movementMessage.TargetPosition = _target.Transform.position;
-                _messenger.Publish(TypedInputActions.MoveTo.ToString(),_movementMessage);
+                _mMovement.TargetPosition = _target.Transform.position;
+                _messenger.Publish(TypedInputActions.MoveTo.ToString(),_mMovement);
             }
             
           
@@ -217,22 +217,22 @@ namespace States
                 action = 5;
             }
             right = !right;
-            _animNormalAttack.WeaponType = (int)_player.WeaponType;
-            _animNormalAttack.Action = action;
-            _messenger.Publish(TypedInputActions.AnimNormalAttack.ToString(),_animNormalAttack);
+            _mAnimNormalAttack.WeaponType = (int)_player.WeaponType;
+            _mAnimNormalAttack.Action = action;
+            _messenger.Publish(TypedInputActions.AnimNormalAttack.ToString(),_mAnimNormalAttack);
         }
 
         #region 订阅引用
 
-        private ISubscription<MouseTargetMessage> onMouse1Walkable;
-        private ISubscription<MouseTargetMessage> onMouse1Target;
-        private ISubscription<MouseTargetMessage> onMouse0Target;
-        private ISubscription<MouseTargetMessage> onMouse0Walkable;
-        private ISubscription<InputMessage> onForceAttack;
-        private ISubscription<InputMessage> onNormalAttack;
-        private ISubscription<InputMessage> onStopAttack;
-        private ISubscription<MovementMessage> onStopMove;
-        private ISubscription<MovementMessage> onMoveTo;
+        private ISubscription<MMouseTarget> onMouse1Walkable;
+        private ISubscription<MMouseTarget> onMouse1Target;
+        private ISubscription<MMouseTarget> onMouse0Target;
+        private ISubscription<MMouseTarget> onMouse0Walkable;
+        private ISubscription<MInput> onForceAttack;
+        private ISubscription<MInput> onNormalAttack;
+        private ISubscription<MInput> onStopAttack;
+        private ISubscription<MMovement> onStopMove;
+        private ISubscription<MMovement> onMoveTo;
 
         #endregion
         /// <summary>
@@ -240,7 +240,7 @@ namespace States
         /// </summary>
         private void RegistInputActions()
         {
-            onMouse0Target=_messenger.Subscribe<MouseTargetMessage>(
+            onMouse0Target=_messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),
                 (message) =>
                 {
@@ -270,7 +270,7 @@ namespace States
                     timeTemp =Time.time;
                     CheckActionState();
                 });
-            onMouse1Target=_messenger.Subscribe<MouseTargetMessage>(
+            onMouse1Target=_messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),
                 (message) =>
                 {
@@ -284,14 +284,14 @@ namespace States
                     StopAction();
                 });
 
-            onForceAttack=_messenger.Subscribe<InputMessage>(
+            onForceAttack=_messenger.Subscribe<MInput>(
                 TypedInputActions.ForceAttack.ToString(),
                 (message) =>
                 {
                     _forceAttack = message.ForceAttack;
                     
                 });
-            onStopAttack=_messenger.Subscribe<InputMessage>(
+            onStopAttack=_messenger.Subscribe<MInput>(
                 TypedInputActions.StopAttack.ToString(),
                 (message) =>
                 {
@@ -301,7 +301,7 @@ namespace States
                     isAttackAnim = false;
                     StopAction();
                 });
-            onNormalAttack=_messenger.Subscribe<InputMessage>(
+            onNormalAttack=_messenger.Subscribe<MInput>(
                 TypedInputActions.NormalAttack.ToString(),
                 (message) =>
                 {
@@ -309,7 +309,7 @@ namespace States
                 });
             
             // 点击地面，停止当前动作
-            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(
+            onMouse1Walkable=_messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
                 (message) =>
                 {

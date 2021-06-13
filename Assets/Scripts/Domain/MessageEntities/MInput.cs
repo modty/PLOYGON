@@ -2,7 +2,7 @@
 
 namespace Domain.MessageEntities
 {
-    public class InputMessage:MessageBase
+    public class MInput:MessageBase
     {
         private bool _forceAttack;
 
@@ -20,7 +20,7 @@ namespace Domain.MessageEntities
             set => _mormalAttack = value;
         }
 
-        public InputMessage(object sender) : base(sender)
+        public MInput(object sender) : base(sender)
         {
             
         }

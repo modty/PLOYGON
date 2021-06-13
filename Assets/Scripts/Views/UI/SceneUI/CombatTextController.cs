@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class CombatText : MonoBehaviour {
+public class CombatTextController : MonoBehaviour {
 
 
     [SerializeField]

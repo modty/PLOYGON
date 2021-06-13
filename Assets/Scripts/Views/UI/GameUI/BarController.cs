@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using ActionPool;
 using Commons;
 using Data;
+using Domain.MessageEntities;
 using JetBrains.Annotations;
+using Loxodon.Framework.Messaging;
 using Scripts.Commons;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,26 +19,46 @@ namespace Scripts.Controller
         public Image bar;
         public TypedAttribute typedAttribute;
         public TypedUIElements uiElements;
+        private Messenger _messenger;
+        
         private void Awake()
+        {
+            _messenger=Messenger.Default;
+            RegistSubscribes();
+        }
+
+        #region 监听引用
+
+        private ISubscription<MGameData> onBarGameDataChange;
+        
+
+        #endregion
+        /// <summary>
+        /// 注册监听
+        /// </summary>
+        private void RegistSubscribes()
         {
             switch (uiElements)
             {
                 case TypedUIElements.PlayerMes:
-                    EventCenter.AddListener<GameData>("UIElement:"+TypedUIElements.PlayerMes,SetCharacter);
+                    onBarGameDataChange=_messenger.Subscribe<MGameData>(TypedUIElements.PlayerMes.ToString(), (message)=>
+                    {
+                        SetCharacter(message.GameData);
+                    });
                     break;
                 case TypedUIElements.PlayerTarget:
-                    EventCenter.AddListener<GameData>("UIElement:"+TypedUIElements.PlayerTarget,SetCharacter);
+                    onBarGameDataChange=_messenger.Subscribe<MGameData>(TypedUIElements.PlayerTarget.ToString(), (message)=>
+                    {
+                        SetCharacter(message.GameData);
+                    });
                     break;
             }
         }
-
         public void SetCharacter(GameData gameData)
         {
+            Debug.Log("设置目标："+gameData.Uid);
             PlayerAttribute characterAttribute = gameData as PlayerAttribute;
             if(characterAttribute==null) return;
-            if (_player != null && !_player.Uid.Equals(characterAttribute.Uid))
-            {
-            }
             _player = characterAttribute;
             switch (typedAttribute)
             {

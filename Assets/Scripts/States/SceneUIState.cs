@@ -21,15 +21,15 @@ namespace States
         
         #region 订阅引用
 
-        private ISubscription<MouseTargetMessage> onMouse1Walkable;
-        private ISubscription<MouseTargetMessage> onMouse1Target;
-        private ISubscription<MouseTargetMessage> onMouse0Target;
-        private ISubscription<MouseTargetMessage> onMouse0Walkable;
-        private ISubscription<InputMessage> onForceAttack;
-        private ISubscription<InputMessage> onNormalAttack;
-        private ISubscription<InputMessage> onStopAttack;
-        private ISubscription<MovementMessage> onStopMove;
-        private ISubscription<MovementMessage> onMoveTo;
+        private ISubscription<MMouseTarget> onMouse1Walkable;
+        private ISubscription<MMouseTarget> onMouse1Target;
+        private ISubscription<MMouseTarget> onMouse0Target;
+        private ISubscription<MMouseTarget> onMouse0Walkable;
+        private ISubscription<MInput> onForceAttack;
+        private ISubscription<MInput> onNormalAttack;
+        private ISubscription<MInput> onStopAttack;
+        private ISubscription<MMovement> onStopMove;
+        private ISubscription<MMovement> onMoveTo;
 
         #endregion
         /// <summary>
@@ -37,7 +37,7 @@ namespace States
         /// </summary>
         private void RegistInputActions()
         {
-            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
+            onMouse1Walkable=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
                 (message) =>
                 {
                     OnClickMouseRightWalkable(true, message.MousePosition);

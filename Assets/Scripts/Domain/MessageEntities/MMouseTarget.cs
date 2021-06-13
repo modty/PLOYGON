@@ -7,7 +7,7 @@ namespace Domain.MessageEntities
     /// <summary>
     /// 鼠标处对象信息
     /// </summary>
-    public class MouseTargetMessage:MessageBase
+    public class MMouseTarget:MessageBase
     {
         /// <summary>
         /// 鼠标位置
@@ -18,12 +18,12 @@ namespace Domain.MessageEntities
         /// </summary>
         private GameData _gameData;
 
-        public MouseTargetMessage(object sender,Vector3 mousePosition,GameData gameData) : base(sender)
+        public MMouseTarget(object sender,Vector3 mousePosition,GameData gameData) : base(sender)
         {
             _mousePosition = mousePosition;
             _gameData = gameData;
         }
-        public MouseTargetMessage(object sender) : base(sender)
+        public MMouseTarget(object sender) : base(sender)
         {
         }
         public Vector3 MousePosition

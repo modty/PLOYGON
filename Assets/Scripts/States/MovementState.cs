@@ -44,13 +44,13 @@ namespace States
 
         private bool _forceAttack;
 
-        private ISubscription<MouseTargetMessage> onMouse1Walkable;
-        private ISubscription<MouseTargetMessage> onMouse1Target;
-        private ISubscription<MouseTargetMessage> onMouse0Target;
-        private ISubscription<MouseTargetMessage> onMouse0Walkable;
-        private ISubscription<InputMessage> forceAttack;
-        private ISubscription<MovementMessage> stopMove;
-        private ISubscription<MovementMessage> moveTo;
+        private ISubscription<MMouseTarget> onMouse1Walkable;
+        private ISubscription<MMouseTarget> onMouse1Target;
+        private ISubscription<MMouseTarget> onMouse0Target;
+        private ISubscription<MMouseTarget> onMouse0Walkable;
+        private ISubscription<MInput> forceAttack;
+        private ISubscription<MMovement> stopMove;
+        private ISubscription<MMovement> moveTo;
         /// <summary>
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
@@ -72,35 +72,35 @@ namespace States
         private void RegistInputActions()
         {
             // 此处必须获取引用，不然会自动被回收
-            onMouse1Walkable=_messenger.Subscribe<MouseTargetMessage>(
+            onMouse1Walkable=_messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
                 OnClickMouseRightWalkable
                 );
-            onMouse1Target = _messenger.Subscribe<MouseTargetMessage>(
+            onMouse1Target = _messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), 
                 OnClickMouseRightTarget
                 );
-            onMouse0Target = _messenger.Subscribe<MouseTargetMessage>(
+            onMouse0Target = _messenger.Subscribe<MMouseTarget>(
                 TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),
                 OnClickMouseLeftForceTarget
                 );
-            forceAttack = _messenger.Subscribe<InputMessage>(
+            forceAttack = _messenger.Subscribe<MInput>(
                 TypedInputActions.ForceAttack.ToString(),
                 (message) =>
                 {
                     _forceAttack = message.ForceAttack;
                 });
            
-            stopMove = _messenger.Subscribe<MovementMessage>( 
+            stopMove = _messenger.Subscribe<MMovement>( 
                 TypedInputActions.StopMove.ToString(), 
                 StopMove);
             
-            moveTo=_messenger.Subscribe<MovementMessage>( 
+            moveTo=_messenger.Subscribe<MMovement>( 
                 TypedInputActions.MoveTo.ToString(), 
                 MoveTo);
         }
 
-        public void StopMove(MovementMessage movementMessage)
+        public void StopMove(MMovement mMovement)
         {
             StopAction();
             if (_player.TargetMovePosition != _transform.position)
@@ -109,9 +109,9 @@ namespace States
             }
             _player.IsMoving = false;
         }
-        private void MoveTo(MovementMessage movementMessage)
+        private void MoveTo(MMovement mMovement)
         {
-           MoveTo(movementMessage.TargetPosition);
+           MoveTo(mMovement.TargetPosition);
         }
         private void MoveTo(Vector3 position)
         {
@@ -123,9 +123,9 @@ namespace States
         /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
         /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
         /// </summary>
-        private void OnClickMouseRightWalkable(MouseTargetMessage mouseClickRight)
+        private void OnClickMouseRightWalkable(MMouseTarget mMouseClickRight)
         {
-            OnClickMouseRightWalkable(true, mouseClickRight.MousePosition);
+            OnClickMouseRightWalkable(true, mMouseClickRight.MousePosition);
         }
         /// <summary>
         /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
@@ -134,7 +134,7 @@ namespace States
         private void OnClickMouseRightWalkable(bool isNewTarget,Vector3 position)
         {
             // 鼠标右键点击地面进行移动会打断攻击动作
-            _messenger.Publish<InputMessage>(TypedInputActions.StopAttack.ToString(),null);
+            _messenger.Publish<MInput>(TypedInputActions.StopAttack.ToString(),null);
             var position1 = _transform.position;
             float inputHorizontal = position.x>position1.x?1:-1;
             float inputVertical = ((position.z - position1.z) / (position.x - position1.x)) * inputHorizontal;
@@ -150,14 +150,14 @@ namespace States
         /// 鼠标右键点击移动平台，进行移动，移动只需提供位置即可。
         /// 当位置为null，代表按照之前的位置进行移动，不改变移动目标
         /// </summary>
-        private void OnClickMouseRightTarget(MouseTargetMessage clickRight)
+        private void OnClickMouseRightTarget(MMouseTarget clickRight)
         {
             
         }
         /// <summary>
         /// 鼠标右键选择目标，前往互动或者前往攻击，此处仅进行移动。
         /// </summary>
-        private void OnClickMouseLeftForceTarget(MouseTargetMessage clickLeft)
+        private void OnClickMouseLeftForceTarget(MMouseTarget clickLeft)
         {
             GameData gameData = clickLeft.GameData;
             if(!_forceAttack) return;
