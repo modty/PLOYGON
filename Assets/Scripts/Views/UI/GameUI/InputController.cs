@@ -112,6 +112,7 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameData gameData = _mouse.GameData;
+            _inputMessage.ForceAttack = false;
             if (gameData != null)
             {
                 _mouseTargetMessage.MousePosition = _mouse.MousePosition;
@@ -131,6 +132,7 @@ public class InputController : MonoBehaviour
                     /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Target.ToString(), gameData);*/
                     messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mouseTargetMessage);
                 }
+                messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -138,12 +140,6 @@ public class InputController : MonoBehaviour
             _inputMessage.ForceAttack = true;
             messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            _inputMessage.ForceAttack = false;
-            messenger.Publish(TypedInputActions.ForceAttack.ToString(), _inputMessage);
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),1);

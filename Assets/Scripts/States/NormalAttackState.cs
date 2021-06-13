@@ -44,46 +44,53 @@ namespace States
         /// 是否攻击
         /// </summary>
         private bool isAttacked;
-        /// <summary>
-        /// 攻击前摇
-        /// </summary>
-        private float normalAttack_preTimer;
 
         /// <summary>
         /// 动画前摇
         /// </summary>
+        private float normalAttack_Anim_preTimer_base;
         private float normalAttack_Anim_preTimer;
         /// <summary>
         /// 动画后摇
         /// </summary>
+        private float normalAttack_Anim_aftTimer_base;
         private float normalAttack_Anim_aftTimer;
         /// <summary>
-        /// 攻击后摇
+        /// 攻击冷却
         /// </summary>
-        private float normalAttack_aftTimer;
+        private float normalAttack_cooling;
 
         private float normalAttack_ratio;
-        /// <summary>
-        /// 攻击后摇具有上限，初始化时的值
-        /// </summary>
-        private float normalAttack_aftTimer_max;
+
         private float timeTemp;
-        
+        private bool isNewEnter;
+        private bool isNormalAttackCoolDown;
+        /// <summary>
+        /// 标记当前攻击状态
+        ///     0：停止
+        ///     1：调用攻击动画，并计时
+        ///     2：计时完毕，事实攻击，并计时
+        ///     3：动画播放完毕，计时，等待冷却
+        ///     4：冷却完毕，设置状态为0
+        /// </summary>
+        private int attackState;
         public NormalAttackState(PlayerAttribute playerAttribute):base()
         {
             _player = playerAttribute;
             _transform = _player.Transform;
             _movementState = playerAttribute.MovementState;
             RegistInputActions();
-            
             // 设置攻击前摇为0.7f，攻击后摇为0.7f，每次攻击需要1.4f，攻速度0.71，即每秒攻击0.71次，
-            normalAttack_preTimer = 0f;
-            normalAttack_aftTimer = 0f;
-            normalAttack_Anim_aftTimer = 0.58f;
-            normalAttack_Anim_preTimer = 0.42f;
-            normalAttack_aftTimer_max = .42f;
+            normalAttack_Anim_aftTimer_base = 0.58f;
+            normalAttack_Anim_aftTimer_base = normalAttack_Anim_aftTimer;
+
+            normalAttack_Anim_preTimer_base = 0.42f;
+            normalAttack_Anim_preTimer = normalAttack_Anim_preTimer_base;
+
+            normalAttack_cooling = 0;
             normalAttack_ratio = normalAttack_Anim_preTimer;
-            _player.AttackSpeed.UpdateCurrentValue(1.5f);
+            isNormalAttackCoolDown = true;
+            _player.AttackSpeed.UpdateCurrentValue(2f);
             InitMessageObjs();
 
         }
@@ -104,99 +111,60 @@ namespace States
             _movementMessage = new MovementMessage(this);
             _animNormalAttack = new AnimNormalAttack(this);
         }
+
         protected override void DoUpdate()
         {
-            if(_target==null) return;
-            float currentTime = Time.time;
-            timer +=currentTime -timeTemp;
-            timeTemp=currentTime;
+            timer +=Time.time -timeTemp;
+            timeTemp = Time.time;
             float distance = (_target.Transform.position - _transform.position).magnitude;
             // 如果角色正在移动，且进入攻击距离，停止
             if (distance < _player.AttackRange)
             {
-                if (timer < -5)
+                if (_player.IsMoving)
                 {
-                    timer = 0;
+                    // 确保帧同步
+                    _messenger.Publish(TypedInputActions.StopMove.ToString(),_movementMessage);
                 }
-                _messenger.Publish(TypedInputActions.StopMove.ToString(),_movementMessage);
-                // 进入攻击动画
-                if (isAttackAnim)
+                switch (attackState)
                 {
-                    // 进行攻击（为了匹配动画，使用动画的事件进行处理）
-                    if (isAttacked)
-                    {
-                        // 动画播放结束
-                        if (normalAttack_Anim_aftTimer-timer <.005f)
+                    case 0:
+                        StartAction();
+                        break;
+                    case 1:
+                        NormalAttack(1);
+                        timer = 0;
+                        attackState = 2;
+                        break;
+                    case 2:
+                        if (timer - normalAttack_Anim_preTimer > -.005f)
                         {
-                            //Debug.Log("3：动画后摇结束，等待静态后摇："+timer);
-                            isAttackAnim = false;
-                            timer = 0;
-                            // 没有攻击静态攻击后摇，直接退出，不进入下一帧计算，需要补充时间
-                            if (normalAttack_aftTimer < .005f)
-                            {
-                                //Debug.Log("4：没有静态后摇，直接等待静态前摇："+timer);
-                                isAttacked = false;
-                                DoUpdate();
-                            }
-                        }
-                    }
-                    // 没有攻击
-                    else
-                    {
-                        if (normalAttack_Anim_preTimer-timer <.005f)
-                        {
-                            //Debug.Log("2：动画前摇结束，进行攻击："+timer);
-                            //Debug.Log("攻击：间隔："+(Time.time - duration)+"|||||"+normalAttack_preTimer+"："+normalAttack_Anim_preTimer+"："+normalAttack_Anim_aftTimer+"："+normalAttack_aftTimer);
                             if (_player.Target != null)
                             {
                                 PlayerAttribute target=_player.Target as PlayerAttribute;
                                 target?.Health.UpdateCurrentValue(-(int)_player.AttackDamage.CurrentValue());
                             }
-                            duration = currentTime;
-                            // 攻击过了
-                            isAttacked = true;
                             timer = 0;
+                            attackState = 3;
                         }
-                    }
-                   
-                }
-                else
-                {
-                    // 攻击后摇
-                    if (isAttacked)
-                    {
-                        // 静态攻击后摇过去，可以进行攻击（注：攻击结束不用nextTimer，不然会多一个Time.fixDetalTime的时间）
-                        if (normalAttack_aftTimer-timer <.005f)
+                        break;
+                    case 3:
+                        if (timer - normalAttack_Anim_aftTimer > -.005f)
                         {
-                            //Debug.Log("4：动画前摇结束，攻击完毕："+timer);
-                            isAttacked = false;
-                            isAttackAnim = false;
                             timer = 0;
+                            attackState = 4;
+                            if (normalAttack_cooling < .005f)
+                            {
+                                attackState = 1;
+                            }
                         }
-                       
-                    }
-                    // 攻击前摇
-                    else
-                    {
-                        // 如果没有静态攻击前摇，不进行时间重置
-                        if (normalAttack_preTimer <=.005f)
+                        break;
+                    case 4:
+                        if (timer - normalAttack_cooling > -.005f)
                         {
-                            //Debug.Log("1:没有静态前摇，直接等待动画前摇："+timer);
-                            NormalAttack(1);
-                            isAttackAnim = true;
-                            DoUpdate();
-                        }
-                        else if (normalAttack_preTimer-timer <.005f)
-                        {
-                            //Debug.Log("1：静态前摇结束，等待动画前摇："+timer);
-                            // 调用动画
-                            NormalAttack(1);
-                            // 标记进入动画
-                            isAttackAnim = true;
                             timer = 0;
+                            attackState = 1;
                         }
-                    }
-                    
+                        break;
                 }
             }
             // 没有移动且角色离开攻击范围
@@ -205,7 +173,8 @@ namespace States
                 _movementMessage.TargetPosition = _target.Transform.position;
                 _messenger.Publish(TypedInputActions.MoveTo.ToString(),_movementMessage);
             }
-
+            
+          
         }
 
         /// <summary>
@@ -215,12 +184,11 @@ namespace States
         public void UpdateAttackSpeed(float at)
         {
             float frequency=1/at;
-            // 需要加速，静态前后摇均设置为0
+            // 需要加速，普攻冷却设置为0
             if (at > 1)
             {
                 _player.NormalAttackAnimSpeed = at;
-                normalAttack_preTimer = 0;
-                normalAttack_aftTimer = 0;
+                normalAttack_cooling = 0;
             }
             // 不需要加速
             else
@@ -229,24 +197,7 @@ namespace States
                 _player.NormalAttackAnimSpeed = 1;
                 float frequency_static = frequency-1;
                 frequency = 1;
-                if (normalAttack_aftTimer < normalAttack_aftTimer_max)
-                {
-                    float hit = normalAttack_aftTimer_max - normalAttack_aftTimer;
-                    if (hit < frequency_static)
-                    {
-                        normalAttack_aftTimer = normalAttack_aftTimer_max;
-                        frequency_static -= hit;
-                        if (frequency_static > 0)
-                        {
-                            normalAttack_preTimer += frequency_static;
-                        }
-                    }
-                    else
-                    {
-                        normalAttack_aftTimer +=frequency_static;
-                    }
-                }
-              
+                normalAttack_cooling = frequency_static;
             }
 
             normalAttack_Anim_preTimer = frequency * normalAttack_ratio;
@@ -256,6 +207,11 @@ namespace States
         private bool right;
         private void NormalAttack(int action)
         {
+            // 确保面向目标
+            if (_target != null)
+            {
+                _transform.rotation = Quaternion.LookRotation(_target.Transform.position-_transform.position);
+            }
             if(right)
             {
                 action = 5;
@@ -289,17 +245,30 @@ namespace States
                 (message) =>
                 {
                     GameData gameData = message.GameData;
-                    // 点击自己直接退出
-                    if(!_forceAttack||_player.Uid.Equals(gameData.Uid)||(_target!=null&&_target.Uid.Equals(gameData.Uid))) return;
-                    timeTemp =Time.time;
-                    // 设置为负数，表示第一次选中角色，等待进行移动，移动完毕（攻击距离够）时设置为0
-                    timer = -10;
-                    duration = Time.time;
+
+                    // 非强制攻击和点击自己直接退出
+                    if (!_forceAttack || _player.Uid.Equals(gameData.Uid))
+                    {
+                        return;
+                    }
+                    if(_target!=null&&_target.Uid == gameData.Uid) return;
+                    switch (attackState)
+                    {
+                        case 0:
+                        case 1:
+                        case 2:
+                            attackState = 1;
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                    }
+
                     _inputAttack = true;
-                    isAttacked = false;
-                    isAttackAnim = false;
-                    CheckActionState();
                     _target = gameData;
+                    timeTemp =Time.time;
+                    CheckActionState();
                 });
             onMouse1Target=_messenger.Subscribe<MouseTargetMessage>(
                 TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),
@@ -320,10 +289,7 @@ namespace States
                 (message) =>
                 {
                     _forceAttack = message.ForceAttack;
-                    if (_forceAttack)
-                    {
-                        CheckActionState();
-                    }
+                    
                 });
             onStopAttack=_messenger.Subscribe<InputMessage>(
                 TypedInputActions.StopAttack.ToString(),
@@ -347,10 +313,8 @@ namespace States
                 TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
                 (message) =>
                 {
-                    timer = 0;
-                    isAttacked = false;
-                    isAttackAnim = false;
                     StopAction();
+                    _target = null;
                 });
             
             EventCenter.AddListener<float>(Constants_Event.AttributeChange+":"+_player.Uid+":"+TypedAttribute.AttackSpeed,UpdateAttackSpeed);
@@ -364,7 +328,6 @@ namespace States
             {
                 // 准备攻击
                 StartAction();
-                
             }
         }
     }

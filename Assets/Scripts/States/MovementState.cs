@@ -196,7 +196,6 @@ namespace States
         {
             if (!calculating_path)
             {
-                Debug.Log(_player.TargetMovePosition);
                 calculating_path = true;
                 path_found = false;
                 path_index = 0;

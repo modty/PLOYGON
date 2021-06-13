@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-11 Loxodon框架重构">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-12 重新设置事件监听">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Localizations/Localization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Localizations/Localization.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Messaging/Messenger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Messaging/Subject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Messaging/Subject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/TypedInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/PlayerInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickLeft.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MouseClickRight.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/AnimationState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/BaseState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EnterCenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/EventPoolUtils/EnterCenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseView.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,15 +19,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/1e/32f87506/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/bf/b4beb2e0/Type.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/ec/dce32523/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StatScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/84/4a5551e5/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/36/bceef55a/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UIScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StatScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/84/4a5551e5/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/States/NormalAttackState.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -48,7 +49,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AttributeManage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/IAttribute.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/AttackDamage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Constants_Event.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/TypedUIElements.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Health.cs" />
@@ -92,8 +92,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/States/SkillAreaState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/SceneUIState.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/MovementState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/AnimEventController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/NormalAttackState.cs" />
     </changedPaths>
   </component>
@@ -156,7 +157,10 @@
       <workItem from="1623329075906" duration="2805000" />
       <workItem from="1623377166937" duration="9542000" />
       <workItem from="1623420418975" duration="6787000" />
-      <workItem from="1623455410066" duration="6915000" />
+      <workItem from="1623455410066" duration="13227000" />
+      <workItem from="1623502929980" duration="1966000" />
+      <workItem from="1623566247927" duration="6344000" />
+      <workItem from="1623573896632" duration="1192000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -277,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623403536085</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="2021-06-12 重新设置事件监听">
+      <created>1623462427261</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1623462427261</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +326,8 @@
     <MESSAGE value="2021-06-10 完成部分属性设计" />
     <MESSAGE value="2021-06-11 角色通过代码生成" />
     <MESSAGE value="2021-06-11 Loxodon框架重构" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-11 Loxodon框架重构" />
+    <MESSAGE value="2021-06-12 重新设置事件监听" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-12 重新设置事件监听" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
