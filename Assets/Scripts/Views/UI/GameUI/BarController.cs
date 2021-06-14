@@ -15,7 +15,7 @@ namespace Scripts.Controller
     public class BarController:MonoBehaviour
     {
         public Text text;
-        private PlayerAttribute _player;
+        private PlayerData _player;
         public Image bar;
         public TypedAttribute typedAttribute;
         public TypedUIElements uiElements;
@@ -57,9 +57,9 @@ namespace Scripts.Controller
         public void SetCharacter(GameData gameData)
         {
             Debug.Log("设置目标："+gameData.Uid);
-            PlayerAttribute characterAttribute = gameData as PlayerAttribute;
-            if(characterAttribute==null) return;
-            _player = characterAttribute;
+            PlayerData characterData = gameData as PlayerData;
+            if(characterData==null) return;
+            _player = characterData;
             switch (typedAttribute)
             {
                 case TypedAttribute.Health:

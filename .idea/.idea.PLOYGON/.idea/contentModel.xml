@@ -619,57 +619,52 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Attribute" t="Include">
-            <e p="AbilityHaste.cs" t="Include" />
-            <e p="AbilityPower.cs" t="Include" />
-            <e p="ArmorPenetration.cs" t="Include" />
-            <e p="ArmorResistance.cs" t="Include" />
-            <e p="AttackDamage.cs" t="Include" />
-            <e p="AttackSpeed.cs" t="Include" />
-            <e p="CriticalStrike.cs" t="Include" />
-            <e p="Health.cs" t="Include" />
-            <e p="HealthRegeneration.cs" t="Include" />
-            <e p="HealthRegon.cs" t="Include" />
-            <e p="IAttribute.cs" t="Include" />
-            <e p="LifeSteal.cs" t="Include" />
-            <e p="MagicPenetration.cs" t="Include" />
-            <e p="MagicRegeneration.cs" t="Include" />
-            <e p="MagicResistance.cs" t="Include" />
-            <e p="Movement.cs" t="Include" />
-            <e p="Ominivamp.cs" t="Include" />
-            <e p="ONHitEffects.cs" t="Include" />
-            <e p="ResourceRegon.cs" t="Include" />
-            <e p="Tenacity.cs" t="Include" />
+            <e p="Character" t="Include">
+              <e p="AAbilityHaste.cs" t="Include" />
+              <e p="AAbilityPower.cs" t="Include" />
+              <e p="AArmorPenetration.cs" t="Include" />
+              <e p="AArmorResistance.cs" t="Include" />
+              <e p="AAttackDamage.cs" t="Include" />
+              <e p="AAttackSpeed.cs" t="Include" />
+              <e p="ACriticalStrike.cs" t="Include" />
+              <e p="AHealth.cs" t="Include" />
+              <e p="AHealthRegeneration.cs" t="Include" />
+              <e p="AHealthRegon.cs" t="Include" />
+              <e p="ALifeSteal.cs" t="Include" />
+              <e p="AMagicPenetration.cs" t="Include" />
+              <e p="AMagicRegeneration.cs" t="Include" />
+              <e p="AMagicResistance.cs" t="Include" />
+              <e p="AMovement.cs" t="Include" />
+              <e p="AOminivamp.cs" t="Include" />
+              <e p="AONHitEffects.cs" t="Include" />
+              <e p="AResourceRegon.cs" t="Include" />
+              <e p="ATenacity.cs" t="Include" />
+              <e p="IAttribute.cs" t="Include" />
+            </e>
           </e>
           <e p="Commons" t="Include">
-            <e p="Constants_Anim.cs" t="Include" />
-            <e p="Constants_Event.cs" t="Include" />
-            <e p="TypedAttribute.cs" t="Include" />
-            <e p="TypedCharacterState.cs" t="Include" />
-            <e p="TypedGameData.cs" t="Include" />
-            <e p="TypedInputActions.cs" t="Include" />
-            <e p="TypedInteract.cs" t="Include" />
-            <e p="TypedMovement.cs" t="Include" />
-            <e p="TypedUIElements.cs" t="Include" />
-            <e p="TypedWeapon.cs" t="Include" />
-          </e>
-          <e p="Controller" t="Include">
-            <e p="AnimEventController.cs" t="Include" />
-            <e p="ClickArrowController.cs" t="Include" />
-            <e p="DataController.cs" t="Include" />
-            <e p="HeadBarController.cs" t="Include" />
-            <e p="PlayerInput.cs" t="Include" />
-            <e p="SceneUIController.cs" t="Include" />
-            <e p="SkillAreaController.cs" t="Include" />
-            <e p="UIController.cs" t="Include" />
-            <e p="UIScript.cs" t="Include" />
-          </e>
-          <e p="Data" t="Include">
-            <e p="DataFactory.cs" t="Include" />
-            <e p="FloorData.cs" t="Include" />
-            <e p="GameData.cs" t="Include" />
-            <e p="PlayerData.cs" t="Include" />
+            <e p="Constants" t="Include">
+              <e p="Constants_Anim.cs" t="Include" />
+              <e p="Constants_Event.cs" t="Include" />
+            </e>
+            <e p="Enums" t="Include">
+              <e p="TypedAttribute.cs" t="Include" />
+              <e p="TypedCharacterState.cs" t="Include" />
+              <e p="TypedGameData.cs" t="Include" />
+              <e p="TypedInputActions.cs" t="Include" />
+              <e p="TypedInteract.cs" t="Include" />
+              <e p="TypedMovement.cs" t="Include" />
+              <e p="TypedUIElements.cs" t="Include" />
+              <e p="TypedWeapon.cs" t="Include" />
+            </e>
           </e>
           <e p="Domain" t="Include">
+            <e p="Data" t="Include">
+              <e p="DataFactory.cs" t="Include" />
+              <e p="FloorData.cs" t="Include" />
+              <e p="GameData.cs" t="Include" />
+              <e p="PlayerData.cs" t="Include" />
+            </e>
             <e p="MessageEntities" t="Include">
               <e p="MAnimNormalAttack.cs" t="Include" />
               <e p="MCombatTextCreate.cs" t="Include" />
@@ -677,6 +672,16 @@
               <e p="MInput.cs" t="Include" />
               <e p="MMouseTarget.cs" t="Include" />
               <e p="MMovement.cs" t="Include" />
+            </e>
+            <e p="States" t="Include">
+              <e p="Player" t="Include">
+                <e p="AnimationState.cs" t="Include" />
+                <e p="BaseState.cs" t="Include" />
+                <e p="MovementState.cs" t="Include" />
+                <e p="NormalAttackState.cs" t="Include" />
+                <e p="SceneUIState.cs" t="Include" />
+                <e p="SkillAreaState.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Infrastructure" t="Include">
@@ -697,34 +702,36 @@
                 <e p="EventTypes.cs" t="Include" />
                 <e p="Serialization.cs" t="Include" />
               </e>
+              <e p="Tools" t="Include">
+                <e p="NavMeshTool.cs" t="Include" />
+                <e p="PhysicsTool.cs" t="Include" />
+                <e p="UidTool.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
-          <e p="States" t="Include">
-            <e p="AnimationState.cs" t="Include" />
-            <e p="BaseState.cs" t="Include" />
-            <e p="MovementState.cs" t="Include" />
-            <e p="NormalAttackState.cs" t="Include" />
-            <e p="SceneUIState.cs" t="Include" />
-            <e p="SkillAreaState.cs" t="Include" />
-          </e>
-          <e p="StatScript.cs" t="Include" />
-          <e p="Tools" t="Include">
-            <e p="NavMeshTool.cs" t="Include" />
-            <e p="PhysicsTool.cs" t="Include" />
-            <e p="UidTool.cs" t="Include" />
-          </e>
           <e p="Views" t="Include">
             <e p="Character" t="Include">
+              <e p="AnimEventController.cs" t="Include" />
+              <e p="DataController.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
               <e p="InputController.cs" t="Include" />
             </e>
             <e p="UI" t="Include">
               <e p="GameUI" t="Include">
                 <e p="BarController.cs" t="Include" />
                 <e p="MouseController.cs" t="Include" />
+                <e p="StatScript.cs" t="Include" />
+                <e p="UIScript.cs" t="Include" />
               </e>
               <e p="SceneUI" t="Include">
+                <e p="ClickArrowController.cs" t="Include" />
                 <e p="CombatTextController.cs" t="Include" />
+                <e p="HeadBarController.cs" t="Include" />
+                <e p="SceneUIController.cs" t="Include" />
+                <e p="SkillAreaController.cs" t="Include" />
+                <e p="UIController.cs" t="Include" />
               </e>
             </e>
           </e>

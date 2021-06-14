@@ -18,10 +18,10 @@ namespace Managers
                 return _instance;
             }
         }
-        private Dictionary<long, PlayerAttribute> _characters;
+        private Dictionary<long, PlayerData> _characters;
         public TheCharacter()
         {
-            _characters = new Dictionary<long, PlayerAttribute>();
+            _characters = new Dictionary<long, PlayerData>();
             LoadCharacterFromDisk();
         }
         
@@ -32,32 +32,32 @@ namespace Managers
         {
             GameObject model = PrefabsManager.Instance.Character;
 
-            PlayerAttribute attribute=new PlayerAttribute(model);
-            attribute.Uid = UidTool.Instance.RegistUid();
-            _characters.Add(attribute.Uid,attribute);
-            attribute.RotateSpeed = 3600f;
-            attribute.AttackRange = 1.2f;
-            attribute.NormalAttackAnimSpeed = 1;
-            attribute.MoveAcceleration = 12;
-            attribute.WeaponType = TypedWeapon.Unarmed;
-            attribute.Health = new Health(4335);
-            attribute.AttackDamage = new AttackDamage(234);
-            attribute.AttackSpeed = new AttackSpeed(5);
-            model.GetComponentInChildren<AnimEventController>()._player = attribute;
-            GameObject o=CreateCharacterGameObject(attribute, true);
+            PlayerData data=new PlayerData(model);
+            data.Uid = UidTool.Instance.RegistUid();
+            _characters.Add(data.Uid,data);
+            data.RotateSpeed = 3600f;
+            data.AttackRange = 1.2f;
+            data.NormalAttackAnimSpeed = 1;
+            data.MoveAcceleration = 12;
+            data.WeaponType = TypedWeapon.Unarmed;
+            data.Health = new AHealth(4335);
+            data.AttackDamage = new AAttackDamage(234);
+            data.AttackSpeed = new AAttackSpeed(5);
+            model.GetComponentInChildren<AnimEventController>()._player = data;
+            GameObject o=CreateCharacterGameObject(data, true);
             InputController controller =o.AddComponent<InputController>();
-            controller._attribute = attribute;
+            controller.data = data;
         }
 
-        private GameObject CreateCharacterGameObject(PlayerAttribute attribute,bool hasArea)
+        private GameObject CreateCharacterGameObject(PlayerData data,bool hasArea)
         {
             GameObject o = new GameObject
             {
-                name = "Character_" + attribute.Uid,
+                name = "Character_" + data.Uid,
                 transform = { parent = GameObjectManager.Instance.CharactersParent.transform}
             };
-            attribute.Transform.parent = o.transform;
-            attribute.Transform.name = o.name + "_Model";
+            data.Transform.parent = o.transform;
+            data.Transform.name = o.name + "_Model";
             // 是否含有范围指示器
             if (hasArea)
             {
@@ -65,7 +65,7 @@ namespace Managers
                 skillArea.name = o.name + "_SkillArea";
                 skillArea.transform.parent = o.transform;
             
-                attribute.AttackRangeUI = skillArea.transform;
+                data.AttackRangeUI = skillArea.transform;
             }
             return o;
         }
