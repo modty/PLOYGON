@@ -24,7 +24,14 @@ namespace Managers
         [SerializeField] private GameObject _headBar;
         [SerializeField] private Transform _effectParent;
         [SerializeField] private GameObject _skillArea;
-        
+        [SerializeField] private GameObject arrow;
+
+        public GameObject Arrow
+        {
+            get => Instantiate(arrow);
+            set => arrow = value;
+        }
+
         public GameObject HeadBar {
             get => Instantiate(_headBar);
         }

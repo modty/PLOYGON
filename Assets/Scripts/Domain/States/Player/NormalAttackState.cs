@@ -48,13 +48,9 @@ namespace States
         /// <summary>
         /// 动画前摇
         /// </summary>
-        private float normalAttack_Anim_preTimer_base;
-        private float normalAttack_Anim_preTimer;
-        /// <summary>
-        /// 动画后摇
-        /// </summary>
-        private float normalAttack_Anim_aftTimer_base;
-        private float normalAttack_Anim_aftTimer;
+        private float normalAttack_Anim_timer;
+        private float normalAttack_Anim_timer_max;
+
         /// <summary>
         /// 攻击冷却
         /// </summary>
@@ -81,18 +77,15 @@ namespace States
             _movementState = playerData.MovementState;
             RegistInputActions();
             // 设置攻击前摇为0.7f，攻击后摇为0.7f，每次攻击需要1.4f，攻速度0.71，即每秒攻击0.71次，
-            normalAttack_Anim_aftTimer_base = 0.58f;
-            normalAttack_Anim_aftTimer_base = normalAttack_Anim_aftTimer;
+            normalAttack_Anim_timer = .8f;
+            normalAttack_Anim_timer_max = .8f;
 
-            normalAttack_Anim_preTimer_base = 0.42f;
-            normalAttack_Anim_preTimer = normalAttack_Anim_preTimer_base;
 
             normalAttack_cooling = 0;
-            normalAttack_ratio = normalAttack_Anim_preTimer;
+            normalAttack_ratio = 1;
             isNormalAttackCoolDown = true;
-            _player.AttackSpeed.UpdateCurrentValue(2f);
+            _player.NormalAttackAnimSpeed=1f;
             InitMessageObjs();
-
         }
 
 
@@ -112,6 +105,7 @@ namespace States
             _mAnimNormalAttack = new MAnimNormalAttack(this);
         }
 
+        private float tempTimer;
         protected override void DoUpdate()
         {
             timer +=Time.time -timeTemp;
@@ -122,8 +116,10 @@ namespace States
             {
                 if (_player.IsMoving)
                 {
+                    
                     // 确保帧同步
                     _messenger.Publish(TypedInputActions.StopMove.ToString(),_mMovement);
+
                 }
                 switch (attackState)
                 {
@@ -131,38 +127,32 @@ namespace States
                         StartAction();
                         break;
                     case 1:
+                        //Debug.Log(Time.time-tempTimer);
                         NormalAttack(1);
+                        //tempTimer = Time.time;
                         timer = 0;
                         attackState = 2;
                         break;
                     case 2:
-                        if (timer - normalAttack_Anim_preTimer > -.005f)
+                        if (timer - normalAttack_Anim_timer > -.005f)
                         {
-                            if (_player.Target != null)
-                            {
-                                PlayerData target=_player.Target as PlayerData;
-                                target?.Health.UpdateCurrentValue(-(int)_player.AttackDamage.CurrentValue());
-                            }
+                            _mAnimNormalAttack.Stop = true;
+                            _messenger.Publish(TypedInputActions.AnimNormalAttackStop.ToString(),_mAnimNormalAttack);
                             timer = 0;
                             attackState = 3;
+                            if (normalAttack_cooling <= .005f)
+                            {
+                                attackState = 1;
+                                DoUpdate();
+                            }
                         }
                         break;
                     case 3:
-                        if (timer - normalAttack_Anim_aftTimer > -.005f)
-                        {
-                            timer = 0;
-                            attackState = 4;
-                            if (normalAttack_cooling < .005f)
-                            {
-                                attackState = 1;
-                            }
-                        }
-                        break;
-                    case 4:
                         if (timer - normalAttack_cooling > -.005f)
                         {
                             timer = 0;
                             attackState = 1;
+                            DoUpdate();
                         }
                         break;
                 }
@@ -181,8 +171,9 @@ namespace States
         /// 更新攻击速度，更新时必须保证触发攻击占整个普攻过程的比例不变，最大攻速设定为5，避免动画和实际数据的不匹配。
         /// </summary>
         /// <param name="at">每秒攻击次数</param>
-        public void UpdateAttackSpeed(float at)
+        public void UpdateAttackSpeed()
         {
+            float at = _player.NormalAttackAnimSpeed;
             float frequency=1/at;
             // 需要加速，普攻冷却设置为0
             if (at > 1)
@@ -195,13 +186,11 @@ namespace States
             {
                 // 动画不变
                 _player.NormalAttackAnimSpeed = 1;
-                float frequency_static = frequency-1;
-                frequency = 1;
+                float frequency_static = frequency-normalAttack_Anim_timer_max;
+                frequency = normalAttack_Anim_timer_max;
                 normalAttack_cooling = frequency_static;
             }
-
-            normalAttack_Anim_preTimer = frequency * normalAttack_ratio;
-            normalAttack_Anim_aftTimer = frequency-normalAttack_Anim_preTimer;
+            normalAttack_Anim_timer = frequency;
         }
 
         private bool right;
@@ -216,7 +205,13 @@ namespace States
             {
                 action = 5;
             }
+
+            if (action == (int) TypedWeapon.TwoHandBow)
+            {
+                SoundManager.Instance.PlayPullingStringBack();
+            }
             right = !right;
+            _mAnimNormalAttack.Stop = false;
             _mAnimNormalAttack.WeaponType = (int)_player.WeaponType;
             _mAnimNormalAttack.Action = action;
             _messenger.Publish(TypedInputActions.AnimNormalAttack.ToString(),_mAnimNormalAttack);
@@ -225,6 +220,7 @@ namespace States
         #region 订阅引用
 
         private ISubscription<MMouseTarget> onMouse1Walkable;
+        private ISubscription<MAttributeChange> onAttackSpeedChange;
         private ISubscription<MMouseTarget> onMouse1Target;
         private ISubscription<MMouseTarget> onMouse0Target;
         private ISubscription<MMouseTarget> onMouse0Walkable;
@@ -256,12 +252,11 @@ namespace States
                     {
                         case 0:
                         case 1:
-                        case 2:
                             attackState = 1;
                             break;
-                        case 3:
+                        case 2:
                             break;
-                        case 4:
+                        case 3:
                             break;
                     }
 
@@ -314,10 +309,16 @@ namespace States
                 (message) =>
                 {
                     StopAction();
+                    _mAnimNormalAttack.Stop = true;
+                    _messenger.Publish(TypedInputActions.AnimNormalAttackStop.ToString(),_mAnimNormalAttack);
                     _target = null;
                 });
-            
-            EventCenter.AddListener<float>(Constants_Event.AttributeChange+":"+_player.Uid+":"+TypedAttribute.AttackSpeed,UpdateAttackSpeed);
+            onAttackSpeedChange = _messenger.Subscribe<MAttributeChange>(
+                TypedAttribute.AttackSpeed.ToString(),
+                (message) =>
+                {
+                    UpdateAttackSpeed();
+                });
         }
 
 

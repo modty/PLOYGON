@@ -4,7 +4,7 @@ using GameData = Data.GameData;
 
 namespace Scripts
 {
-    public class AttributeFactory
+    public class DataFactory
     {
         public  static GameData CreateAssetMenuAttribute(TypedGameData gameData,GameObject gameObject)
         {

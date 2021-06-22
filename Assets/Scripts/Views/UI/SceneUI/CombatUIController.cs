@@ -13,17 +13,26 @@ namespace Managers
     /// <summary>
     /// 管理场景UI：战斗文本，如伤害数值等
     /// </summary>
-    public class CombatTextManager : MonoBehaviour
+    public class CombatUIController : MonoBehaviour
     {
         [SerializeField]
         private GameObject combatTextPrefab;
-        
+
+        private static CombatUIController _instance;
+
+        public static CombatUIController Instance
+        {
+            get => _instance;
+        }
+
         private Messenger messenger;
 
         private void Awake()
         {
+            _instance = this;
             messenger=Messenger.Default;
             RegistSubscribes();
+            enabled = false;
         }
 
 

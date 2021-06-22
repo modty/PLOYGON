@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using ActionPool;
 using Commons;
+using Commons.Constants;
 using Data;
+using Domain.Contexts;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
 using Scripts;
@@ -12,41 +14,49 @@ using AnimationState = States.AnimationState;
 
 public class InputController : MonoBehaviour
 {
-    /// <summary>
-    /// 临时链接
-    /// </summary>
-    public GameObject modelObject;
 
-    public PlayerData data;
-    private MovementState _movementState;
-    private AnimationState _animationState;
-    private SceneUIState _sceneUIState;
-    private NormalAttackState _normalAttackState;
-    private SkillAreaState _skillAreaState;
-    public float moveSpeed=5f;
-    public AnimEventController eventController;
+    private static InputController _instance;
+
+    public static InputController Instance
+    {
+        get => _instance;
+    }
+
+    private CharacterContext _playerContext;
+
+    public CharacterContext PlayerContext
+    {
+        get => _playerContext;
+        set
+        {
+            _playerContext = value;
+            _playerData = _playerContext.Get<PlayerData>(Constants_Context.PlayerData);
+        }
+    }
+
+    private PlayerData _playerData;
+
+
     private MouseController _mouse;
     private IDisposable subscription;
     private IDisposable chatroomSubscription;
     private Messenger messenger;
+
+    
     private void Awake()
     {
+        _instance = this;
         messenger = Messenger.Default;
+        _mouse=MouseController.Instance;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _movementState = new MovementState(data);
-        _animationState = new AnimationState(data);
-        _sceneUIState = new SceneUIState();
-        _normalAttackState = new NormalAttackState(data);
-        _skillAreaState = new SkillAreaState(data);
-        _mouse=MouseController.Get();
-        InitMessageObjs();
-        _gameData.GameData = data;
-        messenger.Publish(TypedUIElements.PlayerMes.ToString(),_gameData);
 
+        _mouse=MouseController.Instance;
+        InitMessageObjs();
+        messenger.Publish(TypedUIElements.PlayerMes.ToString(),_gameData);
     }
     #region 消息通信
 
@@ -61,23 +71,21 @@ public class InputController : MonoBehaviour
         _mInput = new MInput(this);
         _mMouseTarget = new MMouseTarget(this);
         _mMovement = new MMovement(this);
-        _gameData = new MGameData(this,null);
+        _gameData = new MGameData(this,_playerData);
     }
     // Update is called once per frame
     void Update()
     {
-        data.MoveSpeed = moveSpeed;
-        _animationState.Update();
-        _skillAreaState.Update();
+        if(_playerData==null) return;
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            data.Health.UpdateCurrentValue(-1000);
+            _playerData.Health.UpdateCurrentValue(-1000);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            data.Health.UpdateCurrentValue(1000);
+            _playerData.Health.UpdateCurrentValue(1000);
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -91,7 +99,7 @@ public class InputController : MonoBehaviour
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
                 {
-                    data.Target = gameData;
+                    _playerData.Target = gameData;
                 }
                 // 鼠标点击到（可移动位置）
                 if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
@@ -122,7 +130,7 @@ public class InputController : MonoBehaviour
                 // 地面暂时不加入点击选择
                 if (!(gameData is FloorAttribute))
                 {
-                    data.Target = gameData;
+                    _playerData.Target = gameData;
                 }
                 // 鼠标点击到（可移动位置）
                 if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
@@ -131,7 +139,10 @@ public class InputController : MonoBehaviour
                 }
                 else
                 {
-                    messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mMouseTarget);
+                    if (gameData.Uid != _playerData.Uid)
+                    {
+                        messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mMouseTarget);
+                    }
                 }
                 messenger.Publish(TypedInputActions.ForceAttack.ToString(), _mInput);
             }
@@ -143,12 +154,17 @@ public class InputController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),1);
+            PlayerData playerData = _gameData.GameData as PlayerData;
+            playerData.AttackRange=1.2f;
+            playerData.WeaponType = TypedWeapon.Unarmed;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),2);
+            PlayerData playerData = _gameData.GameData as PlayerData;
+            playerData.AttackRange=4.5f;
+            playerData.WeaponType = TypedWeapon.TwoHandBow;
         }
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),3);
@@ -166,11 +182,5 @@ public class InputController : MonoBehaviour
             EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),6);
         }
         
-    }
-
-    private void FixedUpdate()
-    {
-        _normalAttackState.Update();
-        _movementState.Update();
     }
 }

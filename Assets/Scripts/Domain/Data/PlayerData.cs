@@ -1,4 +1,5 @@
-﻿using Commons;
+﻿using System;
+using Commons;
 using Data;
 using States;
 using UnityEngine;
@@ -70,6 +71,15 @@ namespace Scripts
         public float Height
         {
             get => _collider.height;
+        }
+
+        public Vector3 TargetCenter
+        {
+            get
+            {
+                var position = Transform.position;
+                return new Vector3(position.x, Height/2, position.z);
+            }
         }
         public float MoveAcceleration
         {
@@ -265,6 +275,21 @@ namespace Scripts
             }
         }
 
+        private Transform _leftHand;
+        private Transform _rightHand;
+
+        public Transform LeftHand
+        {
+            get => _leftHand;
+            set => _leftHand = value;
+        }
+
+        public Transform RightHand
+        {
+            get => _rightHand;
+            set => _rightHand = value;
+        }
+
         public AAttackDamage AttackDamage
         {
             get => _attackDamage;
@@ -396,7 +421,15 @@ namespace Scripts
         public TypedWeapon WeaponType
         {
             get => _weaponType;
-            set => _weaponType = value;
+            set
+            {
+                if (!_weaponType.Equals(value))
+                {
+                    _weaponType = value;
+                    _animState.WeaponType = (int)value;              
+                    _messenger.Publish(Constants_Event.PlayerWeaponChange,_animState);
+                }
+            }
         }
         #endregion
         
@@ -415,7 +448,16 @@ namespace Scripts
         public float NormalAttackAnimSpeed
         {
             get => _normalAttackAnimSpeed;
-            set => _normalAttackAnimSpeed = value;
+            set
+            {
+
+                if (Math.Abs(value - _normalAttackAnimSpeed) > .005f)
+                {
+                    _mAttributeChange.TypedAttribute = TypedAttribute.AttackSpeed;
+                    _normalAttackAnimSpeed = value;
+                    _messenger.Publish(TypedAttribute.AttackSpeed.ToString(),_mAttributeChange);
+                }
+            }
         }
 
         #endregion

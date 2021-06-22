@@ -21,6 +21,7 @@ public class UIScript : MonoBehaviour
     [SerializeField]private GameObject selectPlane;
     [SerializeField]private Camera mainCam;
     [SerializeField] private GameObject mesPlane;
+    private GameData _gameData;
     private Messenger _messenger;
     
     public GameObject MesPlane
@@ -96,8 +97,9 @@ public class UIScript : MonoBehaviour
     {
         OnKeyDown_Mouse0_Target=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),(gamedata) =>
         {
-            Debug.Log("显示");
+            _gameData = gamedata.GameData;
             targetFrame.SetActive(true); 
+
         });
         
         OnKeyDown_Mouse0_Walkable=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), (gamedata) =>

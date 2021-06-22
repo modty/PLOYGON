@@ -1,4 +1,5 @@
 ﻿using ActionPool;
+using Commons;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
 using Scripts;
@@ -78,6 +79,8 @@ namespace States
         #region 订阅引用
 
         private ISubscription<MAnimNormalAttack> _subscriptionAnimNormalAttack;
+        private ISubscription<MAnimNormalAttack> _subscriptionOnWeaponChange;
+        private ISubscription<MAnimNormalAttack> _subscriptionAnimNormalAttackStop;
         
 
         #endregion
@@ -88,8 +91,21 @@ namespace States
         {
             _subscriptionAnimNormalAttack=_messenger.Subscribe<MAnimNormalAttack>(TypedInputActions.AnimNormalAttack.ToString(), (message) =>
             {
+                _animator.SetBool(Constants_Anim.StopAction_bool,message.Stop);
                 NormalAttack(message.WeaponType,message.Action);
             });
+            _subscriptionAnimNormalAttackStop=_messenger.Subscribe<MAnimNormalAttack>(TypedInputActions.AnimNormalAttackStop.ToString(), (message) =>
+            {
+                _animator.SetBool(Constants_Anim.StopAction_bool,message.Stop);
+            });
+           
+            _subscriptionOnWeaponChange = _messenger.Subscribe<MAnimNormalAttack>(Constants_Event.PlayerWeaponChange,
+                (message) =>
+                {
+                    _animator.SetTrigger(Constants_Anim.InstantSwitchTrigger);
+                    _animator.SetInteger(Constants_Anim.Weapon_Int,message.WeaponType);
+                });
+
         }
 
         private void NormalAttack(int weapon,int action)

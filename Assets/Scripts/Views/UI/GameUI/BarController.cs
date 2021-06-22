@@ -56,7 +56,6 @@ namespace Scripts.Controller
         }
         public void SetCharacter(GameData gameData)
         {
-            Debug.Log("设置目标："+gameData.Uid);
             PlayerData characterData = gameData as PlayerData;
             if(characterData==null) return;
             _player = characterData;

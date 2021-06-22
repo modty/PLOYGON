@@ -59,6 +59,7 @@ namespace Scripts.Commons
         public static readonly int Revive1Trigger = Animator.StringToHash("Revive1Trigger");
         public static readonly int BlockBreakTrigger = Animator.StringToHash("BlockBreakTrigger");
         public static readonly int SwimTrigger = Animator.StringToHash("SwimTrigger");
+        public static readonly int StopAction_bool = Animator.StringToHash("StopAction");
         public static readonly int ReloadTrigger = Animator.StringToHash("ReloadTrigger");
         public static readonly int InstantSwitchTrigger = Animator.StringToHash("InstantSwitchTrigger");
         

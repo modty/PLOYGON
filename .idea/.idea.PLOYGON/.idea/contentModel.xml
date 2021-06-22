@@ -642,9 +642,13 @@
               <e p="IAttribute.cs" t="Include" />
             </e>
           </e>
+          <e p="Behaviour" t="Include">
+            <e p="NormalAttackBehaviour.cs" t="Include" />
+          </e>
           <e p="Commons" t="Include">
             <e p="Constants" t="Include">
               <e p="Constants_Anim.cs" t="Include" />
+              <e p="Constants_Context.cs" t="Include" />
               <e p="Constants_Event.cs" t="Include" />
             </e>
             <e p="Enums" t="Include">
@@ -659,19 +663,46 @@
             </e>
           </e>
           <e p="Domain" t="Include">
+            <e p="Contexts" t="Include">
+              <e p="CharacterContext.cs" t="Include" />
+            </e>
             <e p="Data" t="Include">
               <e p="DataFactory.cs" t="Include" />
               <e p="FloorData.cs" t="Include" />
               <e p="GameData.cs" t="Include" />
               <e p="PlayerData.cs" t="Include" />
             </e>
+            <e p="Item" t="Include">
+              <e p="Weapon" t="Include">
+                <e p="TwoHandBow.cs" t="Include" />
+              </e>
+            </e>
             <e p="MessageEntities" t="Include">
               <e p="MAnimNormalAttack.cs" t="Include" />
+              <e p="MAttributeChange.cs" t="Include" />
               <e p="MCombatTextCreate.cs" t="Include" />
               <e p="MGameData.cs" t="Include" />
               <e p="MInput.cs" t="Include" />
               <e p="MMouseTarget.cs" t="Include" />
               <e p="MMovement.cs" t="Include" />
+            </e>
+            <e p="Params" t="Include">
+              <e p="CharacterParams.cs" t="Include" />
+            </e>
+            <e p="Services" t="Include">
+              <e p="Bundle" t="Include">
+                <e p="PlayerActionBundle.cs" t="Include" />
+              </e>
+              <e p="IService" t="Include">
+                <e p="IBaseService.cs" t="Include" />
+              </e>
+              <e p="Service" t="Include">
+                <e p="BaseService.cs" t="Include" />
+                <e p="CharacterService.cs" t="Include" />
+                <e p="CombatUIService.cs" t="Include" />
+                <e p="InputService.cs" t="Include" />
+                <e p="MouseService.cs" t="Include" />
+              </e>
             </e>
             <e p="States" t="Include">
               <e p="Player" t="Include">
@@ -685,11 +716,7 @@
             </e>
           </e>
           <e p="Infrastructure" t="Include">
-            <e p="Core" t="Include">
-              <e p="TheCharacter.cs" t="Include" />
-            </e>
             <e p="Managers" t="Include">
-              <e p="CombatTextManager.cs" t="Include" />
               <e p="GameManager.cs" t="Include" />
               <e p="GameObjectManager.cs" t="Include" />
               <e p="PrefabsManager.cs" t="Include" />
@@ -715,6 +742,12 @@
               <e p="AnimEventController.cs" t="Include" />
               <e p="DataController.cs" t="Include" />
             </e>
+            <e p="Item" t="Include">
+              <e p="Weapon" t="Include">
+                <e p="ArrowController.cs" t="Include" />
+                <e p="Projectile.cs" t="Include" />
+              </e>
+            </e>
             <e p="Player" t="Include">
               <e p="InputController.cs" t="Include" />
             </e>
@@ -728,6 +761,7 @@
               <e p="SceneUI" t="Include">
                 <e p="ClickArrowController.cs" t="Include" />
                 <e p="CombatTextController.cs" t="Include" />
+                <e p="CombatUIController.cs" t="Include" />
                 <e p="HeadBarController.cs" t="Include" />
                 <e p="SceneUIController.cs" t="Include" />
                 <e p="SkillAreaController.cs" t="Include" />

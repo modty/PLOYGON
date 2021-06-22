@@ -49,6 +49,7 @@
         /// 普通攻击
         /// </summary>
         AnimNormalAttack,
+        AnimNormalAttackStop,
         NormalAttack,
         
         /// <summary>

@@ -45,10 +45,6 @@ namespace Scripts
             {
                 _currentValue = _maxValue;
             }
-            if (value != 0)
-            {
-                EventCenter.Broadcast(Constants_Event.AttributeChange+":"+_gameData.Uid+":"+TypedAttribute.AttackSpeed,value);
-            }
         }
     }
 }

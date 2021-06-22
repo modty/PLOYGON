@@ -2,6 +2,7 @@
 using ActionPool;
 using Commons;
 using Domain.MessageEntities;
+using Domain.Services.IService;
 using Loxodon.Framework.Binding;
 using Loxodon.Framework.Contexts;
 using Loxodon.Framework.Localizations;
@@ -11,20 +12,6 @@ using GameData = Data.GameData;
 
 namespace Scripts
 {
-/// <summary>
-    /// 鼠标图片类型
-    /// </summary>
-    public enum CursorType
-    {
-        Normal=0, // 普通图标
-        InteractAlly=1, //友方互动
-        InteractEnemy=2, //敌方互动
-        AttackAlly=3, //攻击
-        AttackEnemy=4, //攻击
-        ExtraNormal=5, //攻击
-        ExtraAttack=6, //攻击
-    }
-
     /// <summary>
     /// 改变鼠标的贴图
     /// </summary>
@@ -40,6 +27,13 @@ namespace Scripts
         [SerializeField]private Texture2D extraNormal;
         [SerializeField]private Texture2D extraAttack;
         private static MouseController _instance;
+
+        public static MouseController Instance
+        {
+            get => _instance;
+            set => _instance = value;
+        }
+
         private TypedInteract _typedInteract;
         private GameData _gameData;
         private RaycastHit hitInfo;
@@ -62,6 +56,7 @@ namespace Scripts
         {
             _instance = this;
             _messenger=Messenger.Default;
+            enabled = false;
         }
 
         private void Start()
@@ -104,12 +99,6 @@ namespace Scripts
 
             _preFroceAttack = _forceAttack;
         }
-
-        public static MouseController Get()
-        {
-            return _instance;
-        }
-
         
         public void CursorChange(CursorType cursorType)
         {

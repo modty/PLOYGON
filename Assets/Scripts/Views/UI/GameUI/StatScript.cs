@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class StatScript : MonoBehaviour
 {
     private PlayerData _player;
-    private CombatTextManager _combatTextManager;
+    private CombatUIController _combatUIController;
     private Messenger _messenger;
     public PlayerData ControlledControlledChaState
     {

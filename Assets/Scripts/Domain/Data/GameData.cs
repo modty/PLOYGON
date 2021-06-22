@@ -3,6 +3,7 @@ using Commons;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
 using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
 
 namespace Data
 {
@@ -13,6 +14,8 @@ namespace Data
         public GameData()
         {
             _mGameData = new MGameData(this,null);
+            _animState = new MAnimNormalAttack(this);
+            _mAttributeChange=new MAttributeChange(this);
         }
 
         public long Uid
@@ -55,6 +58,8 @@ namespace Data
         #region 监听
 
         private MGameData _mGameData;
+        protected MAttributeChange _mAttributeChange;
+        protected MAnimNormalAttack _animState;
 
         #endregion
         private GameData _target;
@@ -64,11 +69,11 @@ namespace Data
             get => _target;
             set
             {
-                if (_target==null||!_target.Uid.Equals(Uid))
+                // 设置目标不能重复设置、不能以自己为目标
+                if (_target==null||_target.Uid!=value.Uid)
                 {
                     _mGameData.GameData = value;
                     _target = value;
-                    Debug.Log("目标："+value.Uid);
                     _messenger.Publish(TypedUIElements.PlayerTarget.ToString(),_mGameData);
                 }
             }

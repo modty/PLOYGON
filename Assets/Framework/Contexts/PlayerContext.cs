@@ -33,6 +33,7 @@ namespace Loxodon.Framework.Contexts
         public PlayerContext(string username) : this(username, null)
         {
             this.username = username;
+            Context.AddContext(username,this);
         }
 
         public PlayerContext(string username, IServiceContainer container) : base(container, GetApplicationContext())

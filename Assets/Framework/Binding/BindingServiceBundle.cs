@@ -22,6 +22,7 @@
  * SOFTWARE.
  */
 
+using System;
 using System.Reflection;
 using Loxodon.Framework.Services;
 using Loxodon.Framework.Binding.Reflection;

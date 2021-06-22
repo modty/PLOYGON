@@ -347,7 +347,7 @@ namespace States
                 move_dir_next.y = 0f;
                 pointDistance = move_dir_next.magnitude;
                 // 这两点之间的距离小于预测值
-                if ( pointDistance< predict_distance)
+                if ( pointDistance<= predict_distance)
                 {
                     voidPosition = auto_move_target_next;
                     path_index++;
