@@ -1,35 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-22 代码重构">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-30 更新药品使用">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackDamage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackSpeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Event.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/FloorData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/FloorData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/GameData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Bundle/PlayerActionBundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Bundle/PlayerActionBundle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IBaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IBaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUIService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUIService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/MouseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/MouseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Character/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Character/AnimEventController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +124,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\TY\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="" />
@@ -205,7 +181,8 @@
       <workItem from="1624716322262" duration="4449000" />
       <workItem from="1624800802643" duration="4908000" />
       <workItem from="1625029795806" duration="13908000" />
-      <workItem from="1625053256888" duration="41000" />
+      <workItem from="1625053256888" duration="656000" />
+      <workItem from="1625054103827" duration="1664000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -368,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624350054217</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="2021-06-30 更新药品使用">
+      <created>1625053536670</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1625053536670</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +396,8 @@
     <MESSAGE value="2021-06-14 重构目录结构" />
     <MESSAGE value="2021-06-16 角色代码生成" />
     <MESSAGE value="2021-06-22 代码重构" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-22 代码重构" />
+    <MESSAGE value="2021-06-30 更新药品使用" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-30 更新药品使用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -438,5 +423,9 @@
         <watch expression="Context.GetContext(&quot;Character:&quot;+data.Uid)" language="C#" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
