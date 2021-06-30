@@ -1,0 +1,99 @@
+{
+    "2000000000000": {
+        "uid": 2000000000000,
+        "name_cn": "慢性复合药水",
+        "name_us": "Apple",
+        "description_cn": "每天一苹果，医生远离我。",
+        "attributes": {
+            "ShengMing": {
+                "value": 100,
+                "valuePerTime": 10,
+                "times": 5,
+                "duration": 500
+            },
+            "JingLi": {
+                "value": 20,
+                "valuePerTime": 10,
+                "times": 5,
+                "duration": 500
+            }
+        },
+        "icon": "Textures/IStudio/Items/healthPotion.png",
+        "maxStackSize": 10,
+        "price": 1
+    },
+    "2001000000000": {
+        "uid": 2001000000000,
+        "name_cn": "快速符合药水",
+        "name_us": "Health Potion",
+        "description_cn": "缓缓流动的红色液体，能够恢复一定的生命值。",
+        "attributes": {
+            "ShengMing": {
+                "value": 100,
+                "times": 0
+            },
+            "JingLi": {
+                "value": 100,
+                "times": 0
+            }
+        },
+        "icon": "Textures/IStudio/Items/healthPotion.png",
+        "maxStackSize": 20,
+        "price": 10
+    },
+    "2001001000000": {
+        "uid": 2001001000000,
+        "name_cn": "复合药水",
+        "name_us": "Health Potion",
+        "description_cn": "缓缓流动的红色液体，能够恢复一定的生命值。",
+        "attributes": {
+            "ShengMing": {
+                "value": 100,
+                "times": 0
+            },
+            "JingLi": {
+                "value": 50,
+                "times": 0
+            },
+            "experience": {
+                "value": 100,
+                "times": 0
+            },
+            "attack": {
+                "value": 100,
+                "times": 0
+            },
+            "magic": {
+                "value": 100,
+                "times": 0
+            },
+            "armor": {
+                "value": 100,
+                "times": 0
+            },
+            "resistance": {
+                "value": 100,
+                "times": 0
+            },
+            "attackSpeed": {
+                "value": 100,
+                "times": 0
+            },
+            "cooling": {
+                "value": 100,
+                "times": 0
+            },
+            "crit": {
+                "value": 100,
+                "times": 0
+            },
+            "moveSpeed": {
+                "value": 100,
+                "times": 0
+            }
+        },
+        "icon": "Textures/IStudio/Items/healthPotion.png",
+        "maxStackSize": 20,
+        "price": 10
+    }
+}

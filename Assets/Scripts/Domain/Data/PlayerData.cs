@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using Attribute.Items;
 using Commons;
 using Data;
+using Items;
 using States;
 using UnityEngine;
 using TypedMovement = Commons.TypedMovement;
@@ -15,6 +18,8 @@ namespace Scripts
     /// </summary>
     public class PlayerData:GameData
     {
+        
+        
         #region Unity组件
         /// <summary>
         /// 角色RigidBody
@@ -263,17 +268,6 @@ namespace Scripts
         /// </summary>
         private ATenacity _tenacity;
 
-        private AHealth _health;
-
-        public AHealth Health
-        {
-            get => _health;
-            set
-            {
-                _health = value;
-                _health.GameData = this;
-            }
-        }
 
         private Transform _leftHand;
         private Transform _rightHand;
@@ -290,16 +284,7 @@ namespace Scripts
             set => _rightHand = value;
         }
 
-        public AAttackDamage AttackDamage
-        {
-            get => _attackDamage;
-            set
-            {
-                _attackDamage = value;
-                _attackDamage.GameData = this;
-            }
-        }
-
+       
         public AAbilityPower AbilityPower
         {
             get => _abilityPower;
@@ -323,17 +308,6 @@ namespace Scripts
             get => _criticalStrike;
             set => _criticalStrike = value;
         }
-
-        public AAttackSpeed AttackSpeed
-        {
-            get => _attackSpeed;
-            set
-            {
-                _attackSpeed = value;
-                _attackSpeed.GameData = this;
-            }
-        }
-
         public AONHitEffects ONHitEffects
         {
             get => _onHitEffects;
@@ -433,14 +407,6 @@ namespace Scripts
         }
         #endregion
         
-        private TypedCharacterState _state;
-        public TypedCharacterState State
-        {
-            get => _state;
-            set => _state = value;
-        }
-
-
         #region 动画控制相关
 
         private float _normalAttackAnimSpeed;
@@ -461,14 +427,46 @@ namespace Scripts
         }
 
         #endregion
-        #region Actions
-
+        
+        #region 相关逻辑状态
+        
+        private TypedCharacterState _state;
+        public TypedCharacterState State
+        {
+            get => _state;
+            set => _state = value;
+        }
         private MovementState _movementState;
 
         public MovementState MovementState
         {
             get => _movementState;
             set => _movementState = value;
+        }
+
+        #endregion
+
+        #region 角色物品（快捷栏、背包）
+        /// <summary>
+        /// 背包快捷栏装备情况。默认为容量为5，如果需要容量扩充，UI也需要相应改变。
+        /// 如果数组中的值为null，则代表当前位置没有装备背包。
+        /// </summary>
+        private ItemInGame[] bagBarShortCutItems;
+
+        public ItemInGame[] BagBarShortCutItems
+        {
+            get => bagBarShortCutItems;
+            set => bagBarShortCutItems = value;
+        }
+
+        /// <summary>
+        /// 当前打开的背包
+        /// </summary>
+        private int _bagOpenIndex;
+        public int BagOpenIndex
+        {
+            get => _bagOpenIndex;
+            set => _bagOpenIndex = value;
         }
 
         #endregion
@@ -479,7 +477,23 @@ namespace Scripts
             _animator = gameObject.GetComponent<Animator>();
             _collider = gameObject.GetComponent<CapsuleCollider>();
             CanMoved = false;
+            _attributes = new Dictionary<TypedAttribute, ABaseAttribute>();
         }
 
+
+        protected override bool CanUse()
+        {
+            return false;
+        }
+
+        protected override void DoUse()
+        {
+            
+        }
+
+        public override bool CanReceiveUse(DataBase iData)
+        {
+            return true;
+        }
     }
 }

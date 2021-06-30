@@ -1,21 +1,15 @@
 ﻿using Loxodon.Framework.Messaging;
+using Loxodon.Framework.Services;
 
 namespace Domain.Services.IService
 {
-    public class BaseService:IBaseService
+    public abstract class BaseService:AbstractServiceBundle
     {
         protected Messenger _messenger;
-        protected BaseService()
+        protected BaseService(IServiceContainer container):base(container)
         {
             _messenger=Messenger.Default;
         }
 
-        public void Start()
-        {
-        }
-
-        public void Stop()
-        {
-        }
     }
 }

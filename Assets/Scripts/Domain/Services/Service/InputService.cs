@@ -2,8 +2,10 @@
 using Commons;
 using Commons.Constants;
 using Domain.Contexts;
+using Domain.MessageEntities;
 using Loxodon.Framework.Contexts;
 using Loxodon.Framework.Messaging;
+using Loxodon.Framework.Services;
 using Scripts;
 using UnityEngine;
 
@@ -15,22 +17,38 @@ namespace Domain.Services.IService
     public class InputService:BaseService
     {
         InputController _inputController;
+
+        #region 订阅引用
+
+        private ISubscription<MGameData> OnControlledCharacter_Change;
+
+        #endregion
         /// <summary>
         /// 初始化获取引用，使其不生效
         /// </summary>
-        public InputService()
+        public InputService(IServiceContainer container):base(container)
         {
             _inputController = InputController.Instance;
+            RegistSubscibes();
         }
 
-        public new void Start()
+        private void RegistSubscibes()
+        {
+            OnControlledCharacter_Change=_messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (gameData) =>
+            {
+                SetControlledCharacter(gameData.GameData as PlayerData);
+            });
+        }
+        protected override void OnStart(IServiceContainer container)
         {
             _inputController.enabled = true;
+
         }
 
-        public new void Stop()
+        protected override void OnStop(IServiceContainer container)
         {
             _inputController.enabled = false;
+
         }
 
         /// <summary>
@@ -43,6 +61,10 @@ namespace Domain.Services.IService
             _inputController.PlayerContext = Context.GetContext<CharacterContext>("Character:"+uid);
             _messenger.Publish(TypedUIElements.PlayerMes.ToString(),_inputController.PlayerContext.GetContainer().Resolve<PlayerData>(Constants_Context.PlayerData));
         }
-        
+
+        private void SetControlledCharacter(PlayerData playerData)
+        {
+            _inputController.PlayerData = playerData;
+        }
     }
 }

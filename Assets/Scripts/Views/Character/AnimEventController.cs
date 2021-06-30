@@ -26,12 +26,10 @@ namespace Scripts
         private void Awake()
         {
             _messenger=Messenger.Default;
-            _mCombatTextCreate = new MCombatTextCreate(this);
 
         }
 
         private float timer=0;
-        private MCombatTextCreate _mCombatTextCreate;
 
         public void Shoot()
         {
@@ -50,8 +48,8 @@ namespace Scripts
                 projectile.dir = position1-position2;
             }
 
-            projectile.damage = (int) _player.AttackDamage.CurrentValue();
-            
+            projectile.damage = (int) _player.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
+
         }
         public void Hit()
         {
@@ -60,14 +58,8 @@ namespace Scripts
             Debug.Log(Time.time-timer);
             timer = Time.time;
             SoundManager.Instance.Play();
-            var position = _player.Target.Transform.position;
-            position.y = .4f;
-            target?.Health.UpdateCurrentValue(-(int)_player.AttackDamage.CurrentValue());
-            _mCombatTextCreate.Position = position;
-            _mCombatTextCreate.Text = _player.AttackDamage.CurrentValue().ToString();
-            _mCombatTextCreate.Type = SCTTYPE.DAMAGE;
-            _mCombatTextCreate.Direction = position.x > _player.Transform.position.x;
-            _messenger.Publish(Constants_Event.CombatTextCreate,_mCombatTextCreate);
+            int damage = (int) _player.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
+            target?.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(-damage);
         }
     }
 }

@@ -4,20 +4,8 @@ using Data;
 
 namespace Scripts
 {
-    public class AAttackSpeed
+    public class AAttackSpeed:ABaseAttribute
     {
-        private float _baseValue;
-        private float _currentValue;
-        private float _maxValue;
-
-        private GameData _gameData;
-
-        public GameData GameData
-        {
-            get => _gameData;
-            set => _gameData = value;
-        }
-
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +19,7 @@ namespace Scripts
         /// 更新当前生命值（受伤害）
         /// </summary>
         /// <param name="value"></param>
-        public void UpdateCurrentValue(float value)
+        public override void UpdateCurrentValue(float value)
         {
             if (value < -_currentValue)
             {
@@ -45,6 +33,20 @@ namespace Scripts
             {
                 _currentValue = _maxValue;
             }
+        }
+
+        public override void UpdateBaseValue(float value)
+        {
+            
+        }
+
+        public override void UpdateMaxValue(float value)
+        {
+        }
+
+        public  void UpdateCurrentValue()
+        {
+            
         }
     }
 }

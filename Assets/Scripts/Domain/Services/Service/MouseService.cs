@@ -1,4 +1,5 @@
-﻿using Scripts;
+﻿using Loxodon.Framework.Services;
+using Scripts;
 
 namespace Domain.Services.IService
 {
@@ -18,17 +19,20 @@ namespace Domain.Services.IService
     public class MouseService:BaseService
     {
         private MouseController _mouseController;        
-        public MouseService()
+        public MouseService(IServiceContainer container):base(container)
         {
             _mouseController = MouseController.Instance;
         }
 
-        public new void Start()
+
+        protected override void OnStart(IServiceContainer container)
         {
             _mouseController.enabled = true;
+
         }
 
-        public new void Stop()
+
+        protected override void OnStop(IServiceContainer container)
         {
             _mouseController.enabled = false;
         }

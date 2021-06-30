@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="">
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-22 代码重构">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Binding/BindingServiceBundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Binding/BindingServiceBundle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Framework/Contexts/PlayerContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Framework/Contexts/PlayerContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animator/AnimatorController/RPG-Character-Animation-Controller.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Scene/Characters/Chr_FantasyHero_Preset_5 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Scene/Characters/Chr_FantasyHero_Preset_5 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Test.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackDamage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackSpeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Anim.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Anim.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AHealth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Event.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Commons/Enums/TypedInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Commons/Enums/TypedInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/DataFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/DataFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/FloorData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/FloorData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/GameData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/PlayerData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Data/PlayerData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MAnimNormalAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MAnimNormalAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/AnimationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/AnimationState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/MovementState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/MovementState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/NormalAttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/NormalAttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Core/TheCharacter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/CombatTextManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Bundle/PlayerActionBundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Bundle/PlayerActionBundle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IBaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IBaseService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUIService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUIService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/MouseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/MouseService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/PrefabsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/PrefabsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/SoundManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Character/AnimEventController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Character/AnimEventController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Character/DataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Character/DataController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,68 +46,72 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/ec/dce32523/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/36/bceef55a/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/e2/c92c8016/Resources.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/15/48cd4905/EventArgs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/c8/0b20cb87/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/5a/ecfa6d17/ResourcesAPI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/49/3485df4b/ResourcesAPIInternal.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/84/4a5551e5/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10021401-6059-4824-8453-0038EFB79DD7/a8/c52fe704/INotifyPropertyChanged.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/a8/48d41abd/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/Item/Weapon/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/ATenacity.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controller/DataController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Data/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Data/DataFactory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Entity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Utils/Utils.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/Consumable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/Inventory/BagBarButtonScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/InventoryButtonScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/ShortCut/ShortcutsScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Utils/FileUtils.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Event.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Item/Weapon/TwoHandBow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/NormalAttackControll.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Enums/TypedInputActions.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MAnimNormalAttack.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Anim.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Behaviour/NormalAttackBehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/MessageEntities/MAttributeChange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/AnimationState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AAttackSpeed.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/PrefabsManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Data/GameData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/Equipment.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/EquipmentInGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/File/JSON/Items/Equipment.json" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/BagBarScript.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Data/PlayerData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Item/Weapon/ArrowController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Item/Weapon/Projectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/NormalAttackState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Character/AnimEventController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/SoundManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Framework/Binding/BindingServiceBundle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Service/PlayerActionBundle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/InputService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Bundle/PlayerActionBundle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IInputService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Core/TheMobobehaviour.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/MonobehaviourManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Commons/Constants/Constants_Context.cs" />
-      <option value="$PROJECT_DIR$/Assets/Framework/Contexts/Context.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Core/TheCharacter.cs" />
-      <option value="$PROJECT_DIR$/Assets/Framework/Contexts/PlayerContext.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Contexts/CharacterContext.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Character/DataController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/IService/IBaseService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/MouseController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/States/Player/MovementState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/MouseService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/CombatUIController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CombatUIService.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/InventoryScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/InventoryController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Inventery/BagBarController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/ShortCut/ShortcutsController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/ShortCut/ShortCutButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Plane/MesPlaneController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Plane/SelectPlaneController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseDataService.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/FileBase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Utils/ItemUtils/ItemUtil.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortCutButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortcutsController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/Useable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/GameUIService.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/File/JSON/Items/Consumable.json" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Data/AttributeChangeData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatUIController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AHealth.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Attribute/Character/AMagic.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Params/CharacterParams.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/File/JSON/Items/PlayerData.json" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ConsumableInGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ItemInGame.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -126,6 +127,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
@@ -191,7 +193,19 @@
       <workItem from="1624160292020" duration="4657000" />
       <workItem from="1624169283422" duration="1378000" />
       <workItem from="1624338782057" duration="2966000" />
-      <workItem from="1624348476394" duration="1538000" />
+      <workItem from="1624348476394" duration="1657000" />
+      <workItem from="1624363116454" duration="2809000" />
+      <workItem from="1624367924613" duration="1232000" />
+      <workItem from="1624412851765" duration="3788000" />
+      <workItem from="1624442870470" duration="4381000" />
+      <workItem from="1624453331987" duration="3396000" />
+      <workItem from="1624516985217" duration="2079000" />
+      <workItem from="1624528054564" duration="1570000" />
+      <workItem from="1624632014174" duration="2731000" />
+      <workItem from="1624716322262" duration="4449000" />
+      <workItem from="1624800802643" duration="4908000" />
+      <workItem from="1625029795806" duration="13908000" />
+      <workItem from="1625053256888" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -347,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623829277950</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="2021-06-22 代码重构">
+      <created>1624350054217</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1624350054217</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +411,8 @@
     <MESSAGE value="2021-06-13 优化事件传递" />
     <MESSAGE value="2021-06-14 重构目录结构" />
     <MESSAGE value="2021-06-16 角色代码生成" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-16 角色代码生成" />
+    <MESSAGE value="2021-06-22 代码重构" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-22 代码重构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

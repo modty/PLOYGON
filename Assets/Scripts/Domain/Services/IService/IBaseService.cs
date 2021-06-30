@@ -1,4 +1,6 @@
-﻿namespace Domain.Services.IService
+﻿using Loxodon.Framework.Services;
+
+namespace Domain.Services.IService
 {
     public interface IBaseService
     {

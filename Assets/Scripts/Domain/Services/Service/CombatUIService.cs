@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using Loxodon.Framework.Services;
+using Managers;
 using UnityEngine;
 
 namespace Domain.Services.IService
@@ -10,19 +11,21 @@ namespace Domain.Services.IService
     {
         private CombatUIController _combatUIController;
 
-        public CombatUIService()
+        public CombatUIService(IServiceContainer container):base(container)
         {
             _combatUIController = CombatUIController.Instance;
         }
 
-        public new void Start()
+        protected override void OnStart(IServiceContainer container)
         {
             _combatUIController.enabled = true;
+
         }
 
-        public new void Stop()
+        protected override void OnStop(IServiceContainer container)
         {
             _combatUIController.enabled = false;
+
         }
     }
 }

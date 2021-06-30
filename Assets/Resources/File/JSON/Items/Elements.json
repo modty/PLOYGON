@@ -1,0 +1,518 @@
+﻿[
+  {
+    "name": "氢",
+    "symbol": "H",
+    "atomicNumber": 1,
+    "electronics": [1]
+  },{
+    "name": "氦",
+    "symbol": "He",
+    "atomicNumber": 2,
+    "electronics": [2]
+  },{
+    "name": "锂",
+    "symbol": "Li",
+    "atomicNumber": 3,
+    "electronics": [2,1]
+  },{
+    "name": "铍",
+    "symbol": "Be",
+    "atomicNumber": 4,
+    "electronics": [2,2]
+  },{
+    "name": "硼",
+    "symbol": "B",
+    "atomicNumber": 5,
+    "electronics": [2,3]
+  },{
+    "name": "碳",
+    "symbol": "C",
+    "atomicNumber": 6,
+    "electronics": [2,4]
+  },{
+    "name": "氮",
+    "symbol": "N",
+    "atomicNumber": 7,
+    "electronics": [2,5]
+  },{
+    "name": "氧",
+    "symbol": "O",
+    "atomicNumber": 8,
+    "electronics": [2,6]
+  },{
+    "name": "氟",
+    "symbol": "F",
+    "atomicNumber": 9,
+    "electronics": [2,7]
+  },{
+    "name": "氖",
+    "symbol": "Ne",
+    "atomicNumber": 10,
+    "electronics": [2,8]
+  },{
+    "name": "钠",
+    "symbol": "Na",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镁",
+    "symbol": "Mg",
+    "atomicNumber": 12,
+    "electronics": [2,8,2]
+  },{
+    "name": "铝",
+    "symbol": "Al",
+    "atomicNumber": 13,
+    "electronics": [2,8,3]
+  },{
+    "name": "硅",
+    "symbol": "Si",
+    "atomicNumber": 14,
+    "electronics": [2,8,4]
+  },{
+    "name": "磷",
+    "symbol": "P",
+    "atomicNumber": 15,
+    "electronics": [2,8,5]
+  },{
+    "name": "硫",
+    "symbol": "S",
+    "atomicNumber": 16,
+    "electronics": [2,8,6]
+  },{
+    "name": "氯",
+    "symbol": "Cl",
+    "atomicNumber": 17,
+    "electronics": [2,8,7]
+  },{
+    "name": "氩",
+    "symbol": "Ar",
+    "atomicNumber": 18,
+    "electronics": [2,8,8]
+  },{
+    "name": "钾",
+    "symbol": "K",
+    "atomicNumber": 19,
+    "electronics": [2,8,8,1]
+  },{
+    "name": "钙 ",
+    "symbol": "Ca",
+    "atomicNumber": 20,
+    "electronics": [2,8,8,2]
+  },{
+    "name": "钪 ",
+    "symbol": "Sc",
+    "atomicNumber": 21,
+    "electronics": [2,8,8,3]
+  },{
+    "name": "钛 ",
+    "symbol": "Ti",
+    "atomicNumber": 22,
+    "electronics": [2,8,8,4]
+  },{
+    "name": "钒 ",
+    "symbol": "V",
+    "atomicNumber": 23,
+    "electronics": [2,8,8,5]
+  },{
+    "name": "铬 ",
+    "symbol": "Cr",
+    "atomicNumber": 24,
+    "electronics": [2,8,8,6]
+  },{
+    "name": "锰 ",
+    "symbol": "Mn",
+    "atomicNumber": 25,
+    "electronics": [2,8,8,7]
+  },{
+    "name": "铁 ",
+    "symbol": "Fe",
+    "atomicNumber": 26,
+    "electronics": [2,8,14,2]
+  },{
+    "name": "钴 ",
+    "symbol": "Co",
+    "atomicNumber": 27,
+    "electronics": [2,8,15,2]
+  },{
+    "name": "镍 ",
+    "symbol": "Ni",
+    "atomicNumber": 28,
+    "electronics": [2,8,8,10]
+  },{
+    "name": "铜 ",
+    "symbol": "Cu",
+    "atomicNumber": 29,
+    "electronics": [2,8,8,11]
+  },{
+    "name": "锌 ",
+    "symbol": "Zn",
+    "atomicNumber": 30,
+    "electronics": [2,8,8,12]
+  },{
+    "name": "镓 ",
+    "symbol": "Ga",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锗 ",
+    "symbol": "Ge",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "砷 ",
+    "symbol": "As",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "硒 ",
+    "symbol": "Se",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "溴 ",
+    "symbol": "Br",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "氪 ",
+    "symbol": "Kr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铷 ",
+    "symbol": "Rb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锶 ",
+    "symbol": "Sr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钇 ",
+    "symbol": "Y",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锆 ",
+    "symbol": "Zr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铌 ",
+    "symbol": "Nb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钼 ",
+    "symbol": "Mo",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锝 ",
+    "symbol": "Tc",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钌 ",
+    "symbol": "Ru",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铑 ",
+    "symbol": "Rh",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钯 ",
+    "symbol": "Pd",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "银 ",
+    "symbol": "Ag",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镉 ",
+    "symbol": "Cd",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铟",
+    "symbol": "In",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锡 ",
+    "symbol": "Sn",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锑 ",
+    "symbol": "Sb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "碲 ",
+    "symbol": "Te",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "碘 ",
+    "symbol": "I",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "氙 ",
+    "symbol": "Xe",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铯 ",
+    "symbol": "Cs",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钡 ",
+    "symbol": "Ba",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镧 ",
+    "symbol": "La",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铈 ",
+    "symbol": "Ce",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镨 ",
+    "symbol": "Pr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钕 ",
+    "symbol": "Nd",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钷 ",
+    "symbol": "Pm",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钐 ",
+    "symbol": "Sm",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铕 ",
+    "symbol": "Eu",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钆 ",
+    "symbol": "Gd",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铽 ",
+    "symbol": "Tb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镝 ",
+    "symbol": "Dy",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钬 ",
+    "symbol": "Ho",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铒 ",
+    "symbol": "Er",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铥 ",
+    "symbol": "Tm",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镱 ",
+    "symbol": "Yb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镥 ",
+    "symbol": "Lu",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铪",
+    "symbol": "Hf",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钽 ",
+    "symbol": "Ta",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钨 ",
+    "symbol": "W",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铼 ",
+    "symbol": "Re",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锇 ",
+    "symbol": "Os",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铱 ",
+    "symbol": "Ir",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铂 ",
+    "symbol": "Pt",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "金 ",
+    "symbol": "Au",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "汞 ",
+    "symbol": "Hg",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铊 ",
+    "symbol": "Tl",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铅 ",
+    "symbol": "Pb",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铋 ",
+    "symbol": "Bi",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钋 ",
+    "symbol": "Po",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "砹 ",
+    "symbol": "At",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "氡 ",
+    "symbol": "Rn",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钫 ",
+    "symbol": "Fr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镭 ",
+    "symbol": "Na",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锕 ",
+    "symbol": "Ac",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钍 ",
+    "symbol": "Th",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镤 ",
+    "symbol": "Pa",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铀 ",
+    "symbol": "U",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镎 ",
+    "symbol": "Np",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钚 ",
+    "symbol": "Pu",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镅 ",
+    "symbol": "Am",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锔 ",
+    "symbol": "Cm",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锫 ",
+    "symbol": "Bk",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锏 ",
+    "symbol": "Cf",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锿 ",
+    "symbol": "Es",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "镄 ",
+    "symbol": "Fm",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "钔 ",
+    "symbol": "Md",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "锘 ",
+    "symbol": "No",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  },{
+    "name": "铹 ",
+    "symbol": "Lr",
+    "atomicNumber": 11,
+    "electronics": [2,8,1]
+  }
+]

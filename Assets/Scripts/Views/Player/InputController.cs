@@ -5,6 +5,7 @@ using Commons;
 using Commons.Constants;
 using Data;
 using Domain.Contexts;
+using Domain.Data;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
 using Scripts;
@@ -36,6 +37,11 @@ public class InputController : MonoBehaviour
 
     private PlayerData _playerData;
 
+    public PlayerData PlayerData
+    {
+        get => _playerData;
+        set => _playerData = value;
+    }
 
     private MouseController _mouse;
     private IDisposable subscription;
@@ -47,17 +53,14 @@ public class InputController : MonoBehaviour
     {
         _instance = this;
         messenger = Messenger.Default;
-        _mouse=MouseController.Instance;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        _mouse=MouseController.Instance;
         InitMessageObjs();
-        messenger.Publish(TypedUIElements.PlayerMes.ToString(),_gameData);
     }
+
+    private void Start()
+    {
+        _mouse=MouseController.Instance;
+    }
+
     #region 消息通信
 
     private MInput _mInput;
@@ -65,7 +68,7 @@ public class InputController : MonoBehaviour
     private MMovement _mMovement;
     private MGameData _gameData;
     #endregion
-    
+
     private void InitMessageObjs()
     {
         _mInput = new MInput(this);
@@ -77,15 +80,14 @@ public class InputController : MonoBehaviour
     void Update()
     {
         if(_playerData==null) return;
-
         if (Input.GetKeyDown(KeyCode.D))
         {
-            _playerData.Health.UpdateCurrentValue(-1000);
+            _playerData.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(-1000);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _playerData.Health.UpdateCurrentValue(1000);
+            _playerData.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(1000);
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -179,7 +181,11 @@ public class InputController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),6);
+            AttributeChangeData attributeChangeData = new AttributeChangeData();
+            attributeChangeData.Target = _playerData;
+            attributeChangeData.TypedAttributeChange = TypedAttributeChange.Instant;
+            attributeChangeData.AddAttribute(new AttributeChangeEntity(TypedAttribute.Health,100,0,0,0));
+            attributeChangeData.Use();
         }
         
     }

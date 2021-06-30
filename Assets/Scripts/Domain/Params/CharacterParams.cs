@@ -34,6 +34,14 @@ namespace UnityTemplateProjects.Domain.Params
         }
 
         private int _health;
+        private int _mana;
+
+        public int Mana
+        {
+            get => _mana;
+            set => _mana = value;
+        }
+
         private int _attackDamage;
         private float _attackSpeed;
 

@@ -41,7 +41,7 @@ namespace Scripts.Controller
             switch (uiElements)
             {
                 case TypedUIElements.PlayerMes:
-                    onBarGameDataChange=_messenger.Subscribe<MGameData>(TypedUIElements.PlayerMes.ToString(), (message)=>
+                    onBarGameDataChange=_messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (message)=>
                     {
                         SetCharacter(message.GameData);
                     });
@@ -63,7 +63,7 @@ namespace Scripts.Controller
             {
                 case TypedAttribute.Health:
                     EventCenter.AddListener(Constants_Event.AttributeChange+":"+_player.Uid+":"+typedAttribute,UpdateBar);
-                    UpdateBar(_player.Health);
+                    UpdateBar(_player.GetAttribute<AHealth>(TypedAttribute.Health));
                     break;
                 case TypedAttribute.Mana:
                     break;
@@ -73,26 +73,26 @@ namespace Scripts.Controller
         public void UpdateBar()
         {
             if(_player==null) return;
-            IAttribute ia = null;
+            ABaseAttribute ia = null;
             switch (typedAttribute)
             {
                 case TypedAttribute.Health:
-                    ia = _player.Health;
+                    ia = _player.GetAttribute<AHealth>(TypedAttribute.Health);
                     break;
                 case TypedAttribute.Mana:
                     break;
             }
             if(ia==null) return;
-            float fillAmount = ia.CurrentValue() / ia.MaxValue();
-            text.text = (int)ia.CurrentValue()+"/"+(int)ia.MaxValue();
+            float fillAmount = ia.CurrentValue / ia.MaxValue;
+            text.text = (int)ia.CurrentValue+"/"+(int)ia.MaxValue;
             bar.fillAmount = fillAmount;
         }
-        public void UpdateBar(IAttribute ia)
+        public void UpdateBar(ABaseAttribute ia)
         {
             if(_player==null||ia==null) return;
           
-            float fillAmount = ia.CurrentValue() / ia.MaxValue();
-            text.text = (int)ia.CurrentValue()+"/"+(int)ia.MaxValue();
+            float fillAmount = ia.CurrentValue / ia.MaxValue;
+            text.text = (int)ia.CurrentValue+"/"+(int)ia.MaxValue;
             bar.fillAmount = fillAmount;
         }
     }

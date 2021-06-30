@@ -1,21 +1,26 @@
-﻿using ActionPool;
+﻿using System.Collections.Generic;
+using ActionPool;
+using Attribute.Items;
 using Commons;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
+using NUnit.Framework;
+using Scripts;
 using UnityEngine;
 using Vector3 = System.Numerics.Vector3;
 
 namespace Data
 {
-    public class GameData
+    public abstract class GameData:DataBase
     {
         private long _uid;
-
+        protected Dictionary<TypedAttribute, ABaseAttribute> _attributes;
         public GameData()
         {
             _mGameData = new MGameData(this,null);
             _animState = new MAnimNormalAttack(this);
             _mAttributeChange=new MAttributeChange(this);
+            _attributes = new Dictionary<TypedAttribute, ABaseAttribute>();
         }
 
         public long Uid
@@ -78,5 +83,15 @@ namespace Data
                 }
             }
         }
+        public void AddAttribute(TypedAttribute typedAttribute,ABaseAttribute attribute)
+        {
+            attribute.GameData = this;
+            _attributes.Add(typedAttribute,attribute);
+        }
+
+        public T GetAttribute<T>(TypedAttribute typedAttribute) where T : class
+        {
+            return _attributes[typedAttribute] as T;
+        } 
     }
 }

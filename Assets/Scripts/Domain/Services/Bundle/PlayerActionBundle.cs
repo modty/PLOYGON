@@ -10,7 +10,6 @@ namespace Domain.Service
     {
         public PlayerActionBundle(IServiceContainer container) : base(container)
         {
-            
         }
 
         protected override void OnStart(IServiceContainer container)

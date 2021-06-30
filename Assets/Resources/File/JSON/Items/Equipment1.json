@@ -1,0 +1,72 @@
+﻿{
+  "0":{
+    "id": 0,
+    "prefab": "2Hand-Axe",
+    "name": "双手斧"
+  },
+  "1":{
+  "id": 1,
+  "prefab": "2Hand-Bow",
+  "name": "弩"
+  },
+  "2":{
+  "id": 2,
+  "prefab": "2Hand-Crossbow",
+    "name": "弓箭"
+  },
+  "3":{
+  "id": 3,
+  "prefab": "2Hand-Rifle",
+  "name": "步枪"
+  },
+  "4":{
+  "id": 4,
+  "prefab": "2Hand-Spear",
+  "name": "双手矛"
+  },
+  "5":{
+  "id": 5,
+  "prefab": "2Hand-Sword",
+  "name": "双手剑"
+  },
+  "6":{
+  "id": 6,
+  "prefab": "Dagger",
+  "name": "匕首"
+  },
+  "7":{
+  "id": 7,
+  "prefab": "Knife",
+  "name": "小刀"
+  },
+  "8":{
+  "id": 8,
+  "prefab": "Mace",
+  "name": "狼牙棒"
+  },
+  "9":{
+  "id": 9,
+  "prefab": "Pistol",
+  "name": "手枪"
+  },
+  "10":{
+  "id": 10,
+  "prefab": "Shield",
+  "name": "盾牌"
+  },
+  "11":{
+  "id": 11,
+  "prefab": "Spear",
+  "name": "单手矛"
+  },
+  "12":{
+  "id": 12,
+  "prefab": "Staff",
+  "name": "棍棒"
+  },
+  "13":{
+  "id": 13,
+  "prefab": "Sword",
+  "name": "单手剑"
+  }
+}

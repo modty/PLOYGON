@@ -1,41 +1,52 @@
-﻿using ActionPool;
+﻿using System;
+using ActionPool;
 using Commons;
 using Data;
+using Domain.MessageEntities;
+using Managers;
+using UnityEngine;
 
 namespace Scripts
 {
-    public class AHealth:IAttribute
+    public class AHealth:ABaseAttribute
     {
-        // 基础生命值
-        private int _baseValue;
-        // 最大生命值
-        private int _maxValue;
-        // 当前生命值
-        private int _currentValue;
-
-        private GameData _gameData;
-
-        public GameData GameData
+        private MCombatTextCreate _mCombatTextCreate;
+        public override void UpdateCurrentValue(float value)
         {
-            get => _gameData;
-            set => _gameData = value;
+            if (value < -_currentValue)
+            {
+                _currentValue = 0;
+            }
+            else if(_currentValue+value<=_maxValue)
+            {
+                _currentValue += value;
+            }
+            else
+            {
+                _currentValue = _maxValue;
+            }
+            if (value != 0)
+            {
+                EventCenter.Broadcast(Constants_Event.AttributeChange+":"+_gameData.Uid+":"+TypedAttribute.Health);
+                _mCombatTextCreate.Crit=false;
+                _mCombatTextCreate.Direction = (DateTime.Now.ToUniversalTime().Ticks%2)==0;
+                Vector3 postion = _gameData.Transform.position;
+                postion.y = .4f;
+                _mCombatTextCreate.Position = postion;
+                _mCombatTextCreate.Text = value.ToString();
+                if (value > 0)
+                {
+                    _mCombatTextCreate.Type = SCTTYPE.Heal;
+                }
+                else
+                {
+                    _mCombatTextCreate.Type = SCTTYPE.HealDamage;
+                }
+                _messenger.Publish(Constants_Event.CombatTextCreate,_mCombatTextCreate);
+            }
         }
 
-        /// <summary>
-        /// 初始化生命值
-        /// </summary>
-        /// <param name="value"></param>
-        public AHealth(int value)
-        {
-            _baseValue = value;
-            _maxValue = value;
-            _currentValue = value;
-        }
-        /// <summary>
-        /// 更改基础生命值（升级、降级）
-        /// </summary>
-        /// <param name="value"></param>
-        public void UpdateBaseValue(int value)
+        public override void UpdateBaseValue(float value)
         {
             //生命值增加
             if (value > 0)
@@ -65,10 +76,7 @@ namespace Scripts
             }
         }
 
-        /// <summary>
-        /// 增加生命值上限（装备、技能）
-        /// </summary>
-        public void UpdateMaxValue(int value)
+        public override void UpdateMaxValue(float value)
         {
             // 增加生命上限
             if (value > 0)
@@ -96,38 +104,15 @@ namespace Scripts
         }
 
         /// <summary>
-        /// 更新当前生命值（受伤害）
+        /// 初始化生命值
         /// </summary>
         /// <param name="value"></param>
-        public void UpdateCurrentValue(int value)
+        public AHealth(int value)
         {
-            if (value < -_currentValue)
-            {
-                _currentValue = 0;
-            }
-            else if(_currentValue+value<=_maxValue)
-            {
-                _currentValue += value;
-            }
-            else
-            {
-                _currentValue = _maxValue;
-            }
-            if (value != 0)
-            {
-                EventCenter.Broadcast(Constants_Event.AttributeChange+":"+_gameData.Uid+":"+TypedAttribute.Health);
-            }
-        }
-
-
-        public float MaxValue()
-        {
-            return _maxValue;
-        }
-
-        public float CurrentValue()
-        {
-            return _currentValue;
+            _baseValue = value;
+            _maxValue = value;
+            _currentValue = value;
+            _mCombatTextCreate = new MCombatTextCreate(this);
         }
     }
 }

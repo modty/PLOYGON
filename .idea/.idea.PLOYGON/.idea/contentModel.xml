@@ -616,6 +616,9 @@
               </e>
             </e>
           </e>
+          <e p="TestResource" t="Include">
+            <e p="TestResource.cs" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Attribute" t="Include">
@@ -626,11 +629,13 @@
               <e p="AArmorResistance.cs" t="Include" />
               <e p="AAttackDamage.cs" t="Include" />
               <e p="AAttackSpeed.cs" t="Include" />
+              <e p="ABaseAttribute.cs" t="Include" />
               <e p="ACriticalStrike.cs" t="Include" />
               <e p="AHealth.cs" t="Include" />
               <e p="AHealthRegeneration.cs" t="Include" />
               <e p="AHealthRegon.cs" t="Include" />
               <e p="ALifeSteal.cs" t="Include" />
+              <e p="AMagic.cs" t="Include" />
               <e p="AMagicPenetration.cs" t="Include" />
               <e p="AMagicRegeneration.cs" t="Include" />
               <e p="AMagicResistance.cs" t="Include" />
@@ -659,6 +664,7 @@
               <e p="TypedInteract.cs" t="Include" />
               <e p="TypedMovement.cs" t="Include" />
               <e p="TypedUIElements.cs" t="Include" />
+              <e p="TypedUITypes.cs" t="Include" />
               <e p="TypedWeapon.cs" t="Include" />
             </e>
           </e>
@@ -667,10 +673,23 @@
               <e p="CharacterContext.cs" t="Include" />
             </e>
             <e p="Data" t="Include">
+              <e p="AttributeChangeData.cs" t="Include" />
+              <e p="DataBase.cs" t="Include" />
               <e p="DataFactory.cs" t="Include" />
               <e p="FloorData.cs" t="Include" />
               <e p="GameData.cs" t="Include" />
+              <e p="IData.cs" t="Include" />
               <e p="PlayerData.cs" t="Include" />
+            </e>
+            <e p="FileEntity" t="Include">
+              <e p="Consumable.cs" t="Include" />
+              <e p="ConsumableInGame.cs" t="Include" />
+              <e p="Equipment.cs" t="Include" />
+              <e p="EquipmentInGame.cs" t="Include" />
+              <e p="FileBase.cs" t="Include" />
+              <e p="ItemInGame.cs" t="Include" />
+              <e p="Quality.cs" t="Include" />
+              <e p="Useable.cs" t="Include" />
             </e>
             <e p="Item" t="Include">
               <e p="Weapon" t="Include">
@@ -697,11 +716,15 @@
                 <e p="IBaseService.cs" t="Include" />
               </e>
               <e p="Service" t="Include">
+                <e p="BaseDataService.cs" t="Include" />
                 <e p="BaseService.cs" t="Include" />
                 <e p="CharacterService.cs" t="Include" />
                 <e p="CombatUIService.cs" t="Include" />
+                <e p="GameUIService.cs" t="Include" />
                 <e p="InputService.cs" t="Include" />
                 <e p="MouseService.cs" t="Include" />
+                <e p="PrefabService.cs" t="Include" />
+                <e p="ResourceService.cs" t="Include" />
               </e>
             </e>
             <e p="States" t="Include">
@@ -729,8 +752,16 @@
                 <e p="EventTypes.cs" t="Include" />
                 <e p="Serialization.cs" t="Include" />
               </e>
+              <e p="ItemUtils" t="Include">
+                <e p="ItemUtil.cs" t="Include" />
+              </e>
+              <e p="Timer" t="Include">
+                <e p="Timer.cs" t="Include" />
+                <e p="TimerExtensions.cs" t="Include" />
+              </e>
               <e p="Tools" t="Include">
                 <e p="NavMeshTool.cs" t="Include" />
+                <e p="ObjectUtil.cs" t="Include" />
                 <e p="PhysicsTool.cs" t="Include" />
                 <e p="UidTool.cs" t="Include" />
               </e>
@@ -753,10 +784,26 @@
             </e>
             <e p="UI" t="Include">
               <e p="GameUI" t="Include">
+                <e p="BagEquip" t="Include">
+                  <e p="BagBarButtonController.cs" t="Include" />
+                  <e p="BagBarController.cs" t="Include" />
+                </e>
                 <e p="BarController.cs" t="Include" />
+                <e p="Inventery" t="Include">
+                  <e p="InventoryButtonController.cs" t="Include" />
+                  <e p="InventoryController.cs" t="Include" />
+                </e>
                 <e p="MouseController.cs" t="Include" />
-                <e p="StatScript.cs" t="Include" />
-                <e p="UIScript.cs" t="Include" />
+                <e p="Plane" t="Include">
+                  <e p="MesPlaneController.cs" t="Include" />
+                  <e p="SelectPlaneController.cs" t="Include" />
+                </e>
+                <e p="ShortCut" t="Include">
+                  <e p="ShortCutButtonController.cs" t="Include" />
+                  <e p="ShortcutsController.cs" t="Include" />
+                </e>
+                <e p="StatController.cs" t="Include" />
+                <e p="UIController.cs" t="Include" />
               </e>
               <e p="SceneUI" t="Include">
                 <e p="ClickArrowController.cs" t="Include" />

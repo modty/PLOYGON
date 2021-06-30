@@ -14,7 +14,7 @@ public class CombatTextController : MonoBehaviour {
     private void Awake()
     {
         speed_xz=Random.Range(.5f,.7f);
-        speed_y=Random.Range(2f,2f);
+        speed_y=Random.Range(1.5f,2.5f);
         speed_y_acc = 4;
     }
 

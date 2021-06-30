@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace Managers
 {
 
-    public enum SCTTYPE {DAMAGE,HEAL,XP,MANA}
+    public enum SCTTYPE {Heal,HealDamage,XP,Mana,ManaDamage}
 
     /// <summary>
     /// 管理场景UI：战斗文本，如伤害数值等
@@ -65,10 +65,10 @@ namespace Managers
             string after = string.Empty;
             switch (type)
             {
-                case SCTTYPE.DAMAGE:
+                case SCTTYPE.HealDamage:
                     sct.color = GetColor("#D0770B");
                     break;
-                case SCTTYPE.HEAL:
+                case SCTTYPE.Heal:
                     before = "+";
                     sct.color = Color.green;
                     break;
@@ -77,7 +77,7 @@ namespace Managers
                     after = " XP";
                     sct.color = Color.yellow;
                     break;
-                case SCTTYPE.MANA:
+                case SCTTYPE.Mana:
                     before = "+";
                     sct.color = Color.cyan;
                     break;

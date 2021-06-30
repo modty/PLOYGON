@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Attribute.Items;
+using Data;
 using UnityEngine;
 
 namespace Scripts
@@ -12,6 +13,21 @@ namespace Scripts
         {
             CanMoved = true;
             Transform = gameObject.transform;
+        }
+
+        protected override bool CanUse()
+        {
+            return false;
+        }
+
+        protected override void DoUse()
+        {
+            
+        }
+
+        public override bool CanReceiveUse(DataBase iData)
+        {
+            return false;
         }
     }
 }
