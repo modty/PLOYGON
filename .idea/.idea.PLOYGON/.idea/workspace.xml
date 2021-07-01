@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-30 更新药品使用">
+    <list default="true" id="ae9a1226-2e76-4ded-87dd-38d185ace849" name="Default Changelist" comment="2021-06-30 添加README文本">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PLOYGON/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/GameUI/BagBarSlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/GameUI/BagBarSlot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/GameUI/InventorySlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/GameUI/InventorySlot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ItemInGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ItemInGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortCutButtonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortCutButtonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,17 +25,23 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/bf/b4beb2e0/Type.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/1e/32f87506/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/Item/Weapon/ArrowController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/ec/dce32523/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/36/bceef55a/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/e2/c92c8016/Resources.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/15/48cd4905/EventArgs.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/c8/0b20cb87/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/5a/ecfa6d17/ResourcesAPI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/49/3485df4b/ResourcesAPIInternal.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AB02AC76-3CC5-4D76-889A-E3FDE03DF39B/84/4a5551e5/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10021401-6059-4824-8453-0038EFB79DD7/a8/c52fe704/INotifyPropertyChanged.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Unity/PLOYGON/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Infrastructure/Managers/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/a8/48d41abd/Void.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F9C6778C-8A82-47B7-A317-8B15F7809C0F/70/31f5323e/AnimationState.cs" root0="SKIP_HIGHLIGHTING" />
@@ -59,20 +74,15 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Plane/MesPlaneController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Plane/SelectPlaneController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonScript.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/StatController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/BaseDataService.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/FileBase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Infrastructure/Utils/ItemUtils/ItemUtil.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/InputService.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortCutButtonController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortcutsController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/Useable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/GameUIService.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/UIController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/SceneUI/CombatTextController.cs" />
       <option value="$PROJECT_DIR$/Assets/Resources/File/JSON/Items/Consumable.json" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Views/Player/InputController.cs" />
@@ -84,7 +94,12 @@
       <option value="$PROJECT_DIR$/Assets/Resources/File/JSON/Items/PlayerData.json" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/Services/Service/CharacterService.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ConsumableInGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/ShortCut/ShortCutButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarButtonController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/BagEquip/BagBarController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Domain/FileEntity/ItemInGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Views/UI/GameUI/Inventery/InventoryButtonController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1tZCGRUPNRyKQUQ4VW8xnSKzWxi" />
@@ -182,7 +197,8 @@
       <workItem from="1624800802643" duration="4908000" />
       <workItem from="1625029795806" duration="13908000" />
       <workItem from="1625053256888" duration="656000" />
-      <workItem from="1625054103827" duration="1664000" />
+      <workItem from="1625054103827" duration="2325000" />
+      <workItem from="1625144283858" duration="4836000" />
     </task>
     <task id="LOCAL-00001" summary="2021-06-06 添加音频播放">
       <created>1622977425480</created>
@@ -352,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625053536670</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="2021-06-30 添加README文本">
+      <created>1625056564795</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1625056564796</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +420,8 @@
     <MESSAGE value="2021-06-16 角色代码生成" />
     <MESSAGE value="2021-06-22 代码重构" />
     <MESSAGE value="2021-06-30 更新药品使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021-06-30 更新药品使用" />
+    <MESSAGE value="2021-06-30 添加README文本" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021-06-30 添加README文本" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

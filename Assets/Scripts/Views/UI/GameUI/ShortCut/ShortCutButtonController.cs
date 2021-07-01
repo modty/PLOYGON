@@ -66,9 +66,9 @@ public class ShortCutButtonController:MonoBehaviour,IPointerEnterHandler,IPointe
         if (obj.tag.Equals("InventorySlot"))
         {
             InventoryButtonController target = obj.GetComponent<InventoryButtonController>();
-            ItemInGame temp = target.ItemInGame;
-            target.ItemInGame = ItemInGame;
-            ItemInGame = temp;
+            //ItemInGame temp = target.ItemInGame;
+            //target.ItemInGame = ItemInGame;
+            //ItemInGame = temp;
         }
         // 拖拽物品到其他背包
         else if(obj.tag.Equals("BagBarSlot"))

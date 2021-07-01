@@ -9,31 +9,39 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
 {
     [SerializeField] private Image icon;
     [SerializeField] private Text num;
-    private PlayerData _player;
+    private InventoryController _parentController;
 
-    public PlayerData Player
+    public InventoryController ParentController
     {
-        get => _player;
-        set
-        {
-            _player = value;
-        }
+        get => _parentController;
+        set => _parentController = value;
     }
 
+    private int _index;
+
+    public int Index
+    {
+        get => _index;
+        set => _index = value;
+    }
     public Image Icon => icon;
-    private ItemInGame itemInGame;
+    private ItemInGame _itemInGame;
     
     public ItemInGame ItemInGame
     {
-        get => itemInGame;
+        get => _itemInGame;
         set => SwapItem(value);
     }
 
     private void SwapItem(ItemInGame fromItem)
     {
-        itemInGame = fromItem;
+        _itemInGame = fromItem;
         if (fromItem != null) ItemShow();
-        else ItemUnShow();
+        else
+        {
+            _parentController.ItemInGame.ContainItems[_index] = null;
+            ItemUnShow();
+        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -64,14 +72,19 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
             if (obj.tag.Equals("InventorySlot"))
             {
                 InventoryButtonController target = obj.GetComponent<InventoryButtonController>();
-                ItemInGame temp = target.ItemInGame;
-                target.ItemInGame = ItemInGame;
-                ItemInGame = temp;
+                _parentController.SwapItem(_index,target._index);
+                target.ItemInGame = _parentController.ItemInGame.ContainItems[target._index];
+                ItemInGame = _parentController.ItemInGame.ContainItems[_index];
             }
             // 拖拽物品到其他背包
             else if(obj.tag.Equals("BagBarSlot"))
             {
-            
+                BagBarButtonController targetBag=obj.GetComponent<BagBarButtonController>();
+                if (targetBag.ItemInGame.AddContainItem(_itemInGame))
+                {
+                    ItemInGame = null;
+                }
+                
             }
             // 将物品拖拽到快捷栏
             else if (obj.tag.Equals("ShortcutSlot"))
@@ -114,27 +127,34 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
         Icon.enabled = false;
         num.enabled = false;
     }
-
+    
+    /// <summary>
+    /// 使用当前物品
+    /// </summary>
     public void ItemUse()
     {
-        if (itemInGame != null)
+        // 当前物品不能为空
+        if (ItemInGame != null)
         {
+            // 根据不同物品类型调用使用方法
             switch (ItemUtil.GetItemType(ItemInGame.Uid))
             {
                 case 2:
-                    if (itemInGame.StackCount > 0)
+                    // 数量大于0
+                    if (ItemInGame.StackCount > 0)
                     {
-                        if (((ConsumableInGame) itemInGame.Item).Use(_player))
+                        // 尝试使用，需要传入使用目标。由于
+                        if (((ConsumableInGame) ItemInGame.Item).Use(_parentController.Player))
                         {
-                            itemInGame.StackCount -= 1;
-                            if (itemInGame.StackCount <= 0)
+                            ItemInGame.StackCount -= 1;
+                            if (ItemInGame.StackCount <= 0)
                             {
-                                itemInGame = null;
+                                ItemInGame = null;
                                 ItemUnShow();
                             }
                             else
                             {
-                                num.text = itemInGame.StackCount.ToString();
+                                num.text = ItemInGame.StackCount.ToString();
                             }
                         }
                     }

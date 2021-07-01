@@ -8,6 +8,15 @@ using UnityEngine.UI;
 public class BagBarButtonController : MonoBehaviour,IDragHandler,IEndDragHandler,IBeginDragHandler
 {
     [SerializeField] private Image icon;
+
+    private BagBarController _parentController;
+
+    public BagBarController ParentController
+    {
+        get => _parentController;
+        set => _parentController = value;
+    }
+
     public Image Icon => icon;
     private ItemInGame _itemInGame;
 
@@ -16,7 +25,7 @@ public class BagBarButtonController : MonoBehaviour,IDragHandler,IEndDragHandler
         get => _itemInGame;
         set => SwapItem(value);
     }
-
+    
     private void SwapItem(ItemInGame fromItem)
     {
         _itemInGame = fromItem;

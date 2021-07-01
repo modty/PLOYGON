@@ -92,6 +92,7 @@ public class BagBarController : MonoBehaviour
                 bags[i].Icon.sprite = bagDatas[i].Icon;
                 bags[i].Icon.enabled=true;
                 bags[i].ItemInGame = bagDatas[i];
+                bags[i].ParentController = this;
                 if (!isLoadInventory)
                 {
                     // 加载不显示

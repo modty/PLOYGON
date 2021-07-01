@@ -1,6 +1,7 @@
 ﻿using Domain.FileEntity;
 using Domain.Services.IService;
 using Loxodon.Framework.Contexts;
+using Scripts;
 using Scripts.Commons.Utils;
 using UnityEngine;
 
@@ -12,6 +13,20 @@ namespace Items
     public class ItemInGame
     {
         private ResourceService _resourceService;
+
+
+        /// <summary>
+        /// 游戏中物品作用的对象
+        /// </summary>
+        private PlayerData _target;
+
+        public PlayerData Target
+        {
+            get => _target;
+            set => _target = value;
+        }
+        
+        
         private FileBase _item;
         /// <summary>
         /// 物品所绑定的信息（如：名称、描述、图标等）。
@@ -34,6 +49,19 @@ namespace Items
             set => _containItems = value;
         }
 
+        public bool AddContainItem(ItemInGame itemInGame)
+        {
+            for (int i = 0; i < _containItems.Length; i++)
+            {
+                if (_containItems[i] == null)
+                {
+                    _containItems[i] = itemInGame;
+                    return true;
+                }
+            }
+
+            return false;
+        }
         /// <summary>
         /// 物品图标，加载一次后保存，避免重复IO
         /// </summary>
