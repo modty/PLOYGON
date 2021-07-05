@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Items;
+﻿using Domain.Data.GameData;
 using Scripts;
 using UnityEngine;
 
@@ -16,7 +13,7 @@ public class BagBarController : MonoBehaviour
 
     [SerializeField] private GameObject bagBarSlots;
 
-    private PlayerData _player;
+    private GDChaPlayer _gdChaPlayer;
 
     public GameObject BagBarSlotPrefab
     {
@@ -32,7 +29,7 @@ public class BagBarController : MonoBehaviour
     /// </summary>
     private BagBarButtonController[] bags;
 
-    private ItemInGame[] bagDatas;
+    private GDEquBackpack[] _backpacks;
     
     private bool[] isEquiped;
 
@@ -44,10 +41,10 @@ public class BagBarController : MonoBehaviour
         set => bags = value;
     }
 
-    public ItemInGame[] BagDatas
+    public GDEquBackpack[] Backpacks
     {
-        get => bagDatas;
-        set => bagDatas = value;
+        get => _backpacks;
+        set => _backpacks = value;
     }
 
     public bool[] IsEquiped
@@ -64,19 +61,19 @@ public class BagBarController : MonoBehaviour
         instance = this;
     }
 
-    public void SetPlayer(PlayerData playerData)
+    public void SetPlayer(GDChaPlayer gdChaPlayer)
     {
-        _player = playerData;
-        int length = playerData.BagBarShortCutItems.Length;
+        _gdChaPlayer = gdChaPlayer;
+        int length = gdChaPlayer.BagBarShortCutItems.Length;
         bags=new BagBarButtonController[length];
-        bagDatas=new ItemInGame[length];
+        _backpacks=new GDEquBackpack[length];
         isEquiped=new bool[length];
         for (int i = 0; i < length; i++)
         {
-            if (playerData.BagBarShortCutItems[i] != null)
+            if (gdChaPlayer.BagBarShortCutItems[i] != null)
             {
                 isEquiped[i] = true;
-                bagDatas[i] = playerData.BagBarShortCutItems[i];
+                _backpacks[i] = gdChaPlayer.BagBarShortCutItems[i] as GDEquBackpack;
             }
         }
         LoadBagBar();
@@ -89,14 +86,15 @@ public class BagBarController : MonoBehaviour
             bags[i]=obj.GetComponent<BagBarButtonController>();
             if (isEquiped[i]&&bags[i]!=null)
             {
-                bags[i].Icon.sprite = bagDatas[i].Icon;
+                bags[i].Icon.sprite = _backpacks[i].Icon;
                 bags[i].Icon.enabled=true;
-                bags[i].ItemInGame = bagDatas[i];
+                bags[i].Index = i;
+                bags[i].Backpack = _backpacks[i];
                 bags[i].ParentController = this;
                 if (!isLoadInventory)
                 {
                     // 加载不显示
-                    InventoryController.Instance.LoadInventory(bagDatas[i]);
+                    InventoryController.Instance.LoadInventory(_backpacks[i]);
                     isLoadInventory = true;
                 }
             }

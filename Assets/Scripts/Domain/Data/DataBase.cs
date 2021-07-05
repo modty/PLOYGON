@@ -4,26 +4,25 @@ namespace Attribute.Items
 {
     public abstract class DataBase:IData
     {
-        protected string _name;
+        /// <summary>
+        /// 名称
+        /// </summary>
+        protected string _title;
+        /// <summary>
+        /// 简介
+        /// </summary>
         protected string _description;
-        protected long _uid;
 
-        public string Name
+        public string Title
         {
-            get => _name;
-            set => _name = value;
+            get => _title;
+            set => _title = value;
         }
 
         public string Description
         {
             get => _description;
             set => _description = value;
-        }
-
-        public long Uid
-        {
-            get => _uid;
-            set => _uid = value;
         }
 
     }

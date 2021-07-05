@@ -15,7 +15,7 @@ namespace States
     /// </summary>
     public class AnimationState:BaseState
     {
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
 
         private Animator _animator;
         private Rigidbody _rigidbody;
@@ -27,13 +27,13 @@ namespace States
         /// <summary>
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
-        /// <param name="player"></param>
-        public AnimationState(PlayerData player)
+        /// <param name="gdChaPlayer"></param>
+        public AnimationState(GDChaPlayer gdChaPlayer)
         {
-            _player = player;
+            _gdChaPlayer = gdChaPlayer;
             // 获取需要属性
-            _animator = player.Animator;
-            _rigidbody = player.Rigidbody;
+            _animator = gdChaPlayer.Animator;
+            _rigidbody = gdChaPlayer.Rigidbody;
             RegistInputActions();
             StartAction();
         }
@@ -49,9 +49,9 @@ namespace States
         #endregion
         private void MoveSpeedSet()
         {
-            if (_player.IsMoving)
+            if (_gdChaPlayer.IsMoving)
             {
-                moveSpeed = _player.MoveSpeed;
+                moveSpeed = _gdChaPlayer.MoveSpeed;
                 if (moveSpeed > 0)
                 {
                     _animator.SetBool(Constants_Anim.Moving_Bool,true);
@@ -110,7 +110,7 @@ namespace States
 
         private void NormalAttack(int weapon,int action)
         {
-            _animator.SetFloat(Constants_Anim.NormalAttackSpeed_Float,_player.NormalAttackAnimSpeed);
+            _animator.SetFloat(Constants_Anim.NormalAttackSpeed_Float,_gdChaPlayer.NormalAttackAnimSpeed);
             _animator.SetInteger(Constants_Anim.Weapon_Int,weapon);
             _animator.SetInteger(Constants_Anim.Action_Int,action);
             _animator.SetTrigger(Constants_Anim.AttackTrigger);

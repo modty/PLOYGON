@@ -16,12 +16,12 @@ namespace Domain.MessageEntities
         /// <summary>
         /// 鼠标处对象
         /// </summary>
-        private GameData _gameData;
+        private GDCharacter _gdCharacter;
 
-        public MMouseTarget(object sender,Vector3 mousePosition,GameData gameData) : base(sender)
+        public MMouseTarget(object sender,Vector3 mousePosition,GDCharacter gdCharacter) : base(sender)
         {
             _mousePosition = mousePosition;
-            _gameData = gameData;
+            _gdCharacter = gdCharacter;
         }
         public MMouseTarget(object sender) : base(sender)
         {
@@ -32,10 +32,10 @@ namespace Domain.MessageEntities
             set => _mousePosition = value;
         }
 
-        public GameData GameData
+        public GDCharacter GdCharacter
         {
-            get => _gameData;
-            set => _gameData = value;
+            get => _gdCharacter;
+            set => _gdCharacter = value;
         }
     }
 }

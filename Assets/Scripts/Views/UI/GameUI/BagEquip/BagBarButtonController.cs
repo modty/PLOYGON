@@ -1,6 +1,5 @@
 
-using System;
-using Items;
+using Domain.Data.GameData;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,7 +9,13 @@ public class BagBarButtonController : MonoBehaviour,IDragHandler,IEndDragHandler
     [SerializeField] private Image icon;
 
     private BagBarController _parentController;
+    private int _index;
 
+    public int Index
+    {
+        get => _index;
+        set => _index = value;
+    }
     public BagBarController ParentController
     {
         get => _parentController;
@@ -18,23 +23,23 @@ public class BagBarButtonController : MonoBehaviour,IDragHandler,IEndDragHandler
     }
 
     public Image Icon => icon;
-    private ItemInGame _itemInGame;
+    private GDEquBackpack _backpack;
 
-    public ItemInGame ItemInGame
+    public GDEquBackpack Backpack
     {
-        get => _itemInGame;
+        get => _backpack;
         set => SwapItem(value);
     }
     
-    private void SwapItem(ItemInGame fromItem)
+    private void SwapItem(GDEquBackpack fromItem)
     {
-        _itemInGame = fromItem;
+        _backpack = fromItem;
         if (fromItem != null) ItemShow();
         else ItemUnShow();
     }
-    public void openCloseInventory()
+    public void OpenCloseInventory()
     {
-        InventoryController.Instance.OpenClose(ItemInGame);
+        InventoryController.Instance.OpenClose(_backpack);
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -47,23 +52,23 @@ public class BagBarButtonController : MonoBehaviour,IDragHandler,IEndDragHandler
         if(obj.tag.Equals("BagBarSlot"))
         {
             BagBarButtonController target = obj.GetComponent<BagBarButtonController>();
-            ItemInGame temp = target.ItemInGame;
-            target.ItemInGame = ItemInGame;
-            ItemInGame = temp;
+            GDEquBackpack temp = target.Backpack;
+            target.Backpack = _backpack;
+            Backpack = temp;
         }
         MesPlaneController.Instance.PointIconClose();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (ItemInGame!=null)
+        if (_backpack!=null)
         {
-            MesPlaneController.Instance.PointIconShow(ItemInGame,GetComponent<RectTransform>().sizeDelta);
+            MesPlaneController.Instance.PointIconShow(_backpack,GetComponent<RectTransform>().sizeDelta);
         }
     }
     private void ItemShow()
     {
-        Icon.sprite = ItemInGame.Icon;
+        Icon.sprite = _backpack.Icon;
         Icon.enabled = true;
     }
 

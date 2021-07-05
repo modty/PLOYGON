@@ -14,7 +14,7 @@ namespace Scripts
     /// </summary>
     public class DataController:MonoBehaviour
     {
-        private GameData _gameData;
+        private GDCharacter _gdCharacter;
         
         [SerializeField] private TypedGameData dataType;
         [SerializeField] private TypedInteract interactType;
@@ -22,10 +22,10 @@ namespace Scripts
 
         private List<BaseState> _updateList=new List<BaseState>();
         private List<BaseState> _fixedUpdateList=new List<BaseState>();
-        public GameData GameData
+        public GDCharacter GdCharacter
         {
-            get => _gameData;
-            set => _gameData = value;
+            get => _gdCharacter;
+            set => _gdCharacter = value;
         }
 
         public List<BaseState> UpdateList
@@ -43,10 +43,10 @@ namespace Scripts
         private void Awake()
         {
             if(dataType.Equals(TypedGameData.Player)||dataType != TypedGameData.Floor) return;
-            _gameData = DataFactory.CreateAssetMenuAttribute(dataType,gameObject);
-            _gameData.TypedInteract = interactType;
-            _gameData.Transform = transform;
-            _gameData.Uid = UidTool.Instance.RegistUid();
+            _gdCharacter = DataFactory.CreateAssetMenuAttribute(dataType,gameObject);
+            _gdCharacter.TypedInteract = interactType;
+            _gdCharacter.Transform = transform;
+            _gdCharacter.Uid = UidTool.Instance.RegistUid().ToString();
         }
 
         private void Update()

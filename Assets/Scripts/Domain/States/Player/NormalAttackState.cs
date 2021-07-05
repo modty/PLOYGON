@@ -19,12 +19,12 @@ namespace States
         // 攻击输入
         private bool _inputAttack;
 
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
 
         private Transform _transform;
         private MovementState _movementState;
 
-        private GameData _target;
+        private GDCharacter _target;
         /// <summary>
         /// 攻击计时，不使用Time.fixedDeltaTime
         /// </summary>
@@ -70,11 +70,11 @@ namespace States
         ///     4：冷却完毕，设置状态为0
         /// </summary>
         private int attackState;
-        public NormalAttackState(PlayerData playerData):base()
+        public NormalAttackState(GDChaPlayer gdChaPlayer):base()
         {
-            _player = playerData;
-            _transform = _player.Transform;
-            _movementState = playerData.MovementState;
+            _gdChaPlayer = gdChaPlayer;
+            _transform = _gdChaPlayer.Transform;
+            _movementState = gdChaPlayer.MovementState;
             RegistInputActions();
             // 设置攻击前摇为0.7f，攻击后摇为0.7f，每次攻击需要1.4f，攻速度0.71，即每秒攻击0.71次，
             normalAttack_Anim_timer = .8f;
@@ -84,7 +84,7 @@ namespace States
             normalAttack_cooling = 0;
             normalAttack_ratio = 1;
             isNormalAttackCoolDown = true;
-            _player.NormalAttackAnimSpeed=1f;
+            _gdChaPlayer.NormalAttackAnimSpeed=1f;
             InitMessageObjs();
         }
 
@@ -112,9 +112,9 @@ namespace States
             timeTemp = Time.time;
             float distance = (_target.Transform.position - _transform.position).magnitude;
             // 如果角色正在移动，且进入攻击距离，停止
-            if (distance < _player.AttackRange)
+            if (distance < _gdChaPlayer.AttackRange)
             {
-                if (_player.IsMoving)
+                if (_gdChaPlayer.IsMoving)
                 {
                     
                     // 确保帧同步
@@ -158,7 +158,7 @@ namespace States
                 }
             }
             // 没有移动且角色离开攻击范围
-            else if(!_player.IsMoving&&distance > _player.AttackRange)
+            else if(!_gdChaPlayer.IsMoving&&distance > _gdChaPlayer.AttackRange)
             {
                 _mMovement.TargetPosition = _target.Transform.position;
                 _messenger.Publish(TypedInputActions.MoveTo.ToString(),_mMovement);
@@ -173,19 +173,19 @@ namespace States
         /// <param name="at">每秒攻击次数</param>
         public void UpdateAttackSpeed()
         {
-            float at = _player.NormalAttackAnimSpeed;
+            float at = _gdChaPlayer.NormalAttackAnimSpeed;
             float frequency=1/at;
             // 需要加速，普攻冷却设置为0
             if (at > 1)
             {
-                _player.NormalAttackAnimSpeed = at;
+                _gdChaPlayer.NormalAttackAnimSpeed = at;
                 normalAttack_cooling = 0;
             }
             // 不需要加速
             else
             {
                 // 动画不变
-                _player.NormalAttackAnimSpeed = 1;
+                _gdChaPlayer.NormalAttackAnimSpeed = 1;
                 float frequency_static = frequency-normalAttack_Anim_timer_max;
                 frequency = normalAttack_Anim_timer_max;
                 normalAttack_cooling = frequency_static;
@@ -212,7 +212,7 @@ namespace States
             }
             right = !right;
             _mAnimNormalAttack.Stop = false;
-            _mAnimNormalAttack.WeaponType = (int)_player.WeaponType;
+            _mAnimNormalAttack.WeaponType = (int)_gdChaPlayer.WeaponType;
             _mAnimNormalAttack.Action = action;
             _messenger.Publish(TypedInputActions.AnimNormalAttack.ToString(),_mAnimNormalAttack);
         }
@@ -240,14 +240,14 @@ namespace States
                 TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),
                 (message) =>
                 {
-                    GameData gameData = message.GameData;
+                    GDCharacter gdCharacter = message.GdCharacter;
 
                     // 非强制攻击和点击自己直接退出
-                    if (!_forceAttack || _player.Uid.Equals(gameData.Uid))
+                    if (!_forceAttack || _gdChaPlayer.Uid.Equals(gdCharacter.Uid))
                     {
                         return;
                     }
-                    if(_target!=null&&_target.Uid == gameData.Uid) return;
+                    if(_target!=null&&_target.Uid == gdCharacter.Uid) return;
                     switch (attackState)
                     {
                         case 0:
@@ -261,7 +261,7 @@ namespace States
                     }
 
                     _inputAttack = true;
-                    _target = gameData;
+                    _target = gdCharacter;
                     timeTemp =Time.time;
                     CheckActionState();
                 });
@@ -269,10 +269,10 @@ namespace States
                 TypedInputActions.OnKeyDown_Mouse1_Target.ToString(),
                 (message) =>
                 {
-                    GameData gameData = message.GameData;
+                    GDCharacter gdCharacter = message.GdCharacter;
                     // 点击自己直接退出
                     // 点击自己直接退出
-                    if(_player.Uid.Equals(gameData.Uid)) return;
+                    if(_gdChaPlayer.Uid.Equals(gdCharacter.Uid)) return;
                     timer = 0;
                     isAttacked = false;
                     isAttackAnim = false;

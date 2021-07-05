@@ -224,8 +224,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7508177615649969503}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: openCloseInventory
+        m_TargetAssemblyTypeName: BagBarButtonController, Assembly-CSharp
+        m_MethodName: OpenCloseInventory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

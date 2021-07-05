@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using ActionPool;
 using Commons;
+using Data;
 using Domain.MessageEntities;
 using Domain.Services.IService;
 using Loxodon.Framework.Binding;
@@ -8,7 +9,6 @@ using Loxodon.Framework.Contexts;
 using Loxodon.Framework.Localizations;
 using Loxodon.Framework.Messaging;
 using UnityEngine;
-using GameData = Data.GameData;
 
 namespace Scripts
 {
@@ -35,15 +35,15 @@ namespace Scripts
         }
 
         private TypedInteract _typedInteract;
-        private GameData _gameData;
+        private GDCharacter _gdCharacter;
         private RaycastHit hitInfo;
         private Vector3 _mousePosition;
         private bool _preFroceAttack;
         private bool _forceAttack;
-        public GameData GameData
+        public GDCharacter GdCharacter
         {
-            get => _gameData;
-            set => _gameData = value;
+            get => _gdCharacter;
+            set => _gdCharacter = value;
         }
 
         public Vector3 MousePosition
@@ -71,18 +71,18 @@ namespace Scripts
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
-                _gameData= hitInfo.transform.GetComponent<DataController>().GameData;
-                OnMouseOverSomething(_gameData);
+                _gdCharacter= hitInfo.transform.GetComponent<DataController>().GdCharacter;
+                OnMouseOverSomething(_gdCharacter);
                 _mousePosition = hitInfo.point;
             }
             
         }
         
         
-        private void OnMouseOverSomething(GameData gameData)
+        private void OnMouseOverSomething(GDCharacter gdCharacter)
         {
-            if(gameData==null||(_typedInteract.Equals(gameData.TypedInteract)&&_preFroceAttack==_forceAttack)) return;
-            _typedInteract = gameData.TypedInteract;
+            if(gdCharacter==null||(_typedInteract.Equals(gdCharacter.TypedInteract)&&_preFroceAttack==_forceAttack)) return;
+            _typedInteract = gdCharacter.TypedInteract;
             switch (_typedInteract)
             {
                 case TypedInteract.None:

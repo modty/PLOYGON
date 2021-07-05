@@ -1,26 +1,26 @@
 ﻿using Commons;
+using Data;
 using UnityEngine;
-using GameData = Data.GameData;
 
 namespace Scripts
 {
     public class DataFactory
     {
-        public  static GameData CreateAssetMenuAttribute(TypedGameData gameData,GameObject gameObject)
+        public  static GDCharacter CreateAssetMenuAttribute(TypedGameData gameData,GameObject gameObject)
         {
-            GameData _gameData = null;
+            GDCharacter gdCharacter = null;
             switch (gameData)
             {
                 case TypedGameData.Player:
                 case TypedGameData.Character:
-                    _gameData= new PlayerData(gameObject);
+                    gdCharacter= new GDChaPlayer(gameObject);
                     break;
                 case TypedGameData.Floor:
-                    _gameData= new FloorAttribute(gameObject);
+                    gdCharacter= new DFloor(gameObject);
                     break;
             }
 
-            return _gameData;
+            return gdCharacter;
         }
     }
 }

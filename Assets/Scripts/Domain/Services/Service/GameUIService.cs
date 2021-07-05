@@ -1,6 +1,5 @@
 ﻿using Commons;
 using Domain.MessageEntities;
-using Items;
 using Loxodon.Framework.Messaging;
 using Loxodon.Framework.Services;
 using Scripts;
@@ -12,7 +11,7 @@ namespace Domain.Services.IService
     {
         private InventoryController _inventory;
         private BagBarController _bagBar;
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
         private PrefabService _prefabService;
         public GameUIService(IServiceContainer container) : base(container)
         {
@@ -31,13 +30,13 @@ namespace Domain.Services.IService
         {
             OnControlledCharacter_Change=_messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (gameData) =>
             {
-                PlayerData playerData=gameData.GameData as PlayerData;
-                if (playerData != null)
+                GDChaPlayer gdChaPlayer=gameData.GameData as GDChaPlayer;
+                if (gdChaPlayer != null)
                 {
-                    if (_player != null && _player.Uid == playerData.Uid) return;
-                    _player = playerData;
-                    _bagBar.SetPlayer(_player);
-                    _inventory.SetPlayer(_player);
+                    if (_gdChaPlayer != null && _gdChaPlayer.Uid == gdChaPlayer.Uid) return;
+                    _gdChaPlayer = gdChaPlayer;
+                    _bagBar.SetPlayer(_gdChaPlayer);
+                    _inventory.SetPlayer(_gdChaPlayer);
                 }
             });
            

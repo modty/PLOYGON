@@ -20,7 +20,7 @@ namespace Views
         public Vector3 dir;
 
         [HideInInspector]
-        public PlayerData shooter;
+        public GDChaPlayer shooter;
 
         private Vector3 curve_dir = Vector3.zero;
         private float curve_dist = 0f;
@@ -61,8 +61,8 @@ namespace Views
 
         private void OnTriggerEnter(Collider collision)
         {
-            PlayerData playerData = collision.GetComponent<DataController>().GameData as PlayerData;
-            if (playerData!=null&&playerData.Uid != shooter.Uid)
+            GDChaPlayer gdChaPlayer = collision.GetComponent<DataController>().GdCharacter as GDChaPlayer;
+            if (gdChaPlayer!=null&&gdChaPlayer.Uid != shooter.Uid)
             {
                 SoundManager.Instance.PlayArrowImpactflesh();
                 Debug.Log(collision.name);

@@ -13,13 +13,13 @@ using UnityEngine.UI;
 
 public class StatController : MonoBehaviour
 {
-    private PlayerData _player;
+    private GDChaPlayer _gdChaPlayer;
     private CombatUIController _combatUIController;
     private Messenger _messenger;
-    public PlayerData ControlledControlledChaState
+    public GDChaPlayer ControlledControlledChaState
     {
-        get => _player;
-        set => _player = value;
+        get => _gdChaPlayer;
+        set => _gdChaPlayer = value;
     }
 
     [SerializeField] private Text attackDamage;
@@ -35,7 +35,7 @@ public class StatController : MonoBehaviour
     
     private void Awake()
     {
-        if(_player==null) return;
+        if(_gdChaPlayer==null) return;
         _messenger = new Messenger();
         RegistSubscribes();
     }
@@ -54,7 +54,7 @@ public class StatController : MonoBehaviour
     {
         _messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (message) =>
         {
-            _player=message.GameData as PlayerData;
+            _gdChaPlayer=message.GameData as GDChaPlayer;
         });
     }
 }

@@ -11,15 +11,15 @@ namespace States
     /// </summary>
     public class SkillAreaState:BaseState
     {
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
 
         private Transform _playerAttackRange; 
         private Transform _transform; 
-        public SkillAreaState(PlayerData playerData)
+        public SkillAreaState(GDChaPlayer gdChaPlayer)
         {
-            _player = playerData;
-            _playerAttackRange = _player.AttackRangeUI;
-            _transform = _player.Transform;
+            _gdChaPlayer = gdChaPlayer;
+            _playerAttackRange = _gdChaPlayer.AttackRangeUI;
+            _transform = _gdChaPlayer.Transform;
             RegistInputActions();
         }
 
@@ -50,7 +50,7 @@ namespace States
             {
                 if (message.ForceAttack)
                 {
-                    float size = _player.AttackRange * 2;
+                    float size = _gdChaPlayer.AttackRange * 2;
                     _playerAttackRange.localScale = new Vector3(size, .1f, size);
                     _playerAttackRange.position = _transform.position;
                     StartAction();

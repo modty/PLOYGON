@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using ActionPool;
-using Commons;
+﻿using Commons;
 using Data;
 using Domain.MessageEntities;
-using Items;
 using Loxodon.Framework.Messaging;
 using Scripts;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -22,8 +15,8 @@ public class UIController : MonoBehaviour
     [SerializeField]private GameObject selectPlane;
     [SerializeField]private Camera mainCam;
     [SerializeField] private GameObject mesPlane;
-    private GameData _targetGameData;
-    private PlayerData _playerGameData;
+    private GDCharacter _targetGdCharacter;
+    private GDChaPlayer _gdChaPlayerGame;
     private Messenger _messenger;
     private InventoryController _inventory;
     private BagBarController _bagBarController;
@@ -104,7 +97,7 @@ public class UIController : MonoBehaviour
     {
         OnKeyDown_Mouse0_Target=_messenger.Subscribe<MMouseTarget>(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(),(gamedata) =>
         {
-            _targetGameData = gamedata.GameData;
+            _targetGdCharacter = gamedata.GdCharacter;
             targetFrame.SetActive(true); 
         });
         
@@ -115,7 +108,7 @@ public class UIController : MonoBehaviour
 
         OnControlledCharacter_Change = _messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (gamedata) =>
         {
-            _playerGameData = gamedata.GameData as PlayerData;
+            _gdChaPlayerGame = gamedata.GameData as GDChaPlayer;
         });
     }
 }

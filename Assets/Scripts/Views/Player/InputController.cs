@@ -6,6 +6,7 @@ using Commons.Constants;
 using Data;
 using Domain.Contexts;
 using Domain.Data;
+using Domain.Data.ActionData;
 using Domain.MessageEntities;
 using Loxodon.Framework.Messaging;
 using Scripts;
@@ -31,16 +32,16 @@ public class InputController : MonoBehaviour
         set
         {
             _playerContext = value;
-            _playerData = _playerContext.Get<PlayerData>(Constants_Context.PlayerData);
+            _gdChaPlayer = _playerContext.Get<GDChaPlayer>(Constants_Context.PlayerData);
         }
     }
 
-    private PlayerData _playerData;
+    private GDChaPlayer _gdChaPlayer;
 
-    public PlayerData PlayerData
+    public GDChaPlayer GdChaPlayer
     {
-        get => _playerData;
-        set => _playerData = value;
+        get => _gdChaPlayer;
+        set => _gdChaPlayer = value;
     }
 
     private MouseController _mouse;
@@ -74,37 +75,37 @@ public class InputController : MonoBehaviour
         _mInput = new MInput(this);
         _mMouseTarget = new MMouseTarget(this);
         _mMovement = new MMovement(this);
-        _gameData = new MGameData(this,_playerData);
+        _gameData = new MGameData(this,_gdChaPlayer);
     }
     // Update is called once per frame
     void Update()
     {
-        if(_playerData==null) return;
+        if(_gdChaPlayer==null) return;
         if (Input.GetKeyDown(KeyCode.D))
         {
-            _playerData.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(-1000);
+            _gdChaPlayer.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(-1000);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _playerData.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(1000);
+            _gdChaPlayer.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(1000);
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            GameData gameData = _mouse.GameData;
-            if (gameData != null)
+            GDCharacter gdCharacter = _mouse.GdCharacter;
+            if (gdCharacter != null)
             {
                 _mMouseTarget.MousePosition = _mouse.MousePosition;
-                _mMouseTarget.GameData = gameData;
+                _mMouseTarget.GdCharacter = gdCharacter;
 
                 // 地面暂时不加入点击选择
-                if (!(gameData is FloorAttribute))
+                if (!(gdCharacter is DFloor))
                 {
-                    _playerData.Target = gameData;
+                    _gdChaPlayer.Target = gdCharacter;
                 }
                 // 鼠标点击到（可移动位置）
-                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
+                if (gdCharacter.CanMoved&&_mouse.MousePosition!=Vector3.zero)
                 {
 
                     /*EventCenter.Broadcast(TypedInputActions.OnKeyDown_Mouse1_Walkable.ToString(),
@@ -123,25 +124,25 @@ public class InputController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameData gameData = _mouse.GameData;
+            GDCharacter gdCharacter = _mouse.GdCharacter;
             _mInput.ForceAttack = false;
-            if (gameData != null)
+            if (gdCharacter != null)
             {
                 _mMouseTarget.MousePosition = _mouse.MousePosition;
-                _mMouseTarget.GameData = gameData;
+                _mMouseTarget.GdCharacter = gdCharacter;
                 // 地面暂时不加入点击选择
-                if (!(gameData is FloorAttribute))
+                if (!(gdCharacter is DFloor))
                 {
-                    _playerData.Target = gameData;
+                    _gdChaPlayer.Target = gdCharacter;
                 }
                 // 鼠标点击到（可移动位置）
-                if (gameData.CanMoved&&_mouse.MousePosition!=Vector3.zero)
+                if (gdCharacter.CanMoved&&_mouse.MousePosition!=Vector3.zero)
                 {
                     messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Walkable.ToString(), _mMouseTarget);
                 }
                 else
                 {
-                    if (gameData.Uid != _playerData.Uid)
+                    if (gdCharacter.Uid != _gdChaPlayer.Uid)
                     {
                         messenger.Publish(TypedInputActions.OnKeyDown_Mouse0_Target.ToString(), _mMouseTarget);
                     }
@@ -156,15 +157,15 @@ public class InputController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            PlayerData playerData = _gameData.GameData as PlayerData;
-            playerData.AttackRange=1.2f;
-            playerData.WeaponType = TypedWeapon.Unarmed;
+            GDChaPlayer gdChaPlayer = _gameData.GameData as GDChaPlayer;
+            gdChaPlayer.AttackRange=1.2f;
+            gdChaPlayer.WeaponType = TypedWeapon.Unarmed;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            PlayerData playerData = _gameData.GameData as PlayerData;
-            playerData.AttackRange=4.5f;
-            playerData.WeaponType = TypedWeapon.TwoHandBow;
+            GDChaPlayer gdChaPlayer = _gameData.GameData as GDChaPlayer;
+            gdChaPlayer.AttackRange=4.5f;
+            gdChaPlayer.WeaponType = TypedWeapon.TwoHandBow;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -178,14 +179,6 @@ public class InputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             EventCenter.Broadcast(TypedInputActions.NormalAttack.ToString(),5);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            AttributeChangeData attributeChangeData = new AttributeChangeData();
-            attributeChangeData.Target = _playerData;
-            attributeChangeData.TypedAttributeChange = TypedAttributeChange.Instant;
-            attributeChangeData.AddAttribute(new AttributeChangeEntity(TypedAttribute.Health,100,0,0,0));
-            attributeChangeData.Use();
         }
         
     }

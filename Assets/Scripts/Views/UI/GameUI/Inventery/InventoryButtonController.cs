@@ -1,5 +1,4 @@
-using Items;
-using Scripts;
+using Domain.Data.GameData;
 using Scripts.Commons.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,35 +24,35 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
         set => _index = value;
     }
     public Image Icon => icon;
-    private ItemInGame _itemInGame;
+    private GDBase _slotData;
     
-    public ItemInGame ItemInGame
+    public GDBase SlotData
     {
-        get => _itemInGame;
+        get => _slotData;
         set => SwapItem(value);
     }
 
-    private void SwapItem(ItemInGame fromItem)
+    private void SwapItem(GDBase fromItem)
     {
-        _itemInGame = fromItem;
+        _slotData = fromItem;
         if (fromItem != null) ItemShow();
         else
         {
-            _parentController.ItemInGame.ContainItems[_index] = null;
+            _parentController.BackpackData.ContainData[_index] = null;
             ItemUnShow();
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (ItemInGame != null)
+        if (_slotData != null)
         {
-           MesPlaneController.Instance.ShowItemMes(string.Format("<color=>"+ItemInGame.TypeName+"</color>"));
+           MesPlaneController.Instance.ShowItemMes(string.Format("<color=>"+_slotData.Title+"</color>"));
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (ItemInGame!=null)
+        if (_slotData!=null)
         {
             MesPlaneController.Instance.CloseItemMes();
         }
@@ -72,27 +71,27 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
             if (obj.tag.Equals("InventorySlot"))
             {
                 InventoryButtonController target = obj.GetComponent<InventoryButtonController>();
-                _parentController.SwapItem(_index,target._index);
-                target.ItemInGame = _parentController.ItemInGame.ContainItems[target._index];
-                ItemInGame = _parentController.ItemInGame.ContainItems[_index];
+                _parentController.SwapItem(_index,target.Index);
+                target.SlotData = _parentController.BackpackData.ContainData[target.Index];
+                SlotData = _parentController.BackpackData.ContainData[_index];
             }
             // 拖拽物品到其他背包
             else if(obj.tag.Equals("BagBarSlot"))
             {
                 BagBarButtonController targetBag=obj.GetComponent<BagBarButtonController>();
-                if (targetBag.ItemInGame.AddContainItem(_itemInGame))
+                if (targetBag.Backpack.AddContainData(_slotData))
                 {
-                    ItemInGame = null;
+                    SlotData = null;
                 }
                 
             }
             // 将物品拖拽到快捷栏
             else if (obj.tag.Equals("ShortcutSlot"))
             {
-                ShortCutButtonController target = obj.GetComponent<ShortCutButtonController>();
-                ItemInGame temp = target.ItemInGame;
+                /*ShortCutButtonController target = obj.GetComponent<ShortCutButtonController>();
+                GDBase temp = target.ItemInGame;
                 target.ItemInGame = ItemInGame;
-                ItemInGame = temp;
+                ItemInGame = temp;*/
             }
         }
         MesPlaneController.Instance.PointIconClose();
@@ -100,19 +99,19 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (ItemInGame!=null)
+        if (_slotData!=null)
         {
-            MesPlaneController.Instance.PointIconShow(ItemInGame,GetComponent<RectTransform>().sizeDelta);
+            MesPlaneController.Instance.PointIconShow(_slotData,GetComponent<RectTransform>().sizeDelta);
         }
     }
 
     private void ItemShow()
     {
-        Icon.sprite = ItemInGame.Icon;
+        Icon.sprite = _slotData.Icon;
         Icon.enabled = true;
-        if (ItemInGame.StackCount > 1)
+        if (_slotData.StackCount > 1)
         {
-            num.text = ItemInGame.StackCount.ToString();
+            num.text = _slotData.StackCount.ToString();
             num.enabled=true;
         }
         else
@@ -134,27 +133,27 @@ public class InventoryButtonController:MonoBehaviour,IPointerEnterHandler,IPoint
     public void ItemUse()
     {
         // 当前物品不能为空
-        if (ItemInGame != null)
+        if (_slotData != null)
         {
             // 根据不同物品类型调用使用方法
-            switch (ItemUtil.GetItemType(ItemInGame.Uid))
+            switch (ItemUtil.GetItemType(_slotData.ID))
             {
                 case 2:
                     // 数量大于0
-                    if (ItemInGame.StackCount > 0)
+                    if (_slotData.StackCount > 0)
                     {
                         // 尝试使用，需要传入使用目标。由于
-                        if (((ConsumableInGame) ItemInGame.Item).Use(_parentController.Player))
+                        if (_slotData.Use(_parentController.GdChaPlayer))
                         {
-                            ItemInGame.StackCount -= 1;
-                            if (ItemInGame.StackCount <= 0)
+                            _slotData.StackCount -= 1;
+                            if (_slotData.StackCount <= 0)
                             {
-                                ItemInGame = null;
+                                _slotData = null;
                                 ItemUnShow();
                             }
                             else
                             {
-                                num.text = ItemInGame.StackCount.ToString();
+                                num.text = _slotData.StackCount.ToString();
                             }
                         }
                     }

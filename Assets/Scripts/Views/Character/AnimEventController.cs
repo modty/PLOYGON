@@ -13,7 +13,7 @@ namespace Scripts
         public GameObject combatText;
         public Transform combatTextParent;
 
-        public PlayerData _player;
+        public GDChaPlayer gdChaPlayer;
 
         private Messenger _messenger;
 
@@ -36,29 +36,29 @@ namespace Scripts
             GameObject arrow = PrefabsManager.Instance.Arrow;
             Projectile projectile = arrow.GetComponent<Projectile>();
             SoundManager.Instance.PlayReleasingStringBow();
-            PlayerData target = _player.Target as PlayerData;
-            var position = _player.Transform.position;
+            GDChaPlayer target = gdChaPlayer.Target as GDChaPlayer;
+            var position = gdChaPlayer.Transform.position;
             var position2 = rightHand.position;
             arrow.transform.position = position2;
             if (target != null)
             {
                 var position1 = target.TargetCenter;
                 projectile.transform.rotation = Quaternion.LookRotation(position1-position.normalized, Vector3.up);
-                projectile.shooter = _player;
+                projectile.shooter = gdChaPlayer;
                 projectile.dir = position1-position2;
             }
 
-            projectile.damage = (int) _player.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
+            projectile.damage = (int) gdChaPlayer.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
 
         }
         public void Hit()
         {
-            if(_player.Target==null||_player.Target.Uid==_player.Uid) return;
-            PlayerData target=_player.Target as PlayerData;
+            if(gdChaPlayer.Target==null||gdChaPlayer.Target.Uid==gdChaPlayer.Uid) return;
+            GDChaPlayer target=gdChaPlayer.Target as GDChaPlayer;
             Debug.Log(Time.time-timer);
             timer = Time.time;
             SoundManager.Instance.Play();
-            int damage = (int) _player.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
+            int damage = (int) gdChaPlayer.GetAttribute<AAttackDamage>(TypedAttribute.AttackDamage).CurrentValue;
             target?.GetAttribute<AHealth>(TypedAttribute.Health).UpdateCurrentValue(-damage);
         }
     }

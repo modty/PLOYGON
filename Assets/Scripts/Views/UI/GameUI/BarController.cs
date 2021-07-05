@@ -15,7 +15,7 @@ namespace Scripts.Controller
     public class BarController:MonoBehaviour
     {
         public Text text;
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
         public Image bar;
         public TypedAttribute typedAttribute;
         public TypedUIElements uiElements;
@@ -54,16 +54,16 @@ namespace Scripts.Controller
                     break;
             }
         }
-        public void SetCharacter(GameData gameData)
+        public void SetCharacter(GDCharacter gdCharacter)
         {
-            PlayerData characterData = gameData as PlayerData;
-            if(characterData==null) return;
-            _player = characterData;
+            GDChaPlayer character = gdCharacter as GDChaPlayer;
+            if(character==null) return;
+            _gdChaPlayer = character;
             switch (typedAttribute)
             {
                 case TypedAttribute.Health:
-                    EventCenter.AddListener(Constants_Event.AttributeChange+":"+_player.Uid+":"+typedAttribute,UpdateBar);
-                    UpdateBar(_player.GetAttribute<AHealth>(TypedAttribute.Health));
+                    EventCenter.AddListener(Constants_Event.AttributeChange+":"+_gdChaPlayer.Uid+":"+typedAttribute,UpdateBar);
+                    UpdateBar(_gdChaPlayer.GetAttribute<AHealth>(TypedAttribute.Health));
                     break;
                 case TypedAttribute.Mana:
                     break;
@@ -72,12 +72,12 @@ namespace Scripts.Controller
 
         public void UpdateBar()
         {
-            if(_player==null) return;
+            if(_gdChaPlayer==null) return;
             ABaseAttribute ia = null;
             switch (typedAttribute)
             {
                 case TypedAttribute.Health:
-                    ia = _player.GetAttribute<AHealth>(TypedAttribute.Health);
+                    ia = _gdChaPlayer.GetAttribute<AHealth>(TypedAttribute.Health);
                     break;
                 case TypedAttribute.Mana:
                     break;
@@ -89,7 +89,7 @@ namespace Scripts.Controller
         }
         public void UpdateBar(ABaseAttribute ia)
         {
-            if(_player==null||ia==null) return;
+            if(_gdChaPlayer==null||ia==null) return;
           
             float fillAmount = ia.CurrentValue / ia.MaxValue;
             text.text = (int)ia.CurrentValue+"/"+(int)ia.MaxValue;

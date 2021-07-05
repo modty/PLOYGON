@@ -1,8 +1,4 @@
-﻿using System;
-using Domain.FileEntity;
-using Domain.Services.IService;
-using Items;
-using Loxodon.Framework.Binding;
+﻿using Domain.Services.IService;
 using Loxodon.Framework.Contexts;
 using Loxodon.Framework.Services;
 using UnityEngine;
@@ -39,8 +35,8 @@ namespace Managers
             _container.Register<MouseService>(new MouseService(_container));
             _container.Register<CombatUIService>(new CombatUIService(_container));
             _container.Register<PrefabService>(new PrefabService(_container));
-            _container.Register<BaseDataService>(new BaseDataService(_container));
             _container.Register<GameUIService>(new GameUIService(_container));
+            _container.Register<FDService>(new FDService(_container));
         }
         private void Start()
         {
@@ -55,9 +51,9 @@ namespace Managers
             GameUIService gameUIService = _container.Resolve<GameUIService>();
             PrefabService prefabService = _container.Resolve<PrefabService>();
             ResourceService resourceService = _container.Resolve<ResourceService>();
-            BaseDataService baseDataService = _container.Resolve<BaseDataService>();
             MouseService mouseService = _container.Resolve<MouseService>();
             InputService inputService = _container.Resolve<InputService>();
+            FDService fdService = _container.Resolve<FDService>();
            
             CharacterService characterService = _container.Resolve<CharacterService>();
             
@@ -65,12 +61,12 @@ namespace Managers
             gameUIService.Start();
             prefabService.Start();
             resourceService.Start();
-            baseDataService.Start();
             mouseService.Start();
             inputService.Start();
-            
+            fdService.Start();
             // 加载角色
             characterService.Start();
+
         }
     }
 }

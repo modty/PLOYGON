@@ -1,5 +1,4 @@
-using System;
-using Items;
+using Domain.Data.GameData;
 using Scripts;
 using UnityEngine;
 
@@ -7,22 +6,22 @@ public class InventoryController:MonoBehaviour
 {
     private static InventoryController instance;
     public static InventoryController Instance => instance;
-    private ItemInGame itemInGame;
+    private GDEquBackpack _backpackData;
     private InventoryButtonController[] inventoryButtons;
     [SerializeField] private GameObject slots;
     private GameObject slotPrefab;
-    private PlayerData _player;
+    private GDChaPlayer _gdChaPlayer;
 
-    public PlayerData Player
+    public GDChaPlayer GdChaPlayer
     {
-        get => _player;
-        set => _player = value;
+        get => _gdChaPlayer;
+        set => _gdChaPlayer = value;
     }
 
-    public ItemInGame ItemInGame
+    public GDEquBackpack BackpackData
     {
-        get => itemInGame;
-        set => itemInGame = value;
+        get => _backpackData;
+        set => _backpackData = value;
     }
 
     public GameObject SlotPrefab
@@ -36,13 +35,13 @@ public class InventoryController:MonoBehaviour
         instance = this;
     }
 
-    public void LoadInventory( ItemInGame itemInGame)
+    public void LoadInventory(GDEquBackpack backpackData)
     {
         for (int i = 0; i < slots.transform.childCount; i++) {  
             Destroy (slots.transform.GetChild (i).gameObject);  
         }  
-        this.itemInGame = itemInGame;
-        ItemInGame[] itemInGames = itemInGame.ContainItems;
+        this._backpackData = backpackData;
+        GDBase[] itemInGames = backpackData.ContainData;
         inventoryButtons=new InventoryButtonController[itemInGames.Length];
         for (int i = 0; i < itemInGames.Length; i++)
         {
@@ -52,34 +51,35 @@ public class InventoryController:MonoBehaviour
             inventoryButtons[i].Index = i;
             if (itemInGames[i] != null&&inventoryButtons[i]!=null)
             {
-                inventoryButtons[i].ItemInGame = itemInGames[i];
+                inventoryButtons[i].SlotData = itemInGames[i];
             }
         }
     }
     
-    public void SetPlayer(PlayerData playerData)
+    public void SetPlayer(GDChaPlayer gdChaPlayer)
     {
-        _player = playerData;
-        LoadInventory(_player.BagBarShortCutItems[_player.BagOpenIndex]);
+        _gdChaPlayer = gdChaPlayer;
+        LoadInventory(_gdChaPlayer.BagBarShortCutItems[_gdChaPlayer.BagOpenIndex] as GDEquBackpack);
     }
 
     public void SwapItem(int fromIndex, int toIndex)
     {
-        ItemInGame[] itemInGames = itemInGame.ContainItems;
+        GDBase[] itemInGames = _backpackData.ContainData;
         if(fromIndex>itemInGames.Length||toIndex>itemInGames.Length) return;
-        ItemInGame temp = itemInGames[fromIndex];
+        GDBase temp = itemInGames[fromIndex];
         itemInGames[fromIndex] = itemInGames[toIndex];
         itemInGames[toIndex] = temp;
     }
-    public void OpenClose(ItemInGame itemInGame)
+    public void OpenClose(GDEquBackpack backpack)
     {
-        if (ItemInGame.Equals(itemInGame))
+        Debug.Log(_backpackData.Equals(backpack));
+        if (_backpackData.Equals(backpack))
         {
             gameObject.SetActive(!gameObject.activeSelf);
         }
-        else if(itemInGame!=null)
+        else if(_backpackData!=null)
         {
-            LoadInventory(itemInGame);
+            LoadInventory(backpack);
             if (!gameObject.activeSelf)
             {
                 gameObject.SetActive(!gameObject.activeSelf);

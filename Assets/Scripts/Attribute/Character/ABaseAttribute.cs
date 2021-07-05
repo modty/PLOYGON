@@ -1,4 +1,5 @@
 ﻿using Data;
+using Domain.Data.GameData;
 using Loxodon.Framework.Messaging;
 using UnityEngine;
 
@@ -33,9 +34,9 @@ namespace Scripts
             get => _maxValue;
             set => _maxValue = value;
         }
-        protected GameData _gameData;
+        protected GDCharacter _gameData;
 
-        public GameData GameData
+        public GDCharacter GameData
         {
             get => _gameData;
             set => _gameData = value;

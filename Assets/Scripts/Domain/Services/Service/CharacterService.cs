@@ -2,9 +2,8 @@
 using Commons;
 using Commons.Constants;
 using Domain.Contexts;
+using Domain.Data.GameData;
 using Domain.MessageEntities;
-using Items;
-using Loxodon.Framework.Contexts;
 using Loxodon.Framework.Services;
 using Managers;
 using Scripts;
@@ -21,11 +20,11 @@ namespace Domain.Services.IService
         /// <summary>
         /// 角色服务
         /// </summary>
-        private Dictionary<long, CharacterContext> _characters;
+        private Dictionary<string, CharacterContext> _characters;
 
         public CharacterService(IServiceContainer container):base(container)
         {
-            _characters = new Dictionary<long, CharacterContext>();
+            _characters = new Dictionary<string, CharacterContext>();
             _mGameData = new MGameData(this,null);
         }
 
@@ -39,10 +38,10 @@ namespace Domain.Services.IService
         {
             GameObject model = PrefabsManager.Instance.Character;
             model.transform.position = cParams.Position;
-            PlayerData data=new PlayerData(model);
+            GDChaPlayer data=new GDChaPlayer(model);
             DataController dc=model.GetComponent<DataController>();
-            dc.GameData = data;
-            data.Uid = UidTool.Instance.RegistUid();
+            dc.GdCharacter = data;
+            data.Uid = UidTool.Instance.RegistUid().ToString();
             data.RotateSpeed = cParams.RotateSpeed;
             data.AttackRange =cParams.AttackRange;
             data.AttackRange =cParams.AttackRange;
@@ -55,27 +54,23 @@ namespace Domain.Services.IService
             data.AddAttribute(TypedAttribute.Mana,new AMagic(cParams.Mana));
             data.AddAttribute(TypedAttribute.AttackDamage,new AAttackDamage(cParams.AttackDamage));
             data.AddAttribute(TypedAttribute.AttackSpeed,new AAttackSpeed(cParams.AttackSpeed));
-            model.GetComponentInChildren<AnimEventController>()._player = data;
+            model.GetComponentInChildren<AnimEventController>().gdChaPlayer = data;
             CharacterContext characterContext = new CharacterContext("Character:" + data.Uid);
             GameObject o=CreateCharacterGameObject(data, true);
             characterContext.Set(Constants_Context.PlayerData, data);
             _characters.Add(data.Uid,characterContext);
             if (cParams.IsPlayer)
             {
-                BaseDataService baseDataService = Context.GetApplicationContext().GetContainer().Resolve<BaseDataService>();
 
-                data.BagBarShortCutItems = new ItemInGame[5];
-                ItemInGame[] bagsEquipment = data.BagBarShortCutItems;
-                bagsEquipment[0]=new ItemInGame(1,baseDataService.GetItem(1009000000));
-                bagsEquipment[0].ContainItems[0] = new ItemInGame(1,baseDataService.GetItem(2000000000000));
-                bagsEquipment[0].ContainItems[1] = new ItemInGame(1,baseDataService.GetItem(2001000000000));
-                bagsEquipment[0].ContainItems[2] = new ItemInGame(1,baseDataService.GetItem(2001001000000));
-                
-                bagsEquipment[1]=new ItemInGame(1,baseDataService.GetItem(1009000000));
-                bagsEquipment[1].ContainItems[0] = new ItemInGame(1,baseDataService.GetItem(1006000000));;
-                bagsEquipment[1].ContainItems[1] = new ItemInGame(1,baseDataService.GetItem(1006000001));;
-                bagsEquipment[1].ContainItems[4] = new ItemInGame(1,baseDataService.GetItem(1006000002));;
-                
+                GDBase[] bagsEquipment = new GDBase[5];
+                GDEquBackpack equBackpack = new GDEquBackpack().Assemble(1009000000);
+                GDEquBackpack equBackpack1 = new GDEquBackpack().Assemble(1009000000);
+                equBackpack.ContainData[0] = new GDConPotion().Assemble(2000000000000);
+                equBackpack1.ContainData[0] = new GDConPotion().Assemble(2000000000001,10);
+                bagsEquipment[0] = equBackpack;
+                bagsEquipment[1] = equBackpack1;
+
+                data.BagBarShortCutItems = bagsEquipment;
 
                 data.BagOpenIndex = 0;
                 _mGameData.GameData = data;
@@ -96,7 +91,7 @@ namespace Domain.Services.IService
             }
         }
         
-        private GameObject CreateCharacterGameObject(PlayerData data,bool hasArea)
+        private GameObject CreateCharacterGameObject(GDChaPlayer data,bool hasArea)
         {
             GameObject o = new GameObject
             {

@@ -8,32 +8,32 @@ namespace Scripts.Controller
 {
     public class UIController:MonoBehaviour
     {
-        private Dictionary<long, HeadBarController> _headBars;
+        private Dictionary<string, HeadBarController> _headBars;
         [SerializeField] private GameObject _headBarParent;
         private void Awake()
         {
-            _headBars = new Dictionary<long, HeadBarController>();
+            _headBars = new Dictionary<string, HeadBarController>();
         }
         /// <summary>
         /// 目标UI
         /// </summary>
         public GameObject TargetUI;
         
-        public void AddHeadBar(PlayerData characterData)
+        public void AddHeadBar(GDChaPlayer character)
         {
             GameObject headbar = PrefabsManager.Instance.HeadBar;
             HeadBarController barController = headbar.GetComponent<HeadBarController>();
-            barController.CharacterData = characterData;
+            barController.Character = character;
             barController.HeadBar = headbar;
-            headbar.name = characterData.Uid.ToString();
+            headbar.name = character.Uid.ToString();
             headbar.transform.SetParent(_headBarParent.transform);
-            _headBars[characterData.Uid] = barController;
+            _headBars[character.Uid] = barController;
         }
 
-        public void RemoveHeadBar(PlayerData characterData)
+        public void RemoveHeadBar(GDChaPlayer character)
         {
-            Destroy(_headBars[characterData.Uid].gameObject);
-            _headBars.Remove(characterData.Uid);
+            Destroy(_headBars[character.Uid].gameObject);
+            _headBars.Remove(character.Uid);
         }
     }
 }

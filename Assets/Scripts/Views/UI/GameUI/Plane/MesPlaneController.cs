@@ -1,7 +1,5 @@
-using System;
-using Items;
+using Domain.Data.GameData;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MesPlaneController:MonoBehaviour
@@ -23,12 +21,12 @@ public class MesPlaneController:MonoBehaviour
     [SerializeField] private Image pointIcon;
     private RectTransform pointIconPlaneRectTransform;
 
-    private ItemInGame _itemInGame;
+    private GDBase _showData;
 
-    public ItemInGame ItemInGame
+    public GDBase ShowData
     {
-        get => _itemInGame;
-        set => _itemInGame = value;
+        get => _showData;
+        set => _showData = value;
     }
 
     private void Awake()
@@ -70,11 +68,11 @@ public class MesPlaneController:MonoBehaviour
         itemMesPlaneRectTransform.position = mousePosition;
     }
 
-    public void PointIconShow(ItemInGame itemInGame,Vector2 size)
+    public void PointIconShow(GDBase gdBase,Vector2 size)
     {
         pointIconPlaneRectTransform.sizeDelta=size;
-        pointIcon.sprite = itemInGame.Icon;
-        _itemInGame = itemInGame;
+        pointIcon.sprite = gdBase.Icon;
+        _showData = gdBase;
         pointIconPlane.SetActive(true);
     }
 

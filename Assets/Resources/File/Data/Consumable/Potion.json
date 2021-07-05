@@ -1,0 +1,50 @@
+﻿{
+  "2000000000000": {
+    "id": 2000000000000,
+    "title": "慢性复合药水",
+    "description": "每天一苹果，医生远离我。",
+    "icon": "Textures/IStudio/Items/healthPotion.png",
+    "price": 1,
+    "maxStackSize": 10,
+    "capacity": 0,
+    "decay": -1,
+    "decayed": 0,
+    "potionUse": 1,
+    "attributes": {
+      "Health": {
+        "value": 10,
+        "valuePerTime": 10,
+        "times": 10,
+        "duration": 500
+      },
+      "Mana": {
+        "value": 10,
+        "valuePerTime": 10,
+        "times": 5,
+        "duration": 500
+      }
+    }
+  },
+  "2000000000001": {
+  "id": 2000000000001,
+  "title": "快速恢复药水",
+  "description": "每天一苹果，医生远离我。",
+  "icon": "Textures/IStudio/Items/healthPotion.png",
+  "price": 1,
+  "maxStackSize": 10,
+  "capacity": 0,
+  "decay": -1,
+  "decayed": 0,
+  "potionUse": 1,
+  "attributes": {
+    "Health": {
+      "value": 1000,
+      "times": 5
+    },
+    "Mana": {
+      "value": 200,
+      "times": 0
+    }
+  }
+}
+}

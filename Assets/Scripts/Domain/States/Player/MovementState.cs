@@ -31,7 +31,7 @@ namespace States
         /// <summary>
         /// 不提供外部访问
         /// </summary>
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
 
         private Vector3 currentVelocity;
 
@@ -54,14 +54,14 @@ namespace States
         /// <summary>
         /// 引用属性必须在构造器中提前获取引用。
         /// </summary>
-        /// <param name="player"></param>
-        public MovementState(PlayerData player)
+        /// <param name="gdChaPlayer"></param>
+        public MovementState(GDChaPlayer gdChaPlayer)
         {
-            _player = player;
+            _gdChaPlayer = gdChaPlayer;
             // 获取需要属性
-            _transform = player.Transform;
-            _collider = player.Collider;
-            player.MovementState = this;
+            _transform = gdChaPlayer.Transform;
+            _collider = gdChaPlayer.Collider;
+            gdChaPlayer.MovementState = this;
             RegistInputActions();
             StartAction();
         }
@@ -103,11 +103,11 @@ namespace States
         public void StopMove(MMovement mMovement)
         {
             StopAction();
-            if (_player.TargetMovePosition != _transform.position)
+            if (_gdChaPlayer.TargetMovePosition != _transform.position)
             {                
-                _transform.rotation = Quaternion.LookRotation(_player.TargetMovePosition-_transform.position);
+                _transform.rotation = Quaternion.LookRotation(_gdChaPlayer.TargetMovePosition-_transform.position);
             }
-            _player.IsMoving = false;
+            _gdChaPlayer.IsMoving = false;
         }
         private void MoveTo(MMovement mMovement)
         {
@@ -115,7 +115,7 @@ namespace States
         }
         private void MoveTo(Vector3 position)
         {
-            _player.TargetMovePosition = position;
+            _gdChaPlayer.TargetMovePosition = position;
             CalculateNavmesh();
             StartAction();
         }
@@ -138,10 +138,10 @@ namespace States
             var position1 = _transform.position;
             float inputHorizontal = position.x>position1.x?1:-1;
             float inputVertical = ((position.z - position1.z) / (position.x - position1.x)) * inputHorizontal;
-            _player.InputVector = CameraRelativeInput(inputHorizontal, inputVertical);
+            _gdChaPlayer.InputVector = CameraRelativeInput(inputHorizontal, inputVertical);
             if (isNewTarget)
             {
-                _player.TargetMovePosition = position;
+                _gdChaPlayer.TargetMovePosition = position;
                 CalculateNavmesh();
                 StartAction();
             }
@@ -159,14 +159,14 @@ namespace States
         /// </summary>
         private void OnClickMouseLeftForceTarget(MMouseTarget clickLeft)
         {
-            GameData gameData = clickLeft.GameData;
+            GDCharacter gdCharacter = clickLeft.GdCharacter;
             if(!_forceAttack) return;
             // 点击自己直接退出
-            if(_player.Uid.Equals(gameData.Uid)) return;
-            _player.TargetMovePosition = gameData.Transform.position;
-            if ((_player.TargetMovePosition - _transform.position).magnitude < _player.AttackRange)
+            if(_gdChaPlayer.Uid.Equals(gdCharacter.Uid)) return;
+            _gdChaPlayer.TargetMovePosition = gdCharacter.Transform.position;
+            if ((_gdChaPlayer.TargetMovePosition - _transform.position).magnitude < _gdChaPlayer.AttackRange)
             {
-                _transform.rotation = Quaternion.LookRotation(_player.TargetMovePosition-_transform.position);
+                _transform.rotation = Quaternion.LookRotation(_gdChaPlayer.TargetMovePosition-_transform.position);
                 return;
             }
             // 首先计算路径
@@ -176,16 +176,16 @@ namespace States
         /// <summary>
         /// 鼠标右键选择目标，前往互动或者前往攻击，此处仅进行移动。
         /// </summary>
-        private void OnClickMouseLeftForceTarget(GameData gameData)
+        private void OnClickMouseLeftForceTarget(GDCharacter gdCharacter)
         {
             if(!_forceAttack) return;
             // 点击自己直接退出
-            if(_player.Uid.Equals(gameData.Uid)) return;
+            if(_gdChaPlayer.Uid.Equals(gdCharacter.Uid)) return;
             
-            _player.TargetMovePosition = gameData.Transform.position;
-            if ((_player.TargetMovePosition - _transform.position).magnitude < _player.AttackRange)
+            _gdChaPlayer.TargetMovePosition = gdCharacter.Transform.position;
+            if ((_gdChaPlayer.TargetMovePosition - _transform.position).magnitude < _gdChaPlayer.AttackRange)
             {
-                _transform.rotation = Quaternion.LookRotation(_player.TargetMovePosition-_transform.position);
+                _transform.rotation = Quaternion.LookRotation(_gdChaPlayer.TargetMovePosition-_transform.position);
                 return;
             }
             // 首先计算路径
@@ -199,8 +199,8 @@ namespace States
                 calculating_path = true;
                 path_found = false;
                 path_index = 0;
-                auto_move_target_next = _player.TargetMovePosition; //Default
-                NavMeshTool.CalculatePath(_transform.position, _player.TargetMovePosition, 1 << 0, FinishCalculateNavmesh);
+                auto_move_target_next = _gdChaPlayer.TargetMovePosition; //Default
+                NavMeshTool.CalculatePath(_transform.position, _gdChaPlayer.TargetMovePosition, 1 << 0, FinishCalculateNavmesh);
             }
         }
 
@@ -242,7 +242,7 @@ namespace States
             else
             {
                 StopAction();
-                _player.IsMoving = false;
+                _gdChaPlayer.IsMoving = false;
             }
         }
         
@@ -260,11 +260,11 @@ namespace States
         /// <returns></returns>
         private bool CheckMovable_IsArrived()
         {
-            bool isArrive = (_transform.position - _player.TargetMovePosition).magnitude > .15f;
+            bool isArrive = (_transform.position - _gdChaPlayer.TargetMovePosition).magnitude > .15f;
 
             if (!isArrive)
             {
-                _transform.position = _player.TargetMovePosition;
+                _transform.position = _gdChaPlayer.TargetMovePosition;
             }
             return isArrive;
         }
@@ -285,7 +285,7 @@ namespace States
         private float MoveTargetDistance()
         {
             
-            double dis = Math.Sqrt(Math.Pow(_player.TargetMovePosition.x - _transform.position.x, 2) + Math.Pow(_player.TargetMovePosition.z - _transform.position.z, 2));
+            double dis = Math.Sqrt(Math.Pow(_gdChaPlayer.TargetMovePosition.x - _transform.position.x, 2) + Math.Pow(_gdChaPlayer.TargetMovePosition.z - _transform.position.z, 2));
             return (float) dis;
         }
 
@@ -327,7 +327,7 @@ namespace States
         {
             // 没有寻找到路径或者路径中只有一个点，退出（默认路径中有两个点，起点和终点）
             if(!path_found) return;
-            _player.IsMoving = true;
+            _gdChaPlayer.IsMoving = true;
             across = false;
             curPosition=_transform.position;
             voidPosition= curPosition;
@@ -403,7 +403,7 @@ namespace States
         }
         public float GetMoveSpeed()
         {
-            float base_speed = _player.MoveSpeed;
+            float base_speed = _gdChaPlayer.MoveSpeed;
             return base_speed ;
         }
         public float GetColliderHeightRadius()
@@ -426,7 +426,7 @@ namespace States
         /// </summary>
         public void RotateTowardsMovementDir()
         {
-            _transform.rotation=Quaternion.RotateTowards(_transform.rotation, Quaternion.LookRotation(facing, Vector3.up), _player.RotateSpeed * Time.fixedDeltaTime);
+            _transform.rotation=Quaternion.RotateTowards(_transform.rotation, Quaternion.LookRotation(facing, Vector3.up), _gdChaPlayer.RotateSpeed * Time.fixedDeltaTime);
         }
         /// <summary>
         /// 旋转向目标
@@ -435,7 +435,7 @@ namespace States
         public void RotateTowardsTarget(Vector3 targetPosition)
         {
             Quaternion targetRotation = Quaternion.LookRotation(targetPosition - new Vector3(_transform.position.x, 0, _transform.position.z));
-            _transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(_transform.eulerAngles.y, targetRotation.eulerAngles.y, _player.RotateSpeed * Time.deltaTime);
+            _transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle(_transform.eulerAngles.y, targetRotation.eulerAngles.y, _gdChaPlayer.RotateSpeed * Time.deltaTime);
         }
         
         

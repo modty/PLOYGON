@@ -1,0 +1,11 @@
+﻿{
+  "1009000000": {
+    "title": "新手背包",
+    "id": 1009000000,
+    "capacity": 20,
+    "description": "用来装东西的背包。",
+    "icon": "Textures/IStudio/UI/bag.png",
+    "maxStackSize": 1,
+    "price": 5
+  }
+}

@@ -6,7 +6,7 @@ namespace Domain.Item.Weapon
     [CreateAssetMenu(fileName = "GameData", menuName = "新增物品/新增装备/新增武器/双手弓", order = 0)]
     public class TwoHandBow : ScriptableObject
     {
-        public GameData gameData;
+        public GDCharacter gdCharacter;
         [Header("攻击计时")]
         public bool override_timing = false; //设置为True时，默认攻击前后摇将被覆盖
         public float attack_windup = 0.7f;

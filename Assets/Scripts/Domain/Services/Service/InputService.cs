@@ -36,7 +36,7 @@ namespace Domain.Services.IService
         {
             OnControlledCharacter_Change=_messenger.Subscribe<MGameData>(Constants_Event.ControlledCharacter, (gameData) =>
             {
-                SetControlledCharacter(gameData.GameData as PlayerData);
+                SetControlledCharacter(gameData.GameData as GDChaPlayer);
             });
         }
         protected override void OnStart(IServiceContainer container)
@@ -59,12 +59,12 @@ namespace Domain.Services.IService
         {
             // 获得玩家属性
             _inputController.PlayerContext = Context.GetContext<CharacterContext>("Character:"+uid);
-            _messenger.Publish(TypedUIElements.PlayerMes.ToString(),_inputController.PlayerContext.GetContainer().Resolve<PlayerData>(Constants_Context.PlayerData));
+            _messenger.Publish(TypedUIElements.PlayerMes.ToString(),_inputController.PlayerContext.GetContainer().Resolve<GDChaPlayer>(Constants_Context.PlayerData));
         }
 
-        private void SetControlledCharacter(PlayerData playerData)
+        private void SetControlledCharacter(GDChaPlayer gdChaPlayer)
         {
-            _inputController.PlayerData = playerData;
+            _inputController.GdChaPlayer = gdChaPlayer;
         }
     }
 }

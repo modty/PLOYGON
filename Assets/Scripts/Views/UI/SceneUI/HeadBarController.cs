@@ -11,7 +11,7 @@ namespace Scripts.Controller
 
         private GameObject _headBar;
 
-        private PlayerData _player;
+        private GDChaPlayer _gdChaPlayer;
         public Image content;
         private float currentFill=-1;
         public GameObject HeadBar
@@ -20,18 +20,18 @@ namespace Scripts.Controller
             set => _headBar = value;
         }
 
-        public PlayerData CharacterData
+        public GDChaPlayer Character
         {
-            get => _player;
+            get => _gdChaPlayer;
             set
             {
-                _player = value;
+                _gdChaPlayer = value;
             }
         }
         private void Update()
         {
-            var position = _player.TargetMovePosition;
-            _headBar.transform.position = new Vector3(position.x,_player.Height+2,position.z);
+            var position = _gdChaPlayer.TargetMovePosition;
+            _headBar.transform.position = new Vector3(position.x,_gdChaPlayer.Height+2,position.z);
             currentFill=1;
             if(Math.Abs(content.fillAmount - currentFill) > .01f) content.fillAmount = Mathf.MoveTowards(content.fillAmount, currentFill, Time.deltaTime * 0.6f);
         }
